@@ -1,16 +1,27 @@
 import sys
 import MySQLdb as sql
+import mysql.connector
+from mysql.connector import Error
 
 
 def connection():
     # db connection
+    conn = None
     connStr = "leia.cs.spu.edu"
     userStr = "tangc4"
     passStr = "tangc45$4410X"
     db = "employees"
-    conn = sql.connect(connStr, userStr, passStr, db)
+    conn = mysql.connector.connect(
+        host="leia.cs.spu.edu",
+        database="employees",
+        user="tangc4",
+        password="tangc45$4410X",
+    )
 
     # query
+    if conn.is_connected():
+        print("Connected to Database")
+
     curs = conn.cursor()
     curs.execute("select * from employees limit 10")
 
