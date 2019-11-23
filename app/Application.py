@@ -1,7 +1,7 @@
 import sys
-import MySQLdb as sql
 import mysql.connector
 from mysql.connector import Error
+from Queries import Queries
 
 
 def connection():
@@ -35,9 +35,11 @@ def connection():
 
 
 def main():
-    connection()
+    test = Queries()
+    testing = test.test()
+    print(testing)
+    # connection()
 
 
 if __name__ == "__main__":
     main()
-
