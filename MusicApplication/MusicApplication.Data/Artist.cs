@@ -8,6 +8,7 @@ namespace MusicApplication.Data
 {
     public class Artist
     {
-        // Artist attributes go here
+        public int ArtistId { get; set; }
+        public string ArtistName { get; set; }
     }
 }

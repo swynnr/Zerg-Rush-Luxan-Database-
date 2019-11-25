@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MusicApplication.Data
 {
-    public class Song
+    public class Playlist
     {
-        public int SongId { get; set; }
-        public string SongName { get; set; }
-        public TimeSpan Length { get; set; }
+        public int PlaylistId { get; set; }
+        public string PlaylistName { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -13,9 +13,12 @@ namespace MusicApplication
 {
     public partial class AlbumForm : BaseView
     {
+        private SongModel _model;
+
         public AlbumForm()
         {
             InitializeComponent();
+            _model = new SongModel();
         }
 
         public override void Open<T>(T item)

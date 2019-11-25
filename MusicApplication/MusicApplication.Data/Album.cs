@@ -8,6 +8,8 @@ namespace MusicApplication.Data
 {
     public class Album
     {
-        // Album Attributes go here
+        public int AlbumId { get; set; }
+        public string AlbumName { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }

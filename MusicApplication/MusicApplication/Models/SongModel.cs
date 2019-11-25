@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicApplication.Models
+namespace MusicApplication
 {
     public class SongModel
     {
