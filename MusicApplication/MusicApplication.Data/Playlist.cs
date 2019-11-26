@@ -11,5 +11,19 @@ namespace MusicApplication.Data
         public int PlaylistId { get; set; }
         public string PlaylistName { get; set; }
         public DateTime Date { get; set; }
+
+        public Playlist(int _playlistId, string _playlistName, DateTime _date)
+        {
+            PlaylistId = _playlistId;
+            PlaylistName = _playlistName;
+            Date = _date;
+        }
+
+        public Playlist(int _playlistId, string _playlistName)
+        {
+            PlaylistId = _playlistId;
+            PlaylistName = _playlistName;
+            Date = DateTime.Now;
+        }
     }
 }
