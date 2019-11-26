@@ -11,5 +11,12 @@ namespace MusicApplication.Data
         public int SongId { get; set; }
         public string SongName { get; set; }
         public TimeSpan Length { get; set; }
+
+        public Song(int _songId, string _songName, TimeSpan _length)
+        {
+            SongId = _songId;
+            SongName = _songName;
+            Length = _length;
+        }
     }
 }

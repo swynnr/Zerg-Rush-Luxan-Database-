@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql.Data;
+using MusicApplication.Data;
 
 namespace QueryManager
 {
-    class Query
+    public class Query
     {
         private MySqlConnection connection = null;
         public Query(string host, string db, string username, string password)
@@ -24,22 +25,32 @@ namespace QueryManager
             return cmd.ExecuteReader();
         }
 
-        public void CreatePlaylist(string name)
+        public void CreatePlaylist(Playlist item)
         {
 
         }
 
-        public void CreateConcert(string name, string location, DateTime date)
+        public void CreateConcert(Concert item)
         {
 
         }
 
-        public void PlaylistAdd(int playlistId, int songId)
+        public void PlaylistAddSong(int playlistId, int songId)
         {
 
         }
 
-        public void ConcertAdd(int concertId, int songId)
+        public void ConcertAddSong(int concertId, int songId)
+        {
+
+        }
+
+        public void PlaylistRemoveSong(int playlistId, int songId)
+        {
+
+        }
+
+        public void ConcertRemoveSong(int playlistId, int songId)
         {
 
         }
@@ -60,6 +71,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
+                result.Add((Artist)Activator.CreateInstance(typeof(Artist), reader));
             }
             return result;
         }
@@ -70,6 +82,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
+                result.Add((Playlist)Activator.CreateInstance(typeof(Playlist), reader));
             }
             return result;
         }
@@ -80,6 +93,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
+                result.Add((Concert)Activator.CreateInstance(typeof(Concert), reader));
             }
             return result;
         }
@@ -90,6 +104,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
+                result.Add((Album)Activator.CreateInstance(typeof(Album), reader));
             }
             return result;
         }
@@ -100,6 +115,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
+                result.Add((Song)Activator.CreateInstance(typeof(Song), reader));
             }
             return result;
         }

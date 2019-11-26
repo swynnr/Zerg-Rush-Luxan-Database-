@@ -10,5 +10,11 @@ namespace MusicApplication.Data
     {
         public int ArtistId { get; set; }
         public string ArtistName { get; set; }
+
+        public Artist(int _artistId, string _artistName)
+        {
+            ArtistId = _artistId;
+            ArtistName = _artistName;
+        }
     }
 }
