@@ -1,4 +1,0 @@
-Python commands:
-
-python --version //make sure it is 3.6
-python -m pip install mysql-connector-python
