@@ -25,44 +25,58 @@ namespace QueryManager
             return cmd.ExecuteReader();
         }
 
+        private void ExecuteNonQuery(string command)
+        {
+            var cmd = new MySqlCommand(command, connection);
+            cmd.ExecuteNonQuery();
+        }
+
         public void CreatePlaylist(Playlist item)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void CreateConcert(Concert item)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void PlaylistAddSong(int playlistId, int songId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void ConcertAddSong(int concertId, int songId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void PlaylistRemoveSong(int playlistId, int songId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void ConcertRemoveSong(int playlistId, int songId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void DeletePlaylist(int playlistId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public void DeleteConcert(int concertId)
         {
-
+            string cmd = "temp";
+            ExecuteNonQuery(cmd);
         }
 
         public List<Artist> GetArtists(string name)
