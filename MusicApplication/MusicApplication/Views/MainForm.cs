@@ -89,14 +89,11 @@ namespace MusicApplication
 
         private void searchButtonClick(object sender, EventArgs e)
         {
-
-            
-
             Query temp = new Query("leia.cs.spu.edu", "wynns_db", "wynns", "wynns30$4410X"); //Yup thats my password, dont do anything bad
 
             switch (comboBox1.SelectedIndex)
             {
-                default:                    //trying to figure out how to set combobox tab index to always 0;
+                default:                    
                     break;
                 case 0: temp.GetArtists(searchBox.Text);            //artists
                     break;

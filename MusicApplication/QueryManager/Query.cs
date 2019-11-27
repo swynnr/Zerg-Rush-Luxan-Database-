@@ -82,7 +82,7 @@ namespace QueryManager
         public List<Artist> GetArtists(string name)
         {
             List<Artist> result = null;
-            var reader = GetReader("result");
+            var reader = GetReader("SELECT * FROM Artists WHERE artistName LIKE '" + name + "';");
             while (reader.Read())
             {
                 result.Add((Artist)Activator.CreateInstance(typeof(Artist), reader));
