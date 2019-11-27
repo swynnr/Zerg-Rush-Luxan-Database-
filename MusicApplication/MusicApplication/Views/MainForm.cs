@@ -1,4 +1,5 @@
 ﻿using MusicApplication.Data;
+using QueryManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace MusicApplication
 {
@@ -20,7 +22,7 @@ namespace MusicApplication
         public MainForm()
         {
             InitializeComponent();
-
+            this.comboBox1.SelectedIndex = 0;
             _searchResultsForm = new SearchResultsForm();
             _artistForm = new ArtistForm();
             _albumForm = new AlbumForm();
@@ -83,6 +85,31 @@ namespace MusicApplication
         {
             SetVisibleForm(_searchResultsForm);
             _searchResultsForm.Open(new SearchQuery(_searchButton.Text, typeof(Album))); // TODO: Change to use the selected combobox option
+        }
+
+        private void searchButtonClick(object sender, EventArgs e)
+        {
+
+            
+
+            Query temp = new Query("leia.cs.spu.edu", "wynns_db", "wynns", "wynns30$4410X"); //Yup thats my password, dont do anything bad
+
+            switch (comboBox1.SelectedIndex)
+            {
+                default:                    //trying to figure out how to set combobox tab index to always 0;
+                    break;
+                case 0: temp.GetArtists(searchBox.Text);            //artists
+                    break;
+                case 1: temp.GetAlbums(searchBox.Text);             //albums
+                    break;
+                case 2: temp.GetSongs(searchBox.Text);              //songs  
+                    break;
+                case 3: temp.GetPlaylists(searchBox.Text);          //playlists
+                    break;
+                case 4: temp.GetConcert(searchBox.Text);            //concerts
+                    break;
+
+            }
         }
     }
 }
