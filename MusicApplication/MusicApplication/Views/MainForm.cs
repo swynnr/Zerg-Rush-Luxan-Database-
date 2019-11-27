@@ -28,7 +28,7 @@ namespace MusicApplication
             _albumForm = new AlbumForm();
         }
 
-        public void DisplayObject(Artist artist)
+        public void DisplayObject(List<Artist> artist)
         {
             SetVisibleForm(_artistForm);
             _artistForm.Open(artist);
@@ -95,7 +95,8 @@ namespace MusicApplication
             {
                 default:                    
                     break;
-                case 0: temp.GetArtists(searchBox.Text);            //artists
+                case 0:
+                    // artists
                     break;
                 case 1: temp.GetAlbums(searchBox.Text);             //albums
                     break;
@@ -107,6 +108,9 @@ namespace MusicApplication
                     break;
 
             }
+            List<Artist> tempArtist = new List<Artist>(temp.GetArtists(searchBox.Text));
+            this.DisplayObject(tempArtist);
+                
         }
     }
 }

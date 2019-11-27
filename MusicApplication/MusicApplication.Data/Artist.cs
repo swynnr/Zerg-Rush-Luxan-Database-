@@ -15,6 +15,6 @@ namespace MusicApplication.Data
         {
             ArtistId = _artistId;
             ArtistName = _artistName;
-        }
+         }
     }
 }
