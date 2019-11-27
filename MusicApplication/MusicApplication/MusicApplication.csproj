@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Models\SongModel.cs" />
     <Compile Include="Models\AlbumModel.cs" />
-    <Compile Include="Query.cs" />
     <Compile Include="SearchQuery.cs" />
     <Compile Include="Views\AlbumForm.cs">
       <SubType>UserControl</SubType>
@@ -143,6 +142,10 @@
     <ProjectReference Include="..\MusicApplication.Data\MusicApplication.Data.csproj">
       <Project>{9118557F-EFDB-4A79-9269-47B6D3FEB99D}</Project>
       <Name>MusicApplication.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryManager\QueryManager.csproj">
+      <Project>{3972e275-5681-4e82-8eee-11c324e9255c}</Project>
+      <Name>QueryManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
