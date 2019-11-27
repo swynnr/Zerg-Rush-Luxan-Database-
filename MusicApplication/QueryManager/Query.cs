@@ -14,7 +14,7 @@ namespace QueryManager
         private MySqlConnection connection = null;
         public Query(string host, string db, string username, string password)
         {
-            string connStr = string.Format("Server={0}; database{1}; UID={2}; password={3}", host, db, username, password);
+            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
             connection = new MySqlConnection(connStr);
             connection.Open();
         }
