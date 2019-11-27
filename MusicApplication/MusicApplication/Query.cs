@@ -17,6 +17,7 @@ namespace QueryManager
             string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
             connection = new MySqlConnection(connStr);
             connection.Open();
+            
         }
 
         private MySqlDataReader GetReader(string query)
@@ -115,7 +116,7 @@ namespace QueryManager
         public List<Album> GetAlbums(string name)
         {
             List<Album> result = null;
-            var reader = GetReader("result");
+            var reader = GetReader("SELECT albumName FROM Album WHERE albumName = \"" + name +"\";");
             while (reader.Read())
             {
                 result.Add((Album)Activator.CreateInstance(typeof(Album), reader));
