@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SongModel.cs" />
     <Compile Include="Models\AlbumModel.cs" />

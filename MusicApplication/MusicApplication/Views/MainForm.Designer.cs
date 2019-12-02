@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             this._mainPanel = new System.Windows.Forms.Panel();
-            this._contentPanel = new System.Windows.Forms.Panel();
-            this._searchPanel = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this._searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this._searchTab = new System.Windows.Forms.TabPage();
+            this._contentPanel = new System.Windows.Forms.Panel();
+            this._searchPanel = new System.Windows.Forms.Panel();
+            this._typeSelectorCombo = new System.Windows.Forms.ComboBox();
+            this._searchButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this._playlistTab = new System.Windows.Forms.TabPage();
             this._concertTab = new System.Windows.Forms.TabPage();
             this._mainPanel.SuspendLayout();
-            this._contentPanel.SuspendLayout();
-            this._searchPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this._searchTab.SuspendLayout();
+            this._searchPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // _mainPanel
@@ -55,34 +54,58 @@
             this._mainPanel.Size = new System.Drawing.Size(754, 481);
             this._mainPanel.TabIndex = 5;
             // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this._searchTab);
+            this.tabControl.Controls.Add(this._playlistTab);
+            this.tabControl.Controls.Add(this._concertTab);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(5, 5);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(744, 471);
+            this.tabControl.TabIndex = 0;
+            // 
+            // _searchTab
+            // 
+            this._searchTab.Controls.Add(this._contentPanel);
+            this._searchTab.Controls.Add(this._searchPanel);
+            this._searchTab.Location = new System.Drawing.Point(4, 22);
+            this._searchTab.Name = "_searchTab";
+            this._searchTab.Padding = new System.Windows.Forms.Padding(3);
+            this._searchTab.Size = new System.Drawing.Size(736, 445);
+            this._searchTab.TabIndex = 0;
+            this._searchTab.Text = "Search";
+            this._searchTab.UseVisualStyleBackColor = true;
+            // 
             // _contentPanel
             // 
-            this._contentPanel.Controls.Add(this._searchPanel);
             this._contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._contentPanel.Location = new System.Drawing.Point(3, 3);
+            this._contentPanel.Location = new System.Drawing.Point(3, 58);
             this._contentPanel.Name = "_contentPanel";
-            this._contentPanel.Size = new System.Drawing.Size(730, 439);
+            this._contentPanel.Size = new System.Drawing.Size(730, 384);
             this._contentPanel.TabIndex = 6;
             // 
             // _searchPanel
             // 
-            this._searchPanel.Controls.Add(this.comboBox1);
+            this._searchPanel.Controls.Add(this._typeSelectorCombo);
             this._searchPanel.Controls.Add(this._searchButton);
             this._searchPanel.Controls.Add(this.textBox1);
             this._searchPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this._searchPanel.Location = new System.Drawing.Point(0, 0);
+            this._searchPanel.Location = new System.Drawing.Point(3, 3);
             this._searchPanel.Name = "_searchPanel";
             this._searchPanel.Size = new System.Drawing.Size(730, 55);
             this._searchPanel.TabIndex = 5;
             this._searchPanel.Text = "Search Artists, Songs, Albums";
             // 
-            // comboBox1
+            // _typeSelectorCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this._typeSelectorCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._typeSelectorCombo.FormattingEnabled = true;
+            this._typeSelectorCombo.Location = new System.Drawing.Point(15, 21);
+            this._typeSelectorCombo.Name = "_typeSelectorCombo";
+            this._typeSelectorCombo.Size = new System.Drawing.Size(121, 21);
+            this._typeSelectorCombo.TabIndex = 5;
             // 
             // _searchButton
             // 
@@ -102,29 +125,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(463, 20);
             this.textBox1.TabIndex = 1;
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this._searchTab);
-            this.tabControl.Controls.Add(this._playlistTab);
-            this.tabControl.Controls.Add(this._concertTab);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(5, 5);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(744, 471);
-            this.tabControl.TabIndex = 0;
-            // 
-            // _searchTab
-            // 
-            this._searchTab.Controls.Add(this._contentPanel);
-            this._searchTab.Location = new System.Drawing.Point(4, 22);
-            this._searchTab.Name = "_searchTab";
-            this._searchTab.Padding = new System.Windows.Forms.Padding(3);
-            this._searchTab.Size = new System.Drawing.Size(736, 445);
-            this._searchTab.TabIndex = 0;
-            this._searchTab.Text = "Search";
-            this._searchTab.UseVisualStyleBackColor = true;
             // 
             // _playlistTab
             // 
@@ -158,11 +158,10 @@
             this.ShowIcon = false;
             this.Text = "Music Application";
             this._mainPanel.ResumeLayout(false);
-            this._contentPanel.ResumeLayout(false);
-            this._searchPanel.ResumeLayout(false);
-            this._searchPanel.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this._searchTab.ResumeLayout(false);
+            this._searchPanel.ResumeLayout(false);
+            this._searchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -173,7 +172,7 @@
         private System.Windows.Forms.Panel _searchPanel;
         private System.Windows.Forms.Button _searchButton;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox _typeSelectorCombo;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage _searchTab;
         private System.Windows.Forms.TabPage _playlistTab;

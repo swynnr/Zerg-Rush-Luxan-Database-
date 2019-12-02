@@ -47,6 +47,7 @@ namespace MusicApplication
             base.OnLoad(e);
 
             SetUpControls();
+            PopulateComboBox();
             BindEvents();
         }
 
@@ -72,7 +73,15 @@ namespace MusicApplication
             _playlistTab.Controls.Add(_playlistForm);
             _concertTab.Controls.Add(_concertForm);
 
-            SetVisibleForm(_albumForm);
+            SetVisibleForm(_searchResultsForm);
+        }
+
+        private void PopulateComboBox()
+        {
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Artist", typeof(Artist)));
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Album", typeof(Album)));
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Song", typeof(Song)));
+            _typeSelectorCombo.SelectedIndex = 0;
         }
 
         private void SetVisibleForm(Component visibleForm)
@@ -90,7 +99,7 @@ namespace MusicApplication
         private void Search(object sender, EventArgs e)
         {
             SetVisibleForm(_searchResultsForm);
-            _searchResultsForm.Open(new SearchQuery(_searchButton.Text, typeof(Album))); // TODO: Change to use the selected combobox option
+            _searchResultsForm.Open(new SearchQuery(_searchButton.Text, ((ComboBoxItem)_typeSelectorCombo.SelectedItem).Value as Type));
         }
     }
 }
