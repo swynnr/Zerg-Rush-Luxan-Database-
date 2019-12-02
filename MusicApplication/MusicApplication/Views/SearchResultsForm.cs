@@ -26,6 +26,7 @@ namespace MusicApplication
             albumSearchBindingSource.DataSource = _albumModel.SearchResultsList;
             artistSearchBindingSource.DataSource = _artistModel.SearchResultsList;
             songSearchBindingSource.DataSource = _songModel.SearchResultsList;
+            BindEvents();
         }
 
         public override void Open<T>(T item)
@@ -56,6 +57,12 @@ namespace MusicApplication
                 _songGrid.Visible = true;
                 return;
             }
+        }
+
+        private void BindEvents()
+        {
+            _artistGrid.CellDoubleClick += OpenArtist;
+            _albumGrid.CellDoubleClick += OpenAlbum;
         }
     }
 }

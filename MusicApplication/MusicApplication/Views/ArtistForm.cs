@@ -20,12 +20,18 @@ namespace MusicApplication
             InitializeComponent();
             _model = new AlbumModel();
             albumModelBindingSource.DataSource = _model;
+            BindEvents();
         }
 
         public override void Open<T>(T item)
         {
             var artist = item as Artist;
+            _model.SelectedArtist = artist;
+        }
 
+        private void BindEvents()
+        {
+            _albumGrid.CellDoubleClick += OpenAlbum;
         }
     }
 }

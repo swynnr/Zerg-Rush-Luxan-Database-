@@ -12,18 +12,23 @@ namespace MusicApplication.Data
         public string PlaylistName { get; set; }
         public DateTime Date { get; set; }
 
-        public Playlist(int _playlistId, string _playlistName, DateTime _date)
+        public Playlist(int playlistId, string playlistName, DateTime date)
         {
-            PlaylistId = _playlistId;
-            PlaylistName = _playlistName;
-            Date = _date;
+            PlaylistId = playlistId;
+            PlaylistName = playlistName;
+            Date = date;
         }
 
-        public Playlist(int _playlistId, string _playlistName)
+        public Playlist(int playlistId, string playlistName)
         {
-            PlaylistId = _playlistId;
-            PlaylistName = _playlistName;
+            PlaylistId = playlistId;
+            PlaylistName = playlistName;
             Date = DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return PlaylistName;
         }
     }
 }

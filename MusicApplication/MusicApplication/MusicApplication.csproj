@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\SearchSongModel.cs" />
     <Compile Include="Models\SearchAlbumModel.cs" />
     <Compile Include="Models\SearchArtistModel.cs" />
@@ -150,7 +151,6 @@
     <None Include="Properties\DataSources\AlbumModel.datasource" />
     <None Include="Properties\DataSources\SearchAlbumModel.datasource" />
     <None Include="Properties\DataSources\SearchArtistModel.datasource" />
-    <None Include="Properties\DataSources\SearchModel.datasource" />
     <None Include="Properties\DataSources\SearchModel`1[].datasource" />
     <None Include="Properties\DataSources\SearchModel`1[]1.datasource" />
     <None Include="Properties\DataSources\SearchSongModel.datasource" />

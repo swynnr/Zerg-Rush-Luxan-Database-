@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicApplication
 {
-    public class SearchSongModel
+    public class SearchSongModel : BaseModel
     {
         public BindingList<Song> SearchResultsList { get; set; }
 

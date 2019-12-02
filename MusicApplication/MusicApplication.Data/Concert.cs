@@ -13,20 +13,25 @@ namespace MusicApplication.Data
         public string Location { get; set; }
         public DateTime Date { get; set; }
 
-        public Concert(int _concertId, string _concertName, string _location, DateTime _date)
+        public Concert(int concertId, string concertName, string location, DateTime date)
         {
-            ConcertId = _concertId;
-            ConcertName = _concertName;
-            Location = _location;
-            Date = _date;
+            ConcertId = concertId;
+            ConcertName = concertName;
+            Location = location;
+            Date = date;
         }
 
-        public Concert(int _concertId, string _concertName, string _location)
+        public Concert(int concertId, string concertName, string location)
         {
-            ConcertId = _concertId;
-            ConcertName = _concertName;
-            Location = _location;
+            ConcertId = concertId;
+            ConcertName = concertName;
+            Location = location;
             Date = DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return ConcertName;
         }
     }
 }

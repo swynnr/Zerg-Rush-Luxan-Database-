@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicApplication
 {
-    public class AlbumModel
+    public class AlbumModel : BaseModel
     {
         public BindingList<Album> Albums { get; set; }
         private Artist _selectedArtist;
@@ -23,6 +23,7 @@ namespace MusicApplication
             {
                 _selectedArtist = value;
                 UpdateAlbumList();
+                OnPropertyChanged("Artist");
             }
         }
 
@@ -33,7 +34,11 @@ namespace MusicApplication
 
         private void UpdateAlbumList()
         {
-            // Call to query manager to get list for _selectedArtist
+            Albums.Clear();
+            Albums.Add(new Album(0, "The Bees", DateTime.Now));
+            Albums.Add(new Album(100, "Blac", DateTime.Now));
+            Albums.Add(new Album(200, "The happening", DateTime.Now));
+            Albums.Add(new Album(303, "The Foo", DateTime.Now));
         }
     }
 }

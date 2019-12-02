@@ -11,10 +11,15 @@ namespace MusicApplication.Data
         public int ArtistId { get; set; }
         public string ArtistName { get; set; }
 
-        public Artist(int _artistId, string _artistName)
+        public Artist(int artistId, string artistName)
         {
-            ArtistId = _artistId;
-            ArtistName = _artistName;
+            ArtistId = artistId;
+            ArtistName = artistName;
+        }
+
+        public override string ToString()
+        {
+            return ArtistName;
         }
     }
 }

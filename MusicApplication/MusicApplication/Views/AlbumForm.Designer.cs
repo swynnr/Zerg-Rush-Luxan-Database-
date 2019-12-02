@@ -95,7 +95,7 @@
             // 
             // _title
             // 
-            this._title.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.songModelBindingSource, "SelectedArtist", true));
+            this._title.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.songModelBindingSource, "SelectedAlbum", true));
             this._title.Dock = System.Windows.Forms.DockStyle.Fill;
             this._title.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._title.Location = new System.Drawing.Point(0, 0);
@@ -147,10 +147,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label _title;
-        private System.Windows.Forms.BindingSource songModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource songModelBindingSource;
     }
 }
 

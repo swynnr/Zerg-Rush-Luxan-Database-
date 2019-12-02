@@ -25,7 +25,7 @@ namespace MusicApplication
         public override void Open<T>(T item)
         {
             var album = item as Album;
-
+            _model.SelectedAlbum = album;
         }
     }
 }
