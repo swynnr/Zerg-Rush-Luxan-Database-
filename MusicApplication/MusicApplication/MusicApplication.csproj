@@ -66,7 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
-    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\SearchSongModel.cs" />
+    <Compile Include="Models\SearchAlbumModel.cs" />
+    <Compile Include="Models\SearchArtistModel.cs" />
     <Compile Include="Models\SongModel.cs" />
     <Compile Include="Models\AlbumModel.cs" />
     <Compile Include="SearchQuery.cs" />
@@ -146,8 +148,12 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AlbumModel.datasource" />
+    <None Include="Properties\DataSources\SearchAlbumModel.datasource" />
+    <None Include="Properties\DataSources\SearchArtistModel.datasource" />
     <None Include="Properties\DataSources\SearchModel.datasource" />
     <None Include="Properties\DataSources\SearchModel`1[].datasource" />
+    <None Include="Properties\DataSources\SearchModel`1[]1.datasource" />
+    <None Include="Properties\DataSources\SearchSongModel.datasource" />
     <None Include="Properties\DataSources\SongModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

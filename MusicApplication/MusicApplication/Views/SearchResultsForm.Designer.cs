@@ -29,67 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.albumBindingList = new System.Windows.Forms.BindingSource(this.components);
-            this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.artistBindingList = new System.Windows.Forms.BindingSource(this.components);
-            this.artistBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.songBindingList = new System.Windows.Forms.BindingSource(this.components);
-            this.songBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this._albumGrid = new System.Windows.Forms.DataGridView();
-            this.albumIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.albumNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.releaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.albumSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._artistGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artistSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._songGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._songGrid = new System.Windows.Forms.DataGridView();
-            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.songSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this._title = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.albumBindingList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistBindingList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._albumGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumSearchBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._artistGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artistSearchBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._songGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songSearchBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // albumBindingList
-            // 
-            this.albumBindingList.DataMember = "SearchResultsList";
-            this.albumBindingList.DataSource = this.albumBindingSource;
-            // 
-            // albumBindingSource
-            // 
-            this.albumBindingSource.DataSource = typeof(MusicApplication.SearchModel<MusicApplication.Data.Album>);
-            // 
-            // artistBindingList
-            // 
-            this.artistBindingList.DataMember = "SearchResultsList";
-            this.artistBindingList.DataSource = this.artistBindingSource;
-            // 
-            // artistBindingSource
-            // 
-            this.artistBindingSource.DataSource = typeof(MusicApplication.SearchModel<MusicApplication.Data.Artist>);
-            // 
-            // songBindingList
-            // 
-            this.songBindingList.DataMember = "SearchResultsList";
-            this.songBindingList.DataSource = this.songBindingSource;
-            // 
-            // songBindingSource
-            // 
-            this.songBindingSource.DataSource = typeof(MusicApplication.SearchModel<MusicApplication.Data.Song>);
             // 
             // panel1
             // 
@@ -119,94 +86,117 @@
             // _albumGrid
             // 
             this._albumGrid.AutoGenerateColumns = false;
+            this._albumGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this._albumGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._albumGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.albumIdDataGridViewTextBoxColumn,
-            this.albumNameDataGridViewTextBoxColumn,
-            this.releaseDateDataGridViewTextBoxColumn});
-            this._albumGrid.DataSource = this.albumBindingList;
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this._albumGrid.DataSource = this.albumSearchBindingSource;
             this._albumGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._albumGrid.Location = new System.Drawing.Point(3, 19);
             this._albumGrid.Name = "_albumGrid";
             this._albumGrid.Size = new System.Drawing.Size(784, 354);
             this._albumGrid.TabIndex = 3;
             // 
-            // albumIdDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn6
             // 
-            this.albumIdDataGridViewTextBoxColumn.DataPropertyName = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.HeaderText = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.Name = "albumIdDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "AlbumId";
+            this.dataGridViewTextBoxColumn6.HeaderText = "AlbumId";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 83;
             // 
-            // albumNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn7
             // 
-            this.albumNameDataGridViewTextBoxColumn.DataPropertyName = "AlbumName";
-            this.albumNameDataGridViewTextBoxColumn.HeaderText = "AlbumName";
-            this.albumNameDataGridViewTextBoxColumn.Name = "albumNameDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "AlbumName";
+            this.dataGridViewTextBoxColumn7.HeaderText = "AlbumName";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 109;
             // 
-            // releaseDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn8
             // 
-            this.releaseDateDataGridViewTextBoxColumn.DataPropertyName = "ReleaseDate";
-            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "ReleaseDate";
-            this.releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ReleaseDate";
+            this.dataGridViewTextBoxColumn8.HeaderText = "ReleaseDate";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 115;
+            // 
+            // albumSearchBindingSource
+            // 
+            this.albumSearchBindingSource.DataSource = typeof(MusicApplication.Data.Album);
             // 
             // _artistGrid
             // 
             this._artistGrid.AutoGenerateColumns = false;
+            this._artistGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this._artistGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._artistGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this._artistGrid.DataSource = this.artistBindingList;
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this._artistGrid.DataSource = this.artistSearchBindingSource;
             this._artistGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._artistGrid.Location = new System.Drawing.Point(3, 19);
             this._artistGrid.Name = "_artistGrid";
             this._artistGrid.Size = new System.Drawing.Size(784, 354);
             this._artistGrid.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn9
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ArtistId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ArtistId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ArtistId";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ArtistId";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 76;
             // 
-            // dataGridViewTextBoxColumn2
+            // dataGridViewTextBoxColumn10
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ArtistName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ArtistName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ArtistName";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ArtistName";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 102;
+            // 
+            // artistSearchBindingSource
+            // 
+            this.artistSearchBindingSource.DataSource = typeof(MusicApplication.Data.Artist);
             // 
             // _songGrid
             // 
             this._songGrid.AutoGenerateColumns = false;
+            this._songGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this._songGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._songGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.songIdDataGridViewTextBoxColumn,
-            this.songNameDataGridViewTextBoxColumn,
-            this.lengthDataGridViewTextBoxColumn});
-            this._songGrid.DataSource = this.songBindingList;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn5});
+            this._songGrid.DataSource = this.songSearchBindingSource;
             this._songGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._songGrid.Location = new System.Drawing.Point(3, 19);
             this._songGrid.Name = "_songGrid";
             this._songGrid.Size = new System.Drawing.Size(784, 354);
             this._songGrid.TabIndex = 5;
             // 
-            // songIdDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
-            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
-            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "SongId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "SongId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 77;
             // 
-            // songNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
-            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
-            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SongName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "SongName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 103;
             // 
-            // lengthDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn5
             // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Length";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Length";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 77;
+            // 
+            // songSearchBindingSource
+            // 
+            this.songSearchBindingSource.DataSource = typeof(MusicApplication.Data.Song);
             // 
             // panel2
             // 
@@ -234,17 +224,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "SearchResultsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.albumBindingList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistBindingList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._albumGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumSearchBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._artistGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artistSearchBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._songGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songSearchBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -257,25 +244,28 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.BindingSource albumBindingList;
-        private System.Windows.Forms.BindingSource albumBindingSource;
-        private System.Windows.Forms.BindingSource artistBindingList;
-        private System.Windows.Forms.BindingSource artistBindingSource;
-        private System.Windows.Forms.BindingSource songBindingList;
-        private System.Windows.Forms.BindingSource songBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn artistIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn artistNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView _songGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridView _artistGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn albumIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn albumNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn releaseDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.BindingSource albumSearchBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.BindingSource artistSearchBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource songSearchBindingSource;
     }
 }

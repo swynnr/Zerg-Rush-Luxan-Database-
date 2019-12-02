@@ -1,0 +1,35 @@
+﻿using MusicApplication.Data;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MusicApplication
+{
+    public class SearchAlbumModel
+    {
+        public BindingList<Album> SearchResultsList { get; set; }
+
+        public SearchAlbumModel()
+        {
+            SearchResultsList = new BindingList<Album>();
+        }
+
+        public void GetItems(SearchQuery searchQuery)
+        {
+            SearchResultsList.Clear();
+
+            // TODO: populate with data
+            if (searchQuery.EntityType != typeof(Album))
+            {
+                return;
+            }
+            SearchResultsList.Add(new Album(0, "The Bees", DateTime.Now));
+            SearchResultsList.Add(new Album(100, "Blac", DateTime.Now));
+            SearchResultsList.Add(new Album(200, "The happening", DateTime.Now));
+            SearchResultsList.Add(new Album(303, "The Foo", DateTime.Now));
+        }
+    }
+}
