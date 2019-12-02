@@ -10,7 +10,7 @@ namespace MusicApplication
 {
     public class AlbumModel
     {
-        public BindingList<Album> Albums;
+        public BindingList<Album> Albums { get; set; }
         private Artist _selectedArtist;
 
         public Artist SelectedArtist

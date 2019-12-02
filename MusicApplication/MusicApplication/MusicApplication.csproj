@@ -144,8 +144,10 @@
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AlbumModel.datasource" />
     <None Include="Properties\DataSources\SearchModel.datasource" />
     <None Include="Properties\DataSources\SearchModel`1[].datasource" />
+    <None Include="Properties\DataSources\SongModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

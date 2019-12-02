@@ -19,6 +19,7 @@ namespace MusicApplication
         {
             InitializeComponent();
             _model = new AlbumModel();
+            albumModelBindingSource.DataSource = _model;
         }
 
         public override void Open<T>(T item)
