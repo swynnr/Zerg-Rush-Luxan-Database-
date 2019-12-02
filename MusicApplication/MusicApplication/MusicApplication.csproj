@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SongModel.cs" />
     <Compile Include="Models\AlbumModel.cs" />
     <Compile Include="SearchQuery.cs" />
@@ -86,6 +87,12 @@
     <Compile Include="Views\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConcertForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ConcertForm.Designer.cs">
+      <DependentUpon>ConcertForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +107,12 @@
     <Compile Include="Views\SearchResultsForm.Designer.cs">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PlaylistForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControl1.Designer.cs">
+      <DependentUpon>PlaylistForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AlbumForm.resx">
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ConcertForm.resx">
+      <DependentUpon>ConcertForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -121,10 +137,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\PlaylistForm.resx">
+      <DependentUpon>PlaylistForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\SearchResultsForm.resx">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SearchModel.datasource" />
+    <None Include="Properties\DataSources\SearchModel`1[].datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,5 +165,6 @@
       <Name>MusicApplication.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
