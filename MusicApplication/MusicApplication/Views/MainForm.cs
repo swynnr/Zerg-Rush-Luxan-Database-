@@ -1,4 +1,5 @@
 ﻿using MusicApplication.Data;
+using QueryManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,15 +20,15 @@ namespace MusicApplication
         private ConcertForm _concertForm;
         private PlaylistForm _playlistForm;
 
-        public MainForm()
+        public MainForm(Query queryManager)
         {
             InitializeComponent();
 
-            _searchResultsForm = new SearchResultsForm();
-            _artistForm = new ArtistForm();
-            _albumForm = new AlbumForm();
-            _concertForm = new ConcertForm();
-            _playlistForm = new PlaylistForm();
+            _searchResultsForm = new SearchResultsForm(queryManager);
+            _artistForm = new ArtistForm(queryManager);
+            _albumForm = new AlbumForm(queryManager);
+            _concertForm = new ConcertForm(queryManager);
+            _playlistForm = new PlaylistForm(queryManager);
         }
 
         public void DisplayObject(Artist artist)

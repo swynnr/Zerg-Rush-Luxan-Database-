@@ -14,7 +14,7 @@ namespace QueryManager
         private MySqlConnection connection = null;
         public Query(string host, string db, string username, string password)
         {
-            string connStr = string.Format("Server={0}; database{1}; UID={2}; password={3}", host, db, username, password);
+            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
             connection = new MySqlConnection(connStr);
             connection.Open();
         }
@@ -31,10 +31,12 @@ namespace QueryManager
             cmd.ExecuteNonQuery();
         }
 
-        public void CreatePlaylist(Playlist item)
+        public Playlist CreatePlaylist(string name)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
+
+            return new Playlist(0, name, DateTime.Now);
         }
 
         public void CreateConcert(Concert item)
@@ -67,7 +69,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void DeletePlaylist(int playlistId)
+        public void DeletePlaylist(Playlist playlist)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);

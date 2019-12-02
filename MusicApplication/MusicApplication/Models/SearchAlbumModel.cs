@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QueryManager;
 
 namespace MusicApplication
 {
@@ -12,9 +13,10 @@ namespace MusicApplication
     {
         public BindingList<Album> SearchResultsList { get; set; }
 
-        public SearchAlbumModel()
+        public SearchAlbumModel(Query queryManager)
         {
             SearchResultsList = new BindingList<Album>();
+            QueryManager = queryManager;
         }
 
         public void GetItems(SearchQuery searchQuery)

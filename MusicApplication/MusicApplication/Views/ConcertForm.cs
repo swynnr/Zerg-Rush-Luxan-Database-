@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QueryManager;
 
 namespace MusicApplication
 {
     public partial class ConcertForm : BaseView
     {
-        public ConcertForm()
+        public ConcertForm(Query queryManager)
         {
             InitializeComponent();
         }

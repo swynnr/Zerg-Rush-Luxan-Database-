@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QueryManager;
 
 namespace MusicApplication
 {
@@ -15,10 +16,10 @@ namespace MusicApplication
     {
         private AlbumModel _model;
 
-        public ArtistForm()
+        public ArtistForm(Query queryManager)
         {
             InitializeComponent();
-            _model = new AlbumModel();
+            _model = new AlbumModel(queryManager);
             albumModelBindingSource.DataSource = _model;
             BindEvents();
         }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QueryManager;
 
 namespace MusicApplication
 {
@@ -27,9 +28,10 @@ namespace MusicApplication
             }
         }
 
-        public SongModel()
+        public SongModel(Query queryManager)
         {
             Songs = new BindingList<Song>();
+            QueryManager = queryManager;
         }
 
         private void UpdateSongList()

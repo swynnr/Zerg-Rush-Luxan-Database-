@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QueryManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,12 +10,16 @@ namespace MusicApplication
 {
     public class BaseModel : INotifyPropertyChanged
     {
+        public Query QueryManager { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string property)
         {
             if (PropertyChanged != null)
+            {
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
         }
     }
 }

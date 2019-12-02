@@ -1,4 +1,5 @@
 ﻿using MusicApplication.Data;
+using QueryManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +13,10 @@ namespace MusicApplication
     {
         public BindingList<Artist> SearchResultsList { get; set; }
 
-        public SearchArtistModel()
+        public SearchArtistModel(Query queryManager)
         {
             SearchResultsList = new BindingList<Artist>();
+            QueryManager = queryManager;
         }
 
         public void GetItems(SearchQuery searchQuery)

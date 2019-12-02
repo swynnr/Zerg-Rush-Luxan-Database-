@@ -1,4 +1,5 @@
 ﻿using MusicApplication.Data;
+using QueryManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +18,12 @@ namespace MusicApplication
         private SearchAlbumModel _albumModel;
         private SearchSongModel _songModel;
 
-        public SearchResultsForm()
+        public SearchResultsForm(Query queryManager)
         {
             InitializeComponent();
-            _artistModel = new SearchArtistModel();
-            _albumModel = new SearchAlbumModel();
-            _songModel = new SearchSongModel();
+            _artistModel = new SearchArtistModel(queryManager);
+            _albumModel = new SearchAlbumModel(queryManager);
+            _songModel = new SearchSongModel(queryManager);
             albumSearchBindingSource.DataSource = _albumModel.SearchResultsList;
             artistSearchBindingSource.DataSource = _artistModel.SearchResultsList;
             songSearchBindingSource.DataSource = _songModel.SearchResultsList;

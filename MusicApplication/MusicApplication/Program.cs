@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QueryManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,12 @@ namespace MusicApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Query QueryManager = new Query(
+                Properties.Resources.Server,
+                Properties.Resources.Database,
+                Properties.Resources.Username,
+                Properties.Resources.Password);
+            Application.Run(new MainForm(QueryManager));
         }
     }
 }

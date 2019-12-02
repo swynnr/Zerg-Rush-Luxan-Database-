@@ -28,51 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._songGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this._songGrid = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this._deleteSongButton = new System.Windows.Forms.Button();
+            this._addButton = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this._playlistGrid = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this._newButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this._title = new System.Windows.Forms.Label();
-            this._playlistGrid = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this._saveButton = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this._songGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playlistModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.playlistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playlistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._deletePlaylistButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._songGrid)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).BeginInit();
             this.panel6.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playlistModelBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // _songGrid
-            // 
-            this._songGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._songGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._songGrid.Location = new System.Drawing.Point(0, 0);
-            this._songGrid.Name = "_songGrid";
-            this._songGrid.Size = new System.Drawing.Size(584, 300);
-            this._songGrid.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.panel3);
-            this.groupBox1.Controls.Add(this.panel5);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(5, 69);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(790, 376);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -84,6 +72,125 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 6;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.panel5);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(5, 69);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(790, 376);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this._songGrid);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(365, 18);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(422, 355);
+            this.panel3.TabIndex = 5;
+            // 
+            // _songGrid
+            // 
+            this._songGrid.AutoGenerateColumns = false;
+            this._songGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._songGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.songIdDataGridViewTextBoxColumn,
+            this.songNameDataGridViewTextBoxColumn,
+            this.lengthDataGridViewTextBoxColumn});
+            this._songGrid.DataMember = "SongList";
+            this._songGrid.DataSource = this.playlistModelBindingSource;
+            this._songGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._songGrid.Location = new System.Drawing.Point(0, 0);
+            this._songGrid.Name = "_songGrid";
+            this._songGrid.Size = new System.Drawing.Size(422, 309);
+            this._songGrid.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this._deleteSongButton);
+            this.panel4.Controls.Add(this._addButton);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 309);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(422, 46);
+            this.panel4.TabIndex = 4;
+            // 
+            // _deleteSongButton
+            // 
+            this._deleteSongButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._deleteSongButton.Location = new System.Drawing.Point(87, 4);
+            this._deleteSongButton.Name = "_deleteSongButton";
+            this._deleteSongButton.Size = new System.Drawing.Size(75, 37);
+            this._deleteSongButton.TabIndex = 0;
+            this._deleteSongButton.Text = "Delete";
+            this._deleteSongButton.UseVisualStyleBackColor = true;
+            // 
+            // _addButton
+            // 
+            this._addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._addButton.Location = new System.Drawing.Point(6, 4);
+            this._addButton.Name = "_addButton";
+            this._addButton.Size = new System.Drawing.Size(75, 37);
+            this._addButton.TabIndex = 0;
+            this._addButton.Text = "Add";
+            this._addButton.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this._playlistGrid);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(3, 18);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(362, 355);
+            this.panel5.TabIndex = 6;
+            // 
+            // _playlistGrid
+            // 
+            this._playlistGrid.AutoGenerateColumns = false;
+            this._playlistGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._playlistGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.playlistIdDataGridViewTextBoxColumn,
+            this.playlistNameDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn});
+            this._playlistGrid.DataMember = "PlaylistList";
+            this._playlistGrid.DataSource = this.playlistModelBindingSource;
+            this._playlistGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._playlistGrid.Location = new System.Drawing.Point(0, 0);
+            this._playlistGrid.MultiSelect = false;
+            this._playlistGrid.Name = "_playlistGrid";
+            this._playlistGrid.ReadOnly = true;
+            this._playlistGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._playlistGrid.Size = new System.Drawing.Size(362, 309);
+            this._playlistGrid.TabIndex = 4;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this._newButton);
+            this.panel6.Controls.Add(this._deletePlaylistButton);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 309);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(362, 46);
+            this.panel6.TabIndex = 5;
+            // 
+            // _newButton
+            // 
+            this._newButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._newButton.Location = new System.Drawing.Point(3, 4);
+            this._newButton.Name = "_newButton";
+            this._newButton.Size = new System.Drawing.Size(75, 37);
+            this._newButton.TabIndex = 0;
+            this._newButton.Text = "New";
+            this._newButton.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -105,95 +212,58 @@
             this._title.Text = "Playlists";
             this._title.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // _playlistGrid
+            // songIdDataGridViewTextBoxColumn
             // 
-            this._playlistGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._playlistGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._playlistGrid.Location = new System.Drawing.Point(0, 0);
-            this._playlistGrid.Name = "_playlistGrid";
-            this._playlistGrid.Size = new System.Drawing.Size(200, 300);
-            this._playlistGrid.TabIndex = 4;
+            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
+            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
+            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
             // 
-            // panel3
+            // songNameDataGridViewTextBoxColumn
             // 
-            this.panel3.Controls.Add(this._songGrid);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(203, 27);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(584, 346);
-            this.panel3.TabIndex = 5;
+            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
+            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
+            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
             // 
-            // panel4
+            // lengthDataGridViewTextBoxColumn
             // 
-            this.panel4.Controls.Add(this._saveButton);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 300);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(584, 46);
-            this.panel4.TabIndex = 4;
+            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
+            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
+            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             // 
-            // button1
+            // playlistModelBindingSource
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(6, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 37);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.playlistModelBindingSource.DataSource = typeof(MusicApplication.PlaylistModel);
             // 
-            // button2
+            // playlistIdDataGridViewTextBoxColumn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(87, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 37);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.playlistIdDataGridViewTextBoxColumn.DataPropertyName = "PlaylistId";
+            this.playlistIdDataGridViewTextBoxColumn.HeaderText = "PlaylistId";
+            this.playlistIdDataGridViewTextBoxColumn.Name = "playlistIdDataGridViewTextBoxColumn";
+            this.playlistIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // _saveButton
+            // playlistNameDataGridViewTextBoxColumn
             // 
-            this._saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._saveButton.Location = new System.Drawing.Point(438, 6);
-            this._saveButton.Name = "_saveButton";
-            this._saveButton.Size = new System.Drawing.Size(143, 37);
-            this._saveButton.TabIndex = 0;
-            this._saveButton.Text = "Save Changes";
-            this._saveButton.UseVisualStyleBackColor = true;
+            this.playlistNameDataGridViewTextBoxColumn.DataPropertyName = "PlaylistName";
+            this.playlistNameDataGridViewTextBoxColumn.HeaderText = "PlaylistName";
+            this.playlistNameDataGridViewTextBoxColumn.Name = "playlistNameDataGridViewTextBoxColumn";
+            this.playlistNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // panel5
+            // dateDataGridViewTextBoxColumn
             // 
-            this.panel5.Controls.Add(this._playlistGrid);
-            this.panel5.Controls.Add(this.panel6);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(3, 27);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 346);
-            this.panel5.TabIndex = 6;
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // panel6
+            // _deletePlaylistButton
             // 
-            this.panel6.Controls.Add(this.button8);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 300);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 46);
-            this.panel6.TabIndex = 5;
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(3, 6);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 37);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "New";
-            this.button8.UseVisualStyleBackColor = true;
+            this._deletePlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._deletePlaylistButton.Location = new System.Drawing.Point(84, 4);
+            this._deletePlaylistButton.Name = "_deletePlaylistButton";
+            this._deletePlaylistButton.Size = new System.Drawing.Size(75, 37);
+            this._deletePlaylistButton.TabIndex = 0;
+            this._deletePlaylistButton.Text = "Delete";
+            this._deletePlaylistButton.UseVisualStyleBackColor = true;
             // 
             // PlaylistForm
             // 
@@ -201,15 +271,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "PlaylistForm";
-            ((System.ComponentModel.ISupportInitialize)(this._songGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._songGrid)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).EndInit();
             this.panel6.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.playlistModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,12 +294,19 @@
         private System.Windows.Forms.Label _title;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button _saveButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _deleteSongButton;
+        private System.Windows.Forms.Button _addButton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView _playlistGrid;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button _newButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource playlistModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playlistIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playlistNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button _deletePlaylistButton;
     }
 }
