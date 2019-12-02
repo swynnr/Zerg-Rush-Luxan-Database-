@@ -16,6 +16,8 @@ namespace MusicApplication
         private SearchResultsForm _searchResultsForm;
         private ArtistForm _artistForm;
         private AlbumForm _albumForm;
+        private ConcertForm _concertForm;
+        private PlaylistForm _playlistForm;
 
         public MainForm()
         {
@@ -24,6 +26,8 @@ namespace MusicApplication
             _searchResultsForm = new SearchResultsForm();
             _artistForm = new ArtistForm();
             _albumForm = new AlbumForm();
+            _concertForm = new ConcertForm();
+            _playlistForm = new PlaylistForm();
         }
 
         public void DisplayObject(Artist artist)
@@ -55,6 +59,8 @@ namespace MusicApplication
             _searchResultsForm.Dock = DockStyle.Fill;
             _artistForm.Dock = DockStyle.Fill;
             _albumForm.Dock = DockStyle.Fill;
+            _playlistForm.Dock = DockStyle.Fill;
+            _concertForm.Dock = DockStyle.Fill;
 
             _searchResultsForm.Visible = false;
             _artistForm.Visible = false;
@@ -63,6 +69,8 @@ namespace MusicApplication
             _contentPanel.Controls.Add(_searchResultsForm);
             _contentPanel.Controls.Add(_artistForm);
             _contentPanel.Controls.Add(_albumForm);
+            _playlistTab.Controls.Add(_playlistForm);
+            _concertTab.Controls.Add(_concertForm);
 
             SetVisibleForm(_albumForm);
         }
