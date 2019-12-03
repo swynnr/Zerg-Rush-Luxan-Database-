@@ -15,10 +15,36 @@ namespace MusicApplication
     public partial class PlaylistForm : BaseView
     {
         private PlaylistModel _model;
+        private Query _queryManager;
+
+        private Playlist SelectedPlaylist
+        {
+            get
+            {
+                if (_playlistGrid.SelectedRows.Count <= 0)
+                {
+                    return null;
+                }
+               return _playlistGrid.SelectedRows[0].DataBoundItem as Playlist;
+            }
+        }
+
+        private Song SelectedSong
+        {
+            get
+            {
+                if(_songGrid.SelectedRows.Count <= 0)
+                {
+                    return null;
+                }
+                return _songGrid.SelectedRows[0].DataBoundItem as Song;
+            }
+        }
 
         public PlaylistForm(Query queryManager)
         {
             InitializeComponent();
+            _queryManager = queryManager;
             _model = new PlaylistModel(queryManager);
             playlistModelBindingSource.DataSource = _model;
             BindEvents();
@@ -29,22 +55,53 @@ namespace MusicApplication
             _playlistGrid.SelectionChanged += PlaylistGridSelectionChanged;
             _newButton.Click += CreateNewPlaylist;
             _deletePlaylistButton.Click += DeletePlaylist;
+            _deleteSongButton.Click += DeleteSong;
+            _addButton.Click += AddNewSong;
+        }
+
+        private void AddNewSong(object sender, EventArgs e)
+        {
+            using(var songSearchForm = new SongSearchForm(_queryManager))
+            {
+                songSearchForm.Grid.CellDoubleClick += SongSearchFormClick;
+                songSearchForm.ShowDialog(this);
+            }
+        }
+
+        private void SongSearchFormClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var row = grid.Rows[e.RowIndex];
+            var song = row.DataBoundItem as Song;
+            if (SelectedPlaylist == null || song == null)
+            {
+                return;
+            }
+            _model.AddSongToPlaylist(SelectedPlaylist, song);
+        }
+
+        private void DeleteSong(object sender, EventArgs e)
+        {
+            if (SelectedPlaylist == null || SelectedSong == null)
+            {
+                return;
+            }
+            _model.RemoveSongFromPlaylist(SelectedPlaylist, SelectedSong);
         }
 
         private void DeletePlaylist(object sender, EventArgs e)
         {
-            if(_playlistGrid.SelectedRows.Count <= 0)
+            if(SelectedPlaylist == null)
             {
                 return;
             }
-            var rowToDelete = _playlistGrid.SelectedRows[0];
-            _model.DeletePlaylist(rowToDelete.DataBoundItem as Playlist);
+            _model.DeletePlaylist(SelectedPlaylist);
         }
 
         private void CreateNewPlaylist(object sender, EventArgs e)
         {
             string name = "";
-            using (var nameEntryForm = new NameEntryForm())
+            using (var nameEntryForm = new NameEntryForm("Create a New Playlist"))
             {
                 var dialogResult = nameEntryForm.ShowDialog(this);
                 if(dialogResult == DialogResult.Cancel)
@@ -64,12 +121,11 @@ namespace MusicApplication
 
         private void PlaylistGridSelectionChanged(object sender, EventArgs e)
         {
-            if(_playlistGrid.SelectedRows.Count <= 0)
+            if(SelectedPlaylist == null)
             {
                 return;
             }
-            var selectedRow = _playlistGrid.SelectedRows[0];
-            _model.SelectPlaylist(selectedRow.DataBoundItem as Playlist);
+            _model.SelectPlaylist(SelectedPlaylist);
         }
     }
 }

@@ -38,9 +38,16 @@ namespace MusicApplication
             PlaylistList.Remove(playlist);
         }
 
-        public void CommitChanges()
+        public void RemoveSongFromPlaylist(Playlist playlist, Song song)
         {
-            // TODO: Write to db
+            QueryManager.PlaylistRemoveSong(playlist, song);
+            SongList.Remove(song);
+        }
+
+        public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
+        {
+            QueryManager.PlaylistAddSong(selectedPlaylist, song);
+            SongList.Add(song);
         }
 
         private void PopulatePlaylistList()

@@ -80,6 +80,12 @@
       <DependentUpon>NameEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchQuery.cs" />
+    <Compile Include="SongSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongSearchForm.Designer.cs">
+      <DependentUpon>SongSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AlbumForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </Compile>
     <EmbeddedResource Include="NameEntryForm.resx">
       <DependentUpon>NameEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongSearchForm.resx">
+      <DependentUpon>SongSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AlbumForm.resx">
       <DependentUpon>AlbumForm.cs</DependentUpon>

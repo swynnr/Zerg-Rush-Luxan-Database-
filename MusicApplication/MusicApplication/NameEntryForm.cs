@@ -20,7 +20,7 @@ namespace MusicApplication
             BindEvents();
         }
 
-        public NameEntryForm(string name) : base()
+        public NameEntryForm(string name) : this()
         {
             Text = name;
         }

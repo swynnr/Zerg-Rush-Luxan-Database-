@@ -45,7 +45,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void PlaylistAddSong(int playlistId, int songId)
+        public void PlaylistAddSong(Playlist playlistId, Song songId)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
@@ -57,7 +57,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void PlaylistRemoveSong(int playlistId, int songId)
+        public void PlaylistRemoveSong(Playlist playlist, Song song)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);

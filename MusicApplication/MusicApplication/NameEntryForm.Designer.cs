@@ -36,15 +36,15 @@
             // 
             // _textBox
             // 
-            this._textBox.Location = new System.Drawing.Point(91, 37);
+            this._textBox.Location = new System.Drawing.Point(91, 23);
             this._textBox.Name = "_textBox";
-            this._textBox.Size = new System.Drawing.Size(347, 20);
+            this._textBox.Size = new System.Drawing.Size(359, 20);
             this._textBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 40);
+            this.label1.Location = new System.Drawing.Point(19, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 1;
@@ -52,27 +52,30 @@
             // 
             // _cancelButton
             // 
-            this._cancelButton.Location = new System.Drawing.Point(363, 97);
+            this._cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this._cancelButton.Location = new System.Drawing.Point(375, 61);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(75, 27);
             this._cancelButton.TabIndex = 2;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _SaveButton
+            // _saveButton
             // 
-            this._saveButton.Location = new System.Drawing.Point(282, 97);
-            this._saveButton.Name = "_SaveButton";
+            this._saveButton.Location = new System.Drawing.Point(294, 61);
+            this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(75, 27);
-            this._saveButton.TabIndex = 2;
+            this._saveButton.TabIndex = 1;
             this._saveButton.Text = "Save";
             this._saveButton.UseVisualStyleBackColor = true;
             // 
             // NameEntryForm
             // 
+            this.AcceptButton = this._saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 136);
+            this.CancelButton = this._cancelButton;
+            this.ClientSize = new System.Drawing.Size(462, 100);
             this.ControlBox = false;
             this.Controls.Add(this._saveButton);
             this.Controls.Add(this._cancelButton);
@@ -80,6 +83,7 @@
             this.Controls.Add(this._textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "NameEntryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NameEntryForm";
             this.ResumeLayout(false);
             this.PerformLayout();
