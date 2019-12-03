@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this._albumGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this._title = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.albumIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.albumNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.releaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.albumModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this._title = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this._albumGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumModelBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.albumModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _albumGrid
@@ -57,9 +57,37 @@
             this._albumGrid.DataSource = this.albumModelBindingSource;
             this._albumGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._albumGrid.Location = new System.Drawing.Point(3, 18);
+            this._albumGrid.MultiSelect = false;
             this._albumGrid.Name = "_albumGrid";
+            this._albumGrid.ReadOnly = true;
+            this._albumGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._albumGrid.Size = new System.Drawing.Size(784, 405);
             this._albumGrid.TabIndex = 3;
+            // 
+            // albumIdDataGridViewTextBoxColumn
+            // 
+            this.albumIdDataGridViewTextBoxColumn.DataPropertyName = "AlbumId";
+            this.albumIdDataGridViewTextBoxColumn.HeaderText = "AlbumId";
+            this.albumIdDataGridViewTextBoxColumn.Name = "albumIdDataGridViewTextBoxColumn";
+            this.albumIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // albumNameDataGridViewTextBoxColumn
+            // 
+            this.albumNameDataGridViewTextBoxColumn.DataPropertyName = "AlbumName";
+            this.albumNameDataGridViewTextBoxColumn.HeaderText = "AlbumName";
+            this.albumNameDataGridViewTextBoxColumn.Name = "albumNameDataGridViewTextBoxColumn";
+            this.albumNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // releaseDateDataGridViewTextBoxColumn
+            // 
+            this.releaseDateDataGridViewTextBoxColumn.DataPropertyName = "ReleaseDate";
+            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "ReleaseDate";
+            this.releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
+            this.releaseDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // albumModelBindingSource
+            // 
+            this.albumModelBindingSource.DataSource = typeof(MusicApplication.AlbumModel);
             // 
             // groupBox1
             // 
@@ -105,28 +133,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 500);
             this.panel1.TabIndex = 4;
             // 
-            // albumIdDataGridViewTextBoxColumn
-            // 
-            this.albumIdDataGridViewTextBoxColumn.DataPropertyName = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.HeaderText = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.Name = "albumIdDataGridViewTextBoxColumn";
-            // 
-            // albumNameDataGridViewTextBoxColumn
-            // 
-            this.albumNameDataGridViewTextBoxColumn.DataPropertyName = "AlbumName";
-            this.albumNameDataGridViewTextBoxColumn.HeaderText = "AlbumName";
-            this.albumNameDataGridViewTextBoxColumn.Name = "albumNameDataGridViewTextBoxColumn";
-            // 
-            // releaseDateDataGridViewTextBoxColumn
-            // 
-            this.releaseDateDataGridViewTextBoxColumn.DataPropertyName = "ReleaseDate";
-            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "ReleaseDate";
-            this.releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
-            // 
-            // albumModelBindingSource
-            // 
-            this.albumModelBindingSource.DataSource = typeof(MusicApplication.AlbumModel);
-            // 
             // ArtistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,10 +140,10 @@
             this.Name = "ArtistForm";
             this.Size = new System.Drawing.Size(800, 500);
             ((System.ComponentModel.ISupportInitialize)(this._albumGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumModelBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.albumModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

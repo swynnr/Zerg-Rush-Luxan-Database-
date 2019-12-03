@@ -95,7 +95,10 @@
             this._albumGrid.DataSource = this.albumSearchBindingSource;
             this._albumGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._albumGrid.Location = new System.Drawing.Point(3, 19);
+            this._albumGrid.MultiSelect = false;
             this._albumGrid.Name = "_albumGrid";
+            this._albumGrid.ReadOnly = true;
+            this._albumGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._albumGrid.Size = new System.Drawing.Size(784, 354);
             this._albumGrid.TabIndex = 3;
             // 
@@ -104,6 +107,7 @@
             this.dataGridViewTextBoxColumn6.DataPropertyName = "AlbumId";
             this.dataGridViewTextBoxColumn6.HeaderText = "AlbumId";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 83;
             // 
             // dataGridViewTextBoxColumn7
@@ -111,6 +115,7 @@
             this.dataGridViewTextBoxColumn7.DataPropertyName = "AlbumName";
             this.dataGridViewTextBoxColumn7.HeaderText = "AlbumName";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 109;
             // 
             // dataGridViewTextBoxColumn8
@@ -118,6 +123,7 @@
             this.dataGridViewTextBoxColumn8.DataPropertyName = "ReleaseDate";
             this.dataGridViewTextBoxColumn8.HeaderText = "ReleaseDate";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 115;
             // 
             // albumSearchBindingSource
