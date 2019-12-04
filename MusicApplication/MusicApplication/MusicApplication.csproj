@@ -66,7 +66,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="ConcertCreationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConcertCreationDialog.Designer.cs">
+      <DependentUpon>ConcertCreationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\ConcertModel.cs" />
     <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Models\SearchSongModel.cs" />
     <Compile Include="Models\SearchAlbumModel.cs" />
@@ -104,9 +111,6 @@
     <Compile Include="Views\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ConcertForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Views\ConcertForm.Designer.cs">
       <DependentUpon>ConcertForm.cs</DependentUpon>
     </Compile>
@@ -118,6 +122,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ConcertForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PlaylistForm.Designer.cs">
+      <DependentUpon>PlaylistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchResultsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,9 +137,9 @@
     <Compile Include="Views\PlaylistForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControl1.Designer.cs">
-      <DependentUpon>PlaylistForm.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="ConcertCreationDialog.resx">
+      <DependentUpon>ConcertCreationDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NameEntryForm.resx">
       <DependentUpon>NameEntryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,9 +155,6 @@
     <EmbeddedResource Include="Views\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ConcertForm.resx">
-      <DependentUpon>ConcertForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +168,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\ConcertForm.resx">
+      <DependentUpon>ConcertForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\PlaylistForm.resx">
       <DependentUpon>PlaylistForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +179,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AlbumModel.datasource" />
+    <None Include="Properties\DataSources\ConcertModel.datasource" />
     <None Include="Properties\DataSources\PlaylistModel.datasource" />
     <None Include="Properties\DataSources\SearchAlbumModel.datasource" />
     <None Include="Properties\DataSources\SearchArtistModel.datasource" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicApplication.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,13 @@ namespace MusicApplication
 {
     public partial class NameEntryForm : Form
     {
-        public string EntityName { get; private set; }
+        public Playlist NewPlaylist { get; private set; }
 
         public NameEntryForm()
         {
             InitializeComponent();
             BindEvents();
+            DialogResult = DialogResult.Cancel;
         }
 
         public NameEntryForm(string name) : this()
@@ -29,11 +31,18 @@ namespace MusicApplication
         {
             _cancelButton.Click += CancelExit;
             _saveButton.Click += SaveExit;
+            _textBox.TextChanged += TextBoxTextChanged;
+        }
+
+        private void TextBoxTextChanged(object sender, EventArgs e)
+        {
+            _saveButton.Enabled = !String.IsNullOrWhiteSpace(_textBox.Text);
         }
 
         private void SaveExit(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+            NewPlaylist = new Playlist(DateTime.Now, _textBox.Text);
             Close();
         }
 
@@ -41,12 +50,6 @@ namespace MusicApplication
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            EntityName = _textBox.Text;
         }
     }
 }

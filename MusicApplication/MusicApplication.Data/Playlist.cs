@@ -12,14 +12,14 @@ namespace MusicApplication.Data
         public string PlaylistName { get; set; }
         public DateTime Date { get; set; }
 
-        public Playlist(int playlistId, string playlistName, DateTime date)
+        public Playlist(DateTime date, string playlistName = "", int playlistId = -1)
         {
             PlaylistId = playlistId;
             PlaylistName = playlistName;
             Date = date;
         }
 
-        public Playlist(int playlistId, string playlistName)
+        public Playlist(string playlistName = "", int playlistId = -1)
         {
             PlaylistId = playlistId;
             PlaylistName = playlistName;

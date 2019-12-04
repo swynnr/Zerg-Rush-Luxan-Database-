@@ -100,7 +100,7 @@ namespace MusicApplication
 
         private void CreateNewPlaylist(object sender, EventArgs e)
         {
-            string name = "";
+            Playlist playlist = null;
             using (var nameEntryForm = new NameEntryForm("Create a New Playlist"))
             {
                 var dialogResult = nameEntryForm.ShowDialog(this);
@@ -108,15 +108,10 @@ namespace MusicApplication
                 {
                     return;
                 }
-                name = nameEntryForm.EntityName;
+                playlist = nameEntryForm.NewPlaylist;
             }
 
-            if(String.IsNullOrWhiteSpace(name))
-            {
-                return;
-            }
-
-            _model.CreatePlaylist(name);
+            _model.CreatePlaylist(playlist);
         }
 
         private void PlaylistGridSelectionChanged(object sender, EventArgs e)

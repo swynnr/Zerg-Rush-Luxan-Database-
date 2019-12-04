@@ -36,9 +36,11 @@
             // 
             // _textBox
             // 
+            this._textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._textBox.Location = new System.Drawing.Point(91, 23);
             this._textBox.Name = "_textBox";
-            this._textBox.Size = new System.Drawing.Size(359, 20);
+            this._textBox.Size = new System.Drawing.Size(231, 20);
             this._textBox.TabIndex = 0;
             // 
             // label1
@@ -52,8 +54,9 @@
             // 
             // _cancelButton
             // 
+            this._cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._cancelButton.Location = new System.Drawing.Point(375, 61);
+            this._cancelButton.Location = new System.Drawing.Point(247, 61);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(75, 27);
             this._cancelButton.TabIndex = 2;
@@ -62,7 +65,9 @@
             // 
             // _saveButton
             // 
-            this._saveButton.Location = new System.Drawing.Point(294, 61);
+            this._saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._saveButton.Enabled = false;
+            this._saveButton.Location = new System.Drawing.Point(166, 61);
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(75, 27);
             this._saveButton.TabIndex = 1;
@@ -75,13 +80,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._cancelButton;
-            this.ClientSize = new System.Drawing.Size(462, 100);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(334, 100);
             this.Controls.Add(this._saveButton);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "NameEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NameEntryForm";

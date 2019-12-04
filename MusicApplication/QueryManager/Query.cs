@@ -31,18 +31,32 @@ namespace QueryManager
             cmd.ExecuteNonQuery();
         }
 
-        public Playlist CreatePlaylist(string name)
+        /// <summary>
+        /// This method should take in a playlist object, create the playlist in the DB using the other
+        /// parameters, then fill the playlist object with the proper id
+        /// </summary>
+        /// <param name="playlist"></param>
+        /// <returns>Whether the playlist was created or not</returns>
+        public bool CreatePlaylist(ref Playlist playlist)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
 
-            return new Playlist(0, name, DateTime.Now);
+            return true;
         }
 
-        public void CreateConcert(Concert item)
+        /// <summary>
+        /// This method should take in a concert, create the concert in the DB using the other
+        /// parameters, then fill the concert object with the proper id
+        /// </summary>
+        /// <param name="concert"></param>
+        /// <returns>Whether the concert was created or not</returns>
+        public bool CreateConcert(ref Concert concert)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
+
+            return true;
         }
 
         public void PlaylistAddSong(Playlist playlistId, Song songId)
@@ -51,7 +65,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void ConcertAddSong(int concertId, int songId)
+        public void ConcertAddSong(Concert concert, Song song)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
@@ -63,7 +77,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void ConcertRemoveSong(int playlistId, int songId)
+        public void ConcertRemoveSong(Concert playlist, Song song)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);
@@ -75,7 +89,7 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
-        public void DeleteConcert(int concertId)
+        public void DeleteConcert(Concert concert)
         {
             string cmd = "temp";
             ExecuteNonQuery(cmd);

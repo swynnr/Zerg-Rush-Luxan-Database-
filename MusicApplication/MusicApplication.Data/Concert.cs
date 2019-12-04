@@ -13,7 +13,7 @@ namespace MusicApplication.Data
         public string Location { get; set; }
         public DateTime Date { get; set; }
 
-        public Concert(int concertId, string concertName, string location, DateTime date)
+        public Concert(DateTime date, string concertName = "", string location = "", int concertId = -1)
         {
             ConcertId = concertId;
             ConcertName = concertName;
@@ -21,7 +21,7 @@ namespace MusicApplication.Data
             Date = date;
         }
 
-        public Concert(int concertId, string concertName, string location)
+        public Concert(string concertName = "", string location = "", int concertId = -1)
         {
             ConcertId = concertId;
             ConcertName = concertName;
