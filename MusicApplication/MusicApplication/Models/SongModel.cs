@@ -37,10 +37,7 @@ namespace MusicApplication
         private void UpdateSongList()
         {
             Songs.Clear();
-            Songs.Add(new Song(2, "Sadness", TimeSpan.FromMinutes(3)));
-            Songs.Add(new Song(6, "Happiness", TimeSpan.FromMinutes(4.5)));
-            Songs.Add(new Song(3344, "Joy", TimeSpan.FromMinutes(2.3)));
-            Songs.Add(new Song(3, "Angst", TimeSpan.FromMinutes(.77)));
+
         }
         
     }

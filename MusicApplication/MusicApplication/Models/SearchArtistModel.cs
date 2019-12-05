@@ -22,17 +22,14 @@ namespace MusicApplication
         public void GetItems(SearchQuery searchQuery)
         {
             SearchResultsList.Clear();
+           
 
             // TODO: populate with data
-            if (searchQuery.EntityType != typeof(Artist))
+            if (searchQuery.EntityType == typeof(Song))
             {
-                return;
+                
             }
-            SearchResultsList.Add(new Artist(0, "Jonny Dep"));
-            SearchResultsList.Add(new Artist(1, "Shrek"));
-            SearchResultsList.Add(new Artist(2, "Maroon 5"));
-            SearchResultsList.Add(new Artist(3, "Alice"));
-            SearchResultsList.Add(new Artist(4, "Cody Tang"));
+
         }
     }
 }
