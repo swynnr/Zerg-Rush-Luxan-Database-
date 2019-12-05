@@ -169,7 +169,10 @@ namespace QueryManager
                                      FROM Album WHERE albumName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
+                Album entry = null;
+                entry.AlbumId = reader.GetInt32(0);
+                entry.AlbumName = reader.GetString(1);
+                entry.ReleaseDate = reader.GetDateTime(2);
                 result.Add(entry);
             }
             return result;
@@ -185,7 +188,10 @@ namespace QueryManager
                                      WHERE artistID = " + id);
             while (reader.Read())
             {
-                Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
+                Album entry = null;
+                entry.AlbumId = reader.GetInt32(0);
+                entry.AlbumName = reader.GetString(1);
+                entry.ReleaseDate = reader.GetDateTime(2);
                 result.Add(entry);
             }
             return result;
@@ -202,25 +208,28 @@ namespace QueryManager
                              
             while (reader.Read())
             {
-                Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
+                Album entry = null;
+                entry.AlbumId = reader.GetInt32(0);
+                entry.AlbumName = reader.GetString(1);
+                entry.ReleaseDate = reader.GetDateTime(2);
                 result.Add(entry);
             }
             return result;
         }
 
-        public List<Song> GetSongsByName(string name)
-        {
-
-
+        public List<Song> GetSongsByName(string name){
+        
             var reader = GetReader(@"SELECT SongID, songName, songLength
                                      FROM Songs WHERE songName LIKE '%" + name + "%'");
 
             List<Song> result = new List<Song>();
-            
-
             while (reader.Read())
             {
-                Song entry = new Song(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2), reader.GetInt32(3), reader.GetTimeSpan(4));
+                Song entry = null;
+                entry.SongId = reader.GetInt32(0);
+                entry.SongName = reader.GetString(1);
+                entry.Length = reader.GetTimeSpan(3);
+                
                 result.Add(entry);
             }
             return result;
@@ -233,8 +242,12 @@ namespace QueryManager
                                      FROM Songs WHERE albumId = " + id);
             while (reader.Read())
             {
-               // Song entry = new Song((int)reader[0], (string)reader[1], (int)reader[2]);
-               // result.Add(entry);
+                Song entry = null;
+                entry.SongId = reader.GetInt32(0);
+                entry.SongName = reader.GetString(1);
+                entry.Length = reader.GetTimeSpan(3);
+
+                result.Add(entry);
             }
             return result;
         }

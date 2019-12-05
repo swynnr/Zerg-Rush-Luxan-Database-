@@ -33,6 +33,7 @@ namespace MusicApplication
 
         private void SearchButtonClick(object sender, EventArgs e)
         {
+            
             var searchQuery = new SearchQuery(_searchText.Text, typeof(Song));
             _model.GetItems(searchQuery);
         }
