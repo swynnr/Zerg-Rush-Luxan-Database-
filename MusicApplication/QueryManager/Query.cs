@@ -115,7 +115,7 @@ namespace QueryManager
         public List<Album> GetAlbums(string name)
         {
             List<Album> result = null;
-            var reader = GetReader("result");
+            var reader = GetReader("SELECT * FROM Album SORT BY albumName");
             while (reader.Read())
             {
                 result.Add((Album)Activator.CreateInstance(typeof(Album), reader));
@@ -126,7 +126,7 @@ namespace QueryManager
         public List<Song> GetSongs(string name)
         {
             List<Song> result = null;
-            var reader = GetReader("result");
+            var reader = GetReader("SELECT ");
             while (reader.Read())
             {
                 result.Add((Song)Activator.CreateInstance(typeof(Song), reader));
