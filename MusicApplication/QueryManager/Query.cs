@@ -101,7 +101,9 @@ namespace QueryManager
                                      FROM Artists WHERE artistName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Artist entry = new Artist((int)reader[0], (string)reader[1]);
+                Artist entry = null;
+                entry.ArtistId = reader.GetInt32(0);
+                entry.ArtistName = reader.GetString(1);
                 result.Add(entry);
             }
             return result;
@@ -114,7 +116,9 @@ namespace QueryManager
                                      FROM Artists WHERE artistID LIKE '%" + id + "%'");
             while (reader.Read())
             {
-                Artist entry = new Artist((int)reader[0], (string)reader[1]);
+                Artist entry = null;
+                entry.ArtistId = reader.GetInt32(0);
+                entry.ArtistName = reader.GetString(1);
                 result.Add(entry);
             }
             return result;
@@ -130,7 +134,9 @@ namespace QueryManager
                                      WHERE albumID = " + id);
             while (reader.Read())
             {
-                Artist entry = new Artist((int)reader[0], (string)reader[1]);
+                Artist entry = null;
+                entry.ArtistId = reader.GetInt32(0);
+                entry.ArtistName = reader.GetString(1);
                 result.Add(entry);
             }
             return result;
@@ -143,7 +149,9 @@ namespace QueryManager
                                      FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Playlist entry = new Playlist((DateTime)reader[0], (string)reader[1], (int)reader[2]);
+                Playlist entry = null;
+                entry.PlaylistId = reader.GetInt32(0);
+                entry.PlaylistName = reader.GetString(1);
                 result.Add(entry);
             }
             return result;
@@ -156,7 +164,11 @@ namespace QueryManager
                                      FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Concert entry = new Concert((DateTime)reader[0], (string)reader[1], (string)reader[2], (int)reader[3]);
+                Concert entry = null;
+                entry.ConcertId = reader.GetInt32(0);
+                entry.ConcertName = reader.GetString(1);
+                entry.Location = reader.GetString(2);
+                entry.Date = reader.GetDateTime(3);
                 result.Add(entry);
             }
             return result;
