@@ -134,7 +134,8 @@ namespace QueryManager
         public List<Playlist> GetPlaylists(string name)
         {
             List<Playlist> result = new List<Playlist>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT playlistID, playlistName, date 
+                                    FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
             while (reader.Read())
             {
                 Playlist entry = new Playlist((int)reader[0], (string)reader[1], (DateTime)reader[2]);
@@ -146,7 +147,8 @@ namespace QueryManager
         public List<Concert> GetConcert(string name)
         {
             List<Concert> result = new List<Concert>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT ConcertID, concertName, location, date
+                                    FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
             while (reader.Read())
             {
                 Concert entry = new Concert((int)reader[0], (string)reader[1], (string)reader[2], (DateTime)reader[3]);
@@ -193,7 +195,7 @@ namespace QueryManager
 
         public List<Song> GetSongsByName(string name)
         {
-            List<Song> result = new List<Song>();
+            List<Album> result = null;
             var reader = GetReader("result");
             while (reader.Read())
             {
@@ -205,8 +207,8 @@ namespace QueryManager
 
         public List<Song> GetSongsByAlbumId(int id)
         {
-            List<Song> result = new List<Song>();
-            var reader = GetReader("result");
+            List<Song> result = null;
+            var reader = GetReader("SELECT ");
             while (reader.Read())
             {
                 Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
