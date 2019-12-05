@@ -108,6 +108,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -125,6 +126,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -145,6 +147,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -163,6 +166,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -182,6 +186,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -200,6 +205,7 @@ namespace QueryManager
                  );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -221,6 +227,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -243,6 +250,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -254,15 +262,17 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             while (reader.Read())
             {
+            
                 Song entry = new Song
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -277,12 +287,13 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
 
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
     }
