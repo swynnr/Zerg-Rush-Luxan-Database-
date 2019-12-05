@@ -14,12 +14,16 @@ namespace MusicApplication.Data
         public string AlbumName { get; set; }
         public DateTime ReleaseDate { get; set; }
 
-        public Album(int _albumId, string _albumName, DateTime _releaseDate)
+        public Album(int albumId, string albumName, DateTime releaseDate)
         {
-            AlbumId = _albumId;
-            AlbumName = _albumName;
-            ReleaseDate = _releaseDate;
+            AlbumId = albumId;
+            AlbumName = albumName;
+            ReleaseDate = releaseDate;
         }
 
+        public override string ToString()
+        {
+            return AlbumName;
+        }
     }
 }

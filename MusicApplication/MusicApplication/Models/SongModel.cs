@@ -5,15 +5,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QueryManager;
 
 namespace MusicApplication
 {
-    public class SongModel
+    public class SongModel : BaseModel
     {
-        public BindingList<Song> Songs;
-        private Artist _selectedAlbum;
+        public BindingList<Song> Songs { get; set; }
+        private Album _selectedAlbum;
 
-        public Artist SelectedArtist
+        public Album SelectedAlbum
         {
             get
             {
@@ -23,17 +24,24 @@ namespace MusicApplication
             {
                 _selectedAlbum = value;
                 UpdateSongList();
+                OnPropertyChanged("Album");
             }
         }
 
-        public SongModel()
+        public SongModel(Query queryManager)
         {
             Songs = new BindingList<Song>();
+            QueryManager = queryManager;
         }
 
         private void UpdateSongList()
         {
-            // Call to query manager to get list for _selectedArtist
+            Songs.Clear();
+            Songs.Add(new Song(2, "Sadness", TimeSpan.FromMinutes(3)));
+            Songs.Add(new Song(6, "Happiness", TimeSpan.FromMinutes(4.5)));
+            Songs.Add(new Song(3344, "Joy", TimeSpan.FromMinutes(2.3)));
+            Songs.Add(new Song(3, "Angst", TimeSpan.FromMinutes(.77)));
         }
+        
     }
 }

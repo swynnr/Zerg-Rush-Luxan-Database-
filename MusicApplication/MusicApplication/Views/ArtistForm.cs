@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QueryManager;
 
 namespace MusicApplication
 {
@@ -15,16 +16,23 @@ namespace MusicApplication
     {
         private AlbumModel _model;
 
-        public ArtistForm()
+        public ArtistForm(Query queryManager)
         {
             InitializeComponent();
-            _model = new AlbumModel();
+            _model = new AlbumModel(queryManager);
+            albumModelBindingSource.DataSource = _model;
+            BindEvents();
         }
 
         public override void Open<T>(T item)
         {
             var artist = item as Artist;
+            _model.SelectedArtist = artist;
+        }
 
+        private void BindEvents()
+        {
+            _albumGrid.CellDoubleClick += OpenAlbum;
         }
     }
 }

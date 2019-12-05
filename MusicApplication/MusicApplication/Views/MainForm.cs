@@ -1,4 +1,5 @@
 ﻿using MusicApplication.Data;
+using QueryManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +17,18 @@ namespace MusicApplication
         private SearchResultsForm _searchResultsForm;
         private ArtistForm _artistForm;
         private AlbumForm _albumForm;
+        private ConcertForm _concertForm;
+        private PlaylistForm _playlistForm;
 
-        public MainForm()
+        public MainForm(Query queryManager)
         {
             InitializeComponent();
 
-            _searchResultsForm = new SearchResultsForm();
-            _artistForm = new ArtistForm();
-            _albumForm = new AlbumForm();
+            _searchResultsForm = new SearchResultsForm(queryManager);
+            _artistForm = new ArtistForm(queryManager);
+            _albumForm = new AlbumForm(queryManager);
+            _concertForm = new ConcertForm(queryManager);
+            _playlistForm = new PlaylistForm(queryManager);
         }
 
         public void DisplayObject(Artist artist)
@@ -43,6 +48,7 @@ namespace MusicApplication
             base.OnLoad(e);
 
             SetUpControls();
+            PopulateComboBox();
             BindEvents();
         }
 
@@ -55,6 +61,8 @@ namespace MusicApplication
             _searchResultsForm.Dock = DockStyle.Fill;
             _artistForm.Dock = DockStyle.Fill;
             _albumForm.Dock = DockStyle.Fill;
+            _playlistForm.Dock = DockStyle.Fill;
+            _concertForm.Dock = DockStyle.Fill;
 
             _searchResultsForm.Visible = false;
             _artistForm.Visible = false;
@@ -63,8 +71,18 @@ namespace MusicApplication
             _contentPanel.Controls.Add(_searchResultsForm);
             _contentPanel.Controls.Add(_artistForm);
             _contentPanel.Controls.Add(_albumForm);
+            _playlistTab.Controls.Add(_playlistForm);
+            _concertTab.Controls.Add(_concertForm);
 
-            SetVisibleForm(_albumForm);
+            SetVisibleForm(_searchResultsForm);
+        }
+
+        private void PopulateComboBox()
+        {
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Artist", typeof(Artist)));
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Album", typeof(Album)));
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Song", typeof(Song)));
+            _typeSelectorCombo.SelectedIndex = 0;
         }
 
         private void SetVisibleForm(Component visibleForm)
@@ -82,7 +100,7 @@ namespace MusicApplication
         private void Search(object sender, EventArgs e)
         {
             SetVisibleForm(_searchResultsForm);
-            _searchResultsForm.Open(new SearchQuery(_searchButton.Text, typeof(Album))); // TODO: Change to use the selected combobox option
+            _searchResultsForm.Open(new SearchQuery(_searchButton.Text, ((ComboBoxItem)_typeSelectorCombo.SelectedItem).Value as Type));
         }
     }
 }
