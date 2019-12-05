@@ -101,9 +101,11 @@ namespace QueryManager
                                      FROM Artists WHERE artistName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Artist entry = null;
-                entry.ArtistId = reader.GetInt32(0);
-                entry.ArtistName = reader.GetString(1);
+                Artist entry = new Artist
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1)
+                );
                 result.Add(entry);
             }
             return result;
@@ -116,9 +118,11 @@ namespace QueryManager
                                      FROM Artists WHERE artistID LIKE '%" + id + "%'");
             while (reader.Read())
             {
-                Artist entry = null;
-                entry.ArtistId = reader.GetInt32(0);
-                entry.ArtistName = reader.GetString(1);
+                Artist entry = new Artist
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1)
+                );
                 result.Add(entry);
             }
             return result;
@@ -134,9 +138,11 @@ namespace QueryManager
                                      WHERE albumID = " + id);
             while (reader.Read())
             {
-                Artist entry = null;
-                entry.ArtistId = reader.GetInt32(0);
-                entry.ArtistName = reader.GetString(1);
+                Artist entry = new Artist
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1)
+                );
                 result.Add(entry);
             }
             return result;
@@ -149,9 +155,12 @@ namespace QueryManager
                                      FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Playlist entry = null;
-                entry.PlaylistId = reader.GetInt32(0);
-                entry.PlaylistName = reader.GetString(1);
+                Playlist entry = new Playlist
+                (
+                    reader.GetDateTime(2),
+                    reader.GetString(1),
+                    reader.GetInt32(0)
+                );
                 result.Add(entry);
             }
             return result;
@@ -164,11 +173,13 @@ namespace QueryManager
                                      FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Concert entry = null;
-                entry.ConcertId = reader.GetInt32(0);
-                entry.ConcertName = reader.GetString(1);
-                entry.Location = reader.GetString(2);
-                entry.Date = reader.GetDateTime(3);
+                Concert entry = new Concert
+                (
+                    reader.GetDateTime(3),
+                    reader.GetString(1),
+                    reader.GetString(2),
+                    reader.GetInt32(0)
+                );
                 result.Add(entry);
             }
             return result;
@@ -181,10 +192,12 @@ namespace QueryManager
                                      FROM Album WHERE albumName LIKE '%" + name + "%'");
             while (reader.Read())
             {
-                Album entry = null;
-                entry.AlbumId = reader.GetInt32(0);
-                entry.AlbumName = reader.GetString(1);
-                entry.ReleaseDate = reader.GetDateTime(2);
+                Album entry = new Album
+                 (
+                     reader.GetInt32(0),
+                     reader.GetString(1),
+                     reader.GetDateTime(2)
+                 );
                 result.Add(entry);
             }
             return result;
@@ -200,10 +213,12 @@ namespace QueryManager
                                      WHERE artistID = " + id);
             while (reader.Read())
             {
-                Album entry = null;
-                entry.AlbumId = reader.GetInt32(0);
-                entry.AlbumName = reader.GetString(1);
-                entry.ReleaseDate = reader.GetDateTime(2);
+                Album entry = new Album
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetDateTime(2)
+                );
                 result.Add(entry);
             }
             return result;
@@ -220,10 +235,12 @@ namespace QueryManager
                              
             while (reader.Read())
             {
-                Album entry = null;
-                entry.AlbumId = reader.GetInt32(0);
-                entry.AlbumName = reader.GetString(1);
-                entry.ReleaseDate = reader.GetDateTime(2);
+                Album entry = new Album
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetDateTime(2)
+                );
                 result.Add(entry);
             }
             return result;
@@ -237,11 +254,13 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             while (reader.Read())
             {
-                Song entry = null;
-                entry.SongId = reader.GetInt32(0);
-                entry.SongName = reader.GetString(1);
-                entry.Length = reader.GetTimeSpan(3);
-                
+                Song entry = new Song
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetTimeSpan(3)
+                );
+
                 result.Add(entry);
             }
             return result;
@@ -254,10 +273,13 @@ namespace QueryManager
                                      FROM Songs WHERE albumId = " + id);
             while (reader.Read())
             {
-                Song entry = null;
-                entry.SongId = reader.GetInt32(0);
-                entry.SongName = reader.GetString(1);
-                entry.Length = reader.GetTimeSpan(3);
+                Song entry = new Song
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetTimeSpan(3)
+                );
+
 
                 result.Add(entry);
             }

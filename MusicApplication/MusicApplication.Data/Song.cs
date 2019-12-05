@@ -13,7 +13,7 @@ namespace MusicApplication.Data
         public TimeSpan Length { get; set; }
 
         
-
+        
         public Song(int songId, string songName, TimeSpan length)
         {
             SongId = songId;
