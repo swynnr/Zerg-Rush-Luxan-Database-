@@ -111,7 +111,8 @@ namespace QueryManager
         public List<Artist> GetArtistsBySongId(int id)
         {
             List<Artist> result = new List<Artist>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT ArtistID, artistName
+                                     FROM Artists WHERE artistID LIKE '%" + id + "%'");
             while (reader.Read())
             {
                 Artist entry = new Artist((int)reader[0], (string)reader[1]);
@@ -123,7 +124,11 @@ namespace QueryManager
         public List<Artist> GetArtistsByAlbumId(int id)
         {
             List<Artist> result = new List<Artist>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT ArtistID, artistName
+                                     FROM Artist ar
+                                     JOIN Album/Artist axa ON
+                                          ar.artistID = axa.artistID
+                                     WHERE albumID = " + id);
             while (reader.Read())
             {
                 Artist entry = new Artist((int)reader[0], (string)reader[1]);
@@ -161,7 +166,8 @@ namespace QueryManager
         public List<Album> GetAlbumsByName(string name)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT albumID, albumName, releaseDate 
+                                     FROM Album WHERE albumName LIKE '%" + name + "%'");
             while (reader.Read())
             {
                 Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
@@ -173,7 +179,11 @@ namespace QueryManager
         public List<Album> GetAlbumsByArtistId(int id)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT albumID, albumName, releaseDate
+                                     FROM Album a 
+                                     JOIN Album/Artist axa ON
+                                          a.artistID = axa.artistID
+                                     WHERE artistID = " + id);
             while (reader.Read())
             {
                 Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
@@ -185,7 +195,12 @@ namespace QueryManager
         public List<Album> GetAlbumsBySongId(int id)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT AlbumID, albumName, releaseDate
+                                     FROM Album a 
+                                     JOIN Songs s ON
+                                          a.album = s.albumID
+                                     WHERE songID = " + id);
+                             
             while (reader.Read())
             {
                 Album entry = new Album((int)reader[0], (string)reader[1], (DateTime)reader[2]);
@@ -197,7 +212,8 @@ namespace QueryManager
         public List<Song> GetSongsByName(string name)
         {
             List<Album> result = null;
-            var reader = GetReader("result");
+            var reader = GetReader(@"SELECT SongID, songName, songLength
+                                     FROM Songs WHERE songName LIKE '%" + name + "%'");
             while (reader.Read())
             {
                 Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
@@ -209,7 +225,8 @@ namespace QueryManager
         public List<Song> GetSongsByAlbumId(int id)
         {
             List<Song> result = null;
-            var reader = GetReader("SELECT ");
+            var reader = GetReader(@"SELECT SongID, songName, songLength
+                                     FROM Songs WHERE albumId = " + id);
             while (reader.Read())
             {
                 Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
