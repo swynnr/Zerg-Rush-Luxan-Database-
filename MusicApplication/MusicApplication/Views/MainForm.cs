@@ -32,7 +32,7 @@ namespace MusicApplication
         }
 
         public void DisplayObject(Artist artist)
-        {
+        { 
             SetVisibleForm(_artistForm);
             _artistForm.Open(artist);
         }

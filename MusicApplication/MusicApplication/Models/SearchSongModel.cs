@@ -22,14 +22,22 @@ namespace MusicApplication
         public void GetItems(SearchQuery searchQuery)
         {
             SearchResultsList.Clear();
+            List<Song> result;
+            Query temp = new Query(Properties.Resources.Server, Properties.Resources.Database,
+                                   Properties.Resources.Username, Properties.Resources.Password);
             if (searchQuery.EntityType != typeof(Song))
             {
                 return;
             }
-            SearchResultsList.Add(new Song(2, "Sadness", TimeSpan.FromMinutes(3)));
-            SearchResultsList.Add(new Song(6, "Happiness", TimeSpan.FromMinutes(4.5)));
-            SearchResultsList.Add(new Song(3344, "Joy", TimeSpan.FromMinutes(2.3)));
-            SearchResultsList.Add(new Song(3, "Angst", TimeSpan.FromMinutes(.77)));
+            
+            result = temp.GetSongsByName(searchQuery.Text);
+
+            if (result.Count() == 0)
+                return;
+            for(int i = 0; i <= result.Count(); i++)
+            {
+                SearchResultsList.Add(result[i]);
+            }
         }
     }
 }

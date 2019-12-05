@@ -137,7 +137,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
-                Playlist entry = new Playlist((int)reader[0], (string)reader[1], (DateTime)reader[2]);
+                Playlist entry = new Playlist((DateTime)reader[0], (string)reader[1], (int)reader[2]);
                 result.Add(entry);
             }
             return result;
@@ -149,7 +149,7 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
-                Concert entry = new Concert((int)reader[0], (string)reader[1], (string)reader[2], (DateTime)reader[3]);
+                Concert entry = new Concert((DateTime)reader[0], (string)reader[1], (string)reader[2], (int)reader[3]);
                 result.Add(entry);
             }
             return result;
@@ -194,7 +194,7 @@ namespace QueryManager
         public List<Song> GetSongsByName(string name)
         {
             List<Song> result = new List<Song>();
-            var reader = GetReader("result");
+            var reader = GetReader("SELECT * FROM Songs WHERE songName LIKE \'%" + name + "%\';");
             while (reader.Read())
             {
                 Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
