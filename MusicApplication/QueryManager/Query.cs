@@ -94,6 +94,18 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
+        public List<Song> GetPlaylistSongs(int id)
+        {
+            List<Song> result = new List<Song>();
+            return result;
+        }
+
+        public List<Song> GetConcertSongs(int id)
+        {
+            List<Song> result = new List<Song>();
+            return result;
+        }
+
         public List<Artist> GetArtistsByName(string name)
         {
             List<Artist> result = new List<Artist>();

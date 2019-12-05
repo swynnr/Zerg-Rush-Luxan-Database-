@@ -58,17 +58,29 @@ namespace MusicApplication
 
         private void PopulateConcertList()
         {
+            List<Concert> result;
+            result = QueryManager.GetConcert("");
+
+            for(int i = 0; i < result.Count(); i++)
+            {
+                ConcertList.Add(result[i]);
+            }
             // TODO: Get songs from DB
-            ConcertList.Add(new Concert("Justin Beiber's World Tour", "The World"));
-            ConcertList.Add(new Concert("Sam's Western Fiesta", "Houston, TX"));
-            ConcertList.Add(new Concert("Cody Tang Gang", "Las Vegas, NV"));
+            //ConcertList.Add(new Concert("Justin Beiber's World Tour", "The World"));
+            //ConcertList.Add(new Concert("Sam's Western Fiesta", "Houston, TX"));
+            //ConcertList.Add(new Concert("Cody Tang Gang", "Las Vegas, NV"));
+
+            
         }
 
         private void PopulateSongList(Concert concert)
         {
-            //SongList.Clear();
-            // TODO: Get songs based on SelectedPlaylist
-          
+            SongList.Clear();
+            List<Song> temp = QueryManager.GetConcertSongs(concert.ConcertId);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                SongList.Add(temp[i]);
+            }
         }
     }
 }
