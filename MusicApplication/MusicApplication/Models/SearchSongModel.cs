@@ -34,7 +34,7 @@ namespace MusicApplication
 
             if (result.Count() == 0)
                 return;
-            for(int i = 0; i <= result.Count(); i++)
+            for(int i = 0; i < result.Count(); i++)
             {
                 SearchResultsList.Add(result[i]);
             }

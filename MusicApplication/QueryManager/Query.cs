@@ -16,9 +16,8 @@ namespace QueryManager
         {
             string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
             connection = new MySqlConnection(connStr);
-            connection.Open();
+            connection.Open(); 
         }
-
         private MySqlDataReader GetReader(string query)
         {
             var cmd = new MySqlCommand(query, connection);
@@ -194,10 +193,11 @@ namespace QueryManager
         public List<Song> GetSongsByName(string name)
         {
             List<Song> result = new List<Song>();
-            var reader = GetReader("SELECT * FROM Songs WHERE songName LIKE \'%" + name + "%\';");
+            var reader = GetReader("SELECT * FROM Songs WHERE songName LIKE '%" + name + "%';");
+            
             while (reader.Read())
             {
-                Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
+                Song entry = new Song(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2), reader.GetInt32(3), reader.GetTimeSpan(4));
                 result.Add(entry);
             }
             return result;
@@ -209,8 +209,8 @@ namespace QueryManager
             var reader = GetReader("result");
             while (reader.Read())
             {
-                Song entry = new Song((int)reader[0], (string)reader[1], (TimeSpan)reader[2]);
-                result.Add(entry);
+               // Song entry = new Song((int)reader[0], (string)reader[1], (int)reader[2]);
+               // result.Add(entry);
             }
             return result;
         }

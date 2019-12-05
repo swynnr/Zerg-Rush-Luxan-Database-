@@ -10,13 +10,22 @@ namespace MusicApplication.Data
     {
         public int SongId { get; set; }
         public string SongName { get; set; }
+
+        public DateTime PublishDate { get; set; }
+
+        private int AlbumID { get; set; }
+
         public TimeSpan Length { get; set; }
 
-        public Song(int songId, string songName, TimeSpan length)
+        
+
+        public Song(int songId, string songName, DateTime publishDate, int albumID, TimeSpan length)
         {
             SongId = songId;
             SongName = songName;
             Length = length;
+            PublishDate = publishDate;
+            AlbumID = albumID;
         }
 
         public override string ToString()

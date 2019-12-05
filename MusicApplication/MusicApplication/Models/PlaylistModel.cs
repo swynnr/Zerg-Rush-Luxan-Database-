@@ -70,7 +70,7 @@ namespace MusicApplication
         {
             //SongList.Clear();
             // TODO: Get songs based on SelectedPlaylist
-            SongList.Add(new Song(4, "a", TimeSpan.FromSeconds(234)));
+          
         }
     }
 }

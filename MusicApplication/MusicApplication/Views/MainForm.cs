@@ -82,7 +82,7 @@ namespace MusicApplication
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Artist", typeof(Artist)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Album", typeof(Album)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Song", typeof(Song)));
-            _typeSelectorCombo.SelectedIndex = 0;
+            _typeSelectorCombo.SelectedIndex = 2;
         }
 
         private void SetVisibleForm(Component visibleForm)
@@ -100,7 +100,7 @@ namespace MusicApplication
         private void Search(object sender, EventArgs e)
         {
             SetVisibleForm(_searchResultsForm);
-            _searchResultsForm.Open(new SearchQuery(_searchButton.Text, ((ComboBoxItem)_typeSelectorCombo.SelectedItem).Value as Type));
+            _searchResultsForm.Open(new SearchQuery(_searchTextBox.Text, ((ComboBoxItem)_typeSelectorCombo.SelectedItem).Value as Type));
         }
     }
 }
