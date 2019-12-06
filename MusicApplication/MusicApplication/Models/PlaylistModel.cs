@@ -76,7 +76,7 @@ namespace MusicApplication
         private void PopulateSongList(Playlist playlist)
         {
             SongList.Clear();
-            List<Song> temp = QueryManager.GetPlaylistSongs(playlist.PlaylistId);
+            List<Song> temp = QueryManager.getSongList(playlist);
             for (int i = 0; i < temp.Count; i++)
             {
                 SongList.Add(temp[i]);

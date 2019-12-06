@@ -76,7 +76,7 @@ namespace MusicApplication
         private void PopulateSongList(Concert concert)
         {
             SongList.Clear();
-            List<Song> temp = QueryManager.GetConcertSongs(concert.ConcertId);
+            List<Song> temp = QueryManager.getSongList(concert);
             for (int i = 0; i < temp.Count; i++)
             {
                 SongList.Add(temp[i]);

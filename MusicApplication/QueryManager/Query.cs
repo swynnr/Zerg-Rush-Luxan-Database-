@@ -63,6 +63,49 @@ namespace QueryManager
             return true;
         }
 
+        public List<Song> getSongList(Concert concert)
+        {
+            List<Song> result = new List<Song>();
+
+            string cmd = "";
+
+            var reader = GetReader(cmd);
+
+            while (reader.Read())
+            {
+                Song entry = new Song
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetTimeSpan(3)
+                );
+                result.Add(entry);
+            }
+            reader.Close();
+            return result;
+        }
+
+        public List<Song> getSongList(Playlist playlist)
+        {
+            List<Song> result = new List<Song>();
+
+            string cmd = "";
+
+            var reader = GetReader(cmd);
+
+            while (reader.Read())
+            {
+                Song entry = new Song
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetTimeSpan(3)
+                );
+                result.Add(entry);
+            }
+            reader.Close();
+            return result;
+        }
         public void PlaylistAddSong(Playlist playlistId, Song songId)
         {
             string cmd = "temp";
@@ -114,6 +157,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -131,6 +175,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -151,6 +196,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -170,7 +216,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
-
+            reader.Close();
             return result;
         }
 
@@ -191,6 +237,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -209,6 +256,7 @@ namespace QueryManager
                  );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -230,6 +278,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -252,6 +301,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -272,6 +322,7 @@ namespace QueryManager
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -292,6 +343,7 @@ namespace QueryManager
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
     }
