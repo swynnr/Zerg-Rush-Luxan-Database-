@@ -40,7 +40,7 @@ namespace QueryManager
         {
             string cmd = @"INSERT
                            INTO Playlist (playlistName, date)
-                           VALUES Playlist.playlistName, Playlist.date;";
+                           VALUES (Playlist.playlistName, Playlist.date);";
             ExecuteNonQuery(cmd);
 
             return true;
