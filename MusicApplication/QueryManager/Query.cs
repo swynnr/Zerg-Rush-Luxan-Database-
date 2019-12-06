@@ -68,7 +68,8 @@ namespace QueryManager
 
         public void ConcertAddSong(Concert concert, Song song)
         {
-            string cmd = "temp";
+            string cmd = "INSERT INTO Concert/Song (concertID, songID)" +
+                         "VALUES (" + concert.ConcertId + "," + song.SongId + ";";
             ExecuteNonQuery(cmd);
         }
 
