@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql.Data;
 using MusicApplication.Data;
+using System.Security.Permissions;
+
 
 namespace QueryManager
 {
     public class Query
     {
         private MySqlConnection connection = null;
+        private string formatDate = "yyy-MM-dd HH:mm:ss.fff";
         public Query(string host, string db, string username, string password)
         {
             string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
@@ -38,9 +41,6 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
-
-           
-
             string cmd = @"INSERT
                            INTO Playlist (playlistName, date)
                            VALUES (Playlist.playlistName, Playlist.date);";
@@ -63,6 +63,7 @@ namespace QueryManager
                          concert.ConcertName, concert.Location,concert.Date.ToString("yyyy-MM-dd HH:mm:ss"));
 
             ExecuteNonQuery(cmd);
+
 
             return true;
         }
