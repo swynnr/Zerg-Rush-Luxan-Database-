@@ -38,9 +38,13 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
+
+           
+
             string cmd = @"INSERT
                            INTO Playlist (playlistName, date)
                            VALUES (Playlist.playlistName, Playlist.date);";
+
             ExecuteNonQuery(cmd);
 
             return true;
@@ -54,12 +58,14 @@ namespace QueryManager
         /// <returns>Whether the concert was created or not</returns>
         public bool CreateConcert(ref Concert concert)
         {
-            string cmd = "temp";
-            ExecuteNonQuery(cmd);
+            //string cmd = "INSERT INTO Concert(concertName, location, date) " +
+            //             "VALUES ('" + concert.ConcertName + "', '" + concert.Location + "', " +
+            //             concert.Date.ToString() + ");";
+            //ExecuteNonQuery(cmd);
 
             return true;
         }
-
+        
         public void PlaylistAddSong(Playlist playlistId, Song songId)
         {
             string cmd = "temp";
@@ -96,6 +102,19 @@ namespace QueryManager
             ExecuteNonQuery(cmd);
         }
 
+        public List<Song> GetPlaylistSongs(int id)
+        {
+            List<Song> result = new List<Song>(); 
+            var reader = GetReader(@"SELECT");
+            return result;
+        }
+
+        public List<Song> GetConcertSongs(int id)
+        {
+            List<Song> result = new List<Song>();
+            return result;
+        }
+
         public List<Artist> GetArtistsByName(string name)
         {
             List<Artist> result = new List<Artist>();
@@ -110,6 +129,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -127,6 +147,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -147,6 +168,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -165,6 +187,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -184,6 +207,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -202,6 +226,7 @@ namespace QueryManager
                  );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -223,6 +248,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -245,6 +271,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -256,15 +283,17 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             while (reader.Read())
             {
+            
                 Song entry = new Song
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -279,12 +308,13 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
 
 
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
     }
