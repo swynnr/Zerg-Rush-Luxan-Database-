@@ -17,7 +17,7 @@ namespace QueryManager
         private string formatDate = "yyy-MM-dd HH:mm:ss.fff";
         public Query(string host, string db, string username, string password)
         {
-            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
+            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}; convert zero datetime=True", host, db, username, password);
             connection = new MySqlConnection(connStr);
             connection.Open(); 
         }
@@ -67,7 +67,10 @@ namespace QueryManager
         {
             List<Song> result = new List<Song>();
 
-            string cmd = "";
+            string cmd = @"SELECT s.songID, s.songName, s.songLength " +
+                         " FROM Concert/Song cs " + 
+                         " JOIN Songs s ON s.songID = cs.songID " +
+                         " WHERE cs.concertID = " + concert.ConcertId + ";";
 
             var reader = GetReader(cmd);
 
@@ -77,7 +80,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -89,7 +92,10 @@ namespace QueryManager
         {
             List<Song> result = new List<Song>();
 
-            string cmd = "";
+            string cmd = @"SELECT s.songID, s.songName, s.songLength 
+                           FROM 'Playlist/Song' ps 
+                           JOIN Songs s ON s.songID = ps.songID 
+                           WHERE ps.playlistID = 1;";
 
             var reader = GetReader(cmd);
 
@@ -99,7 +105,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -317,7 +323,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
 
                 result.Add(entry);

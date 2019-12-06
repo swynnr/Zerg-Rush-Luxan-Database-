@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicApplication", "MusicApplication\MusicApplication.csproj", "{63661F09-D8E7-47E2-8694-66181F3AF79E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryManager", "QueryManager\QueryManager.csproj", "{3972E275-5681-4E82-8EEE-11C324E9255C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicApplication.Data", "MusicApplication.Data\MusicApplication.Data.csproj", "{9118557F-EFDB-4A79-9269-47B6D3FEB99D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{185916B8-FA03-47E9-B2F9-976D4300F059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{185916B8-FA03-47E9-B2F9-976D4300F059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{185916B8-FA03-47E9-B2F9-976D4300F059}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{185916B8-FA03-47E9-B2F9-976D4300F059}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{185916B8-FA03-47E9-B2F9-976D4300F059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
