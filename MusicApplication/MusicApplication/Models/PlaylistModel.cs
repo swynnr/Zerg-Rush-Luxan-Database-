@@ -58,19 +58,29 @@ namespace MusicApplication
 
         private void PopulatePlaylistList()
         {
+            List<Playlist> result;
+            result = QueryManager.GetPlaylists("");
+
+            for (int i = 0; i < result.Count(); i++)
+            {
+                PlaylistList.Add(result[i]);
+            }
             // TODO: Get songs from DB
-            PlaylistList.Add(new Playlist("Matt's Epic Playlist"));
-            PlaylistList.Add(new Playlist("Bangers"));
-            PlaylistList.Add(new Playlist("Happy Songs"));
-            PlaylistList.Add(new Playlist("Road Trip"));
-            PlaylistList.Add(new Playlist("Sad music"));
+            //PlaylistList.Add(new Playlist("Matt's Epic Playlist"));
+            //PlaylistList.Add(new Playlist("Bangers"));
+            //PlaylistList.Add(new Playlist("Happy Songs"));
+            //PlaylistList.Add(new Playlist("Road Trip"));
+            //PlaylistList.Add(new Playlist("Sad music"));
         }
 
         private void PopulateSongList(Playlist playlist)
         {
-            //SongList.Clear();
-            // TODO: Get songs based on SelectedPlaylist
-          
+            SongList.Clear();
+            List<Song> temp = QueryManager.GetPlaylistSongs(playlist.PlaylistId);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                SongList.Add(temp[i]);
+            }
         }
     }
 }

@@ -23,17 +23,14 @@ namespace MusicApplication
         {
             SearchResultsList.Clear();
             List<Song> result;
-            Query temp = new Query(Properties.Resources.Server, Properties.Resources.Database,
-                                   Properties.Resources.Username, Properties.Resources.Password);
+
             if (searchQuery.EntityType != typeof(Song))
             {
                 return;
             }
-            
-            result = temp.GetSongsByName(searchQuery.Text);
 
-            if (result.Count() == 0)
-                return;
+            result = QueryManager.GetSongsByName(searchQuery.Text);
+            
             for(int i = 0; i < result.Count(); i++)
             {
                 SearchResultsList.Add(result[i]);
