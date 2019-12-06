@@ -38,7 +38,7 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
-            string cmd = "temp";
+            string cmd = "";
             ExecuteNonQuery(cmd);
 
             return true;
@@ -52,12 +52,14 @@ namespace QueryManager
         /// <returns>Whether the concert was created or not</returns>
         public bool CreateConcert(ref Concert concert)
         {
-            string cmd = "temp";
-            ExecuteNonQuery(cmd);
+            //string cmd = "INSERT INTO Concert(concertName, location, date) " +
+            //             "VALUES ('" + concert.ConcertName + "', '" + concert.Location + "', " +
+            //             concert.Date.ToString() + ");";
+            //ExecuteNonQuery(cmd);
 
             return true;
         }
-
+        
         public void PlaylistAddSong(Playlist playlistId, Song songId)
         {
             string cmd = "temp";
@@ -96,7 +98,8 @@ namespace QueryManager
 
         public List<Song> GetPlaylistSongs(int id)
         {
-            List<Song> result = new List<Song>();
+            List<Song> result = new List<Song>(); 
+            var reader = GetReader(@"SELECT");
             return result;
         }
 
