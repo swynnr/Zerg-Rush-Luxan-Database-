@@ -14,7 +14,7 @@ namespace QueryManager
     public class Query
     {
         private MySqlConnection connection = null;
-        private string formatDate = "yyy-MM-dd HH:mm:ss.fff";
+        private const string FORMAT_DATE = "yyy-MM-dd HH:mm:ss.fff";
         public Query(string host, string db, string username, string password)
         {
             string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
@@ -42,7 +42,7 @@ namespace QueryManager
         public bool CreatePlaylist(ref Playlist playlist)
         {
             string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date)
-                           VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(formatDate));
+                           VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             return true;
         }
@@ -57,7 +57,7 @@ namespace QueryManager
         {
             string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
                                          VALUES ('{0}', '{1}', '{2}');",
-                                         concert.ConcertName, concert.Location, concert.Date.ToString(formatDate));
+                                         concert.ConcertName, concert.Location, concert.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             return true;
         }
@@ -242,7 +242,6 @@ namespace QueryManager
                                      JOIN Songs s ON
                                           a.album = s.albumID
                                      WHERE songID = " + id);
-
             while (reader.Read())
             {
                 Album entry = new Album
@@ -271,7 +270,6 @@ namespace QueryManager
                     reader.GetString(1),
                     reader.GetTimeSpan(3)
                 );
-
                 result.Add(entry);
             }
             return result;
@@ -290,8 +288,6 @@ namespace QueryManager
                     reader.GetString(1),
                     reader.GetTimeSpan(3)
                 );
-
-
                 result.Add(entry);
             }
             return result;
@@ -312,8 +308,6 @@ namespace QueryManager
                     reader.GetString(1),
                     reader.GetTimeSpan(3)
                 );
-
-
                 result.Add(entry);
             }
             return result;
@@ -334,8 +328,6 @@ namespace QueryManager
                     reader.GetString(1),
                     reader.GetTimeSpan(3)
                 );
-
-
                 result.Add(entry);
             }
             return result;
