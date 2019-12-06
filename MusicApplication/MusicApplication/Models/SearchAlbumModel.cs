@@ -22,20 +22,16 @@ namespace MusicApplication
         public void GetItems(SearchQuery searchQuery)
         {
             SearchResultsList.Clear();
-            List<Album> result;
+
             // TODO: populate with data
             if (searchQuery.EntityType != typeof(Album))
             {
                 return;
             }
-
-            result = QueryManager.GetAlbumsByName(searchQuery.Text);
-
-            for (int i = 0; i < result.Count(); i++)
-            {
-                SearchResultsList.Add(result[i]);
-            }
+            SearchResultsList.Add(new Album(0, "The Bees", DateTime.Now));
+            SearchResultsList.Add(new Album(100, "Blac", DateTime.Now));
+            SearchResultsList.Add(new Album(200, "The happening", DateTime.Now));
+            SearchResultsList.Add(new Album(303, "The Foo", DateTime.Now));
         }
     }
 }
-

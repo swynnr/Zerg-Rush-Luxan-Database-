@@ -59,6 +59,7 @@ namespace QueryManager
                                          VALUES ('{0}', '{1}', '{2}');", 
                                          concert.ConcertName, concert.Location, concert.Date.ToString(formatDate));
             ExecuteNonQuery(cmd);
+
             return true;
         }
 
