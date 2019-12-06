@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryManager", "QueryManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicApplication.Data", "MusicApplication.Data\MusicApplication.Data.csproj", "{9118557F-EFDB-4A79-9269-47B6D3FEB99D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{185916B8-FA03-47E9-B2F9-976D4300F059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9118557F-EFDB-4A79-9269-47B6D3FEB99D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185916B8-FA03-47E9-B2F9-976D4300F059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185916B8-FA03-47E9-B2F9-976D4300F059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185916B8-FA03-47E9-B2F9-976D4300F059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185916B8-FA03-47E9-B2F9-976D4300F059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
