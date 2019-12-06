@@ -38,7 +38,13 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
-            string cmd = "";
+
+           
+
+            string cmd = @"INSERT
+                           INTO Playlist (playlistName, date)
+                           VALUES (Playlist.playlistName, Playlist.date);";
+
             ExecuteNonQuery(cmd);
 
             return true;
