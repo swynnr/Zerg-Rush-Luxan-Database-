@@ -65,60 +65,10 @@ namespace QueryManager
         }
 
 
-        public List<Song> getSongList(Concert concert)
-        {
-            List<Song> result = new List<Song>();
-
-            string cmd = @"SELECT s.songID, s.songName, s.songLength " +
-                         " FROM Concert/Song cs " + 
-                         " JOIN Songs s ON s.songID = cs.songID " +
-                         " WHERE cs.concertID = " + concert.ConcertId + ";";
-
-            var reader = GetReader(cmd);
-
-            while (reader.Read())
-            {
-                Song entry = new Song
-                (
-                    reader.GetInt32(0),
-                    reader.GetString(1),
-                    reader.GetTimeSpan(2)
-                );
-                result.Add(entry);
-            }
-            reader.Close();
-            return result;
-        }
-
-        public List<Song> getSongList(Playlist playlist)
-        {
-            List<Song> result = new List<Song>();
-
-            string cmd = @"SELECT s.songID, s.songName, s.songLength 
-                           FROM 'Playlist/Song' ps 
-                           JOIN Songs s ON s.songID = ps.songID 
-                           WHERE ps.playlistID = 1;";
-
-            var reader = GetReader(cmd);
-
-            while (reader.Read())
-            {
-                Song entry = new Song
-                (
-                    reader.GetInt32(0),
-                    reader.GetString(1),
-                    reader.GetTimeSpan(2)
-                );
-                result.Add(entry);
-            }
-            reader.Close();
-            return result;
-        }
-
         public void PlaylistAddSong(Playlist playlist, Song song)
 
         {
-            string cmd = string.Format(@"INSERT INTO Playlist/Song(playlistID, songID)
+            string cmd = string.Format(@"INSERT INTO PlaylistxSong(playlistID, songID)
                                          VALUES ({0}, {1});", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -126,21 +76,21 @@ namespace QueryManager
         public void ConcertAddSong(Concert concert, Song song)
         {
 
-            string cmd = string.Format(@"INSERT INTO Concert/Song(concertID, songID)
+            string cmd = string.Format(@"INSERT INTO ConcertxSong(concertID, songID)
                                          VALUES ({0}, {1});", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void PlaylistRemoveSong(Playlist playlist, Song song)
         {
-            string cmd = string.Format(@"DELETE FROM Playlist/Song 
+            string cmd = string.Format(@"DELETE FROM PlaylistxSong 
                                          WHERE playlistID = {0} AND songID = {1}", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void ConcertRemoveSong(Concert concert, Song song)
         {
-            string cmd = string.Format(@"DELETE FROM Concert/Song 
+            string cmd = string.Format(@"DELETE FROM ConcertxSong 
                                          WHERE concertID = {0} AND songID = {1}", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -200,7 +150,7 @@ namespace QueryManager
             List<Artist> result = new List<Artist>();
             var reader = GetReader(@"SELECT artistID, artistName
                                      FROM Artist ar
-                                     JOIN Album/Artist axa ON
+                                     JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
                                      WHERE albumID = " + id);
             while (reader.Read())
@@ -283,7 +233,7 @@ namespace QueryManager
             List<Album> result = new List<Album>();
             var reader = GetReader(@"SELECT albumID, albumName, releaseDate
                                      FROM Album a 
-                                     JOIN Album/Artist axa ON
+                                     JOIN AlbumxArtist axa ON
                                           a.artistID = axa.artistID
                                      WHERE artistID = " + id);
             while (reader.Read())
@@ -354,7 +304,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -366,7 +316,7 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
-                                     JOIN Concert/Song c ON c.songID = s.songID 
+                                     JOIN ConcertxSong c ON c.songID = s.songID 
                                      WHERE c.concertID = " + id);
             while (reader.Read())
             {
@@ -374,7 +324,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -386,7 +336,7 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
-                                     JOIN Playlist/Song p ON p.songID = s.songID 
+                                     JOIN PlaylistxSong p ON p.songID = s.songID 
                                      WHERE p.playlistID = " + id);
             while (reader.Read())
             {
@@ -394,7 +344,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
