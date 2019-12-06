@@ -58,10 +58,11 @@ namespace QueryManager
         /// <returns>Whether the concert was created or not</returns>
         public bool CreateConcert(ref Concert concert)
         {
-            //string cmd = "INSERT INTO Concert(concertName, location, date) " +
-            //             "VALUES ('" + concert.ConcertName + "', '" + concert.Location + "', " +
-            //             concert.Date.ToString() + ");";
-            //ExecuteNonQuery(cmd);
+            string cmd = string.Format("INSERT INTO Concert(concertName, location, date" +
+                         "VALUES('{0}', '{1}', '{2}');",
+                         concert.ConcertName, concert.Location,concert.Date.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            ExecuteNonQuery(cmd);
 
             return true;
         }
@@ -176,25 +177,26 @@ namespace QueryManager
         public List<Playlist> GetPlaylists(string name)
         {
             List<Playlist> result = new List<Playlist>();
-            var reader = GetReader(@"SELECT playlistID, playlistName, date 
-                                     FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
-            while (reader.Read())
-            {
-                Playlist entry = new Playlist
-                (
-                    reader.GetDateTime(2),
-                    reader.GetString(1),
-                    reader.GetInt32(0)
-                );
-                result.Add(entry);
-            }
-            reader.Close();
+            //var reader = GetReader(@"SELECT playlistID, playlistName, date 
+            //                         FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
+            //while (reader.Read())
+            //{
+            //    Playlist entry = new Playlist
+            //    (
+            //        reader.GetDateTime(2),
+            //        reader.GetString(1),
+            //        reader.GetInt32(0)
+            //    );
+            //    result.Add(entry);
+            //}
+            //reader.Close();
             return result;
         }
 
         public List<Concert> GetConcert(string name)
         {
             List<Concert> result = new List<Concert>();
+
             var reader = GetReader(@"SELECT ConcertID, concertName, location, date
                                      FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
             while (reader.Read())
