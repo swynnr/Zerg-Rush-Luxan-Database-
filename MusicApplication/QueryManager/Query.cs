@@ -17,20 +17,41 @@ namespace QueryManager
         private const string FORMAT_DATE = "yyy-MM-dd HH:mm:ss.fff";
         public Query(string host, string db, string username, string password)
         {
-            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
-            connection = new MySqlConnection(connStr);
-            connection.Open();
+            try
+            {
+                string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
+                connection = new MySqlConnection(connStr);
+                connection.Open();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
         }
         private MySqlDataReader GetReader(string query)
         {
-            var cmd = new MySqlCommand(query, connection);
-            return cmd.ExecuteReader();
+            try
+            {
+                var cmd = new MySqlCommand(query, connection);
+                return cmd.ExecuteReader();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
         }
 
         private void ExecuteNonQuery(string command)
         {
-            var cmd = new MySqlCommand(command, connection);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                var cmd = new MySqlCommand(command, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
         }
 
         /// <summary>
@@ -260,7 +281,6 @@ namespace QueryManager
 
             var reader = GetReader(@"SELECT songID, songName, songLength
                                      FROM Songs WHERE songName LIKE '%" + name + "%'");
-
             List<Song> result = new List<Song>();
             while (reader.Read())
             {
