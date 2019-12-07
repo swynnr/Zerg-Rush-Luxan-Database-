@@ -27,15 +27,10 @@ namespace MusicApplication
             PopulateSongList(playlist);
         }
 
-        public bool CreatePlaylist(Playlist playlist)
+        public void CreatePlaylist(Playlist playlist)
         {
-            var createdSuccessfully = QueryManager.CreatePlaylist(ref playlist);
-            if (createdSuccessfully)
-            {
-                PlaylistList.Add(playlist);
-            }
-
-            return createdSuccessfully;
+            playlist.PlaylistId = QueryManager.CreatePlaylist(ref playlist);
+            PlaylistList.Add(playlist);
         }
 
         public void DeletePlaylist(Playlist playlist)

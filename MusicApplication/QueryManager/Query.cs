@@ -61,12 +61,20 @@ namespace QueryManager
         /// </summary>
         /// <param name="playlist"></param>
         /// <returns>Whether the playlist was created or not</returns>
-        public bool CreatePlaylist(ref Playlist playlist)
+        public int CreatePlaylist(ref Playlist playlist)
         {
+            int id = -1;
             string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date) 
                             VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
-            return true;
+            var reader = GetReader(@"SELECT MAX(playlistID)
+                                     FROM Playlist");
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+            return id;
         }
 
         /// <summary>
@@ -75,13 +83,20 @@ namespace QueryManager
         /// </summary>
         /// <param name="concert"></param>
         /// <returns>Whether the concert was created or not</returns>
-        public bool CreateConcert(ref Concert concert)
+        public int CreateConcert(ref Concert concert)
         {
-
+            int id = -1;
             string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
                                          VALUES('{0}', '{1}', '{2}');", concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
-            return true;
+            var reader = GetReader(@"SELECT MAX(concertID)
+                                     FROM Concert");
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+            return id;
         }
 
 
