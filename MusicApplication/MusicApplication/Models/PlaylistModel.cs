@@ -47,8 +47,16 @@ namespace MusicApplication
 
         public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
         {
-            QueryManager.PlaylistAddSong(selectedPlaylist, song);
-            SongList.Add(song);
+            if (!SongList.Contains(song))
+            { 
+                QueryManager.PlaylistAddSong(selectedPlaylist, song);
+                SongList.Add(song);
+            } 
+            else
+            {
+             
+            }
+            
         }
 
         private void PopulatePlaylistList()
