@@ -41,8 +41,8 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
-            string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date)
-                           VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
+            string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date) 
+                            VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             return true;
         }
@@ -58,7 +58,7 @@ namespace QueryManager
 
             string cmd = string.Format("INSERT INTO Concert(concertName, location, date" +
                          "VALUES('{0}', '{1}', '{2}');",
-                         concert.ConcertName, concert.Location,concert.Date.ToString("yyyy-MM-dd HH:mm:ss"));
+                         concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
 
             ExecuteNonQuery(cmd);
             return true;
@@ -68,7 +68,7 @@ namespace QueryManager
         public void PlaylistAddSong(Playlist playlist, Song song)
 
         {
-            string cmd = string.Format(@"INSERT INTO PlaylistxSong(playlistID, songID)
+            string cmd = string.Format(@"INSERT INTO PlaylistxSong
                                          VALUES ({0}, {1});", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -76,7 +76,7 @@ namespace QueryManager
         public void ConcertAddSong(Concert concert, Song song)
         {
 
-            string cmd = string.Format(@"INSERT INTO ConcertxSong(concertID, songID)
+            string cmd = string.Format(@"INSERT INTO ConcertxSong
                                          VALUES ({0}, {1});", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }

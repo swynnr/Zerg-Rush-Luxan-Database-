@@ -22,14 +22,18 @@ namespace MusicApplication
         public void GetItems(SearchQuery searchQuery)
         {
             SearchResultsList.Clear();
-           
 
-            // TODO: populate with data
-            if (searchQuery.EntityType == typeof(Song))
+            List<Artist> result = QueryManager.GetArtistsByName(searchQuery.Text);
+             
+            if (searchQuery.EntityType != typeof(Artist))
             {
-                
+                return;
             }
 
+            for (int i = 0; i < result.Count(); i++)
+            {
+                SearchResultsList.Add(result[i]);
+            }
         }
     }
 }
