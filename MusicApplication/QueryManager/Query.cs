@@ -19,7 +19,7 @@ namespace QueryManager
         {
             try
             {
-                string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, username, password);
+                string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}; convert zero datetime=True", host, db, username, password);
                 connection = new MySqlConnection(connStr);
                 connection.Open();
             }
@@ -27,6 +27,7 @@ namespace QueryManager
             {
                 throw e;
             }
+
         }
         private MySqlDataReader GetReader(string query)
         {
@@ -62,8 +63,8 @@ namespace QueryManager
         /// <returns>Whether the playlist was created or not</returns>
         public bool CreatePlaylist(ref Playlist playlist)
         {
-            string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date)
-                           VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
+            string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date) 
+                            VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             return true;
         }
@@ -76,16 +77,20 @@ namespace QueryManager
         /// <returns>Whether the concert was created or not</returns>
         public bool CreateConcert(ref Concert concert)
         {
-            string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
-                                         VALUES ('{0}', '{1}', '{2}');",
-                                         concert.ConcertName, concert.Location, concert.Date.ToString(FORMAT_DATE));
+
+            string cmd = string.Format("INSERT INTO Concert(concertName, location, date" +
+                         "VALUES('{0}', '{1}', '{2}');",
+                         concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
+
             ExecuteNonQuery(cmd);
             return true;
         }
 
+
         public void PlaylistAddSong(Playlist playlist, Song song)
+
         {
-            string cmd = string.Format(@"INSERT INTO Playlist/Song(playlistID, songID)
+            string cmd = string.Format(@"INSERT INTO PlaylistxSong
                                          VALUES ({0}, {1});", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -139,6 +144,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -156,6 +162,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -176,12 +183,14 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
         public List<Playlist> GetPlaylists(string name)
         {
             List<Playlist> result = new List<Playlist>();
+
             var reader = GetReader(@"SELECT playlistID, playlistName, date 
                                      FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
             while (reader.Read())
@@ -194,14 +203,18 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
         public List<Concert> GetConcert(string name)
         {
             List<Concert> result = new List<Concert>();
-            var reader = GetReader(@"SELECT concertID, concertName, location, date
-                                     FROM Concert WHERE concertName LIKE '%" + name + "%'");
+
+
+            var reader = GetReader(@"SELECT ConcertID, concertName, location, date
+                                     FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
+
             while (reader.Read())
             {
                 Concert entry = new Concert
@@ -213,6 +226,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -231,6 +245,7 @@ namespace QueryManager
                  );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -252,6 +267,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -273,6 +289,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -288,10 +305,11 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -306,7 +324,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -326,7 +344,7 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
@@ -346,10 +364,11 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(3)
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
     }
