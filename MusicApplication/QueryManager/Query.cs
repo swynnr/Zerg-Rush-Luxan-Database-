@@ -78,10 +78,8 @@ namespace QueryManager
         public bool CreateConcert(ref Concert concert)
         {
 
-            string cmd = string.Format("INSERT INTO Concert(concertName, location, date" +
-                         "VALUES('{0}', '{1}', '{2}');",
-                         concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
-
+            string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
+                                         VALUES('{0}', '{1}', '{2}');", concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             return true;
         }
@@ -328,6 +326,8 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
+
             return result;
         }
 
@@ -348,6 +348,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
