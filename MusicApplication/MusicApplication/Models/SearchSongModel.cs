@@ -25,6 +25,7 @@ namespace MusicApplication
             List<Song> result;
             Query temp = new Query(Properties.Resources.Server, Properties.Resources.Database,
                                    Properties.Resources.Username, Properties.Resources.Password);
+
             if (searchQuery.EntityType != typeof(Song))
             {
                 return;
