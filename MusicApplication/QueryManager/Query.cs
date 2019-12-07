@@ -71,21 +71,21 @@ namespace QueryManager
 
         public void ConcertAddSong(Concert concert, Song song)
         {
-            string cmd = string.Format(@"INSERT INTO Concert/Song(concertID, songID)
+            string cmd = string.Format(@"INSERT INTO ConcertxSong(concertID, songID)
                                          VALUES ({0}, {1});", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void PlaylistRemoveSong(Playlist playlist, Song song)
         {
-            string cmd = string.Format(@"DELETE FROM Playlist/Song 
+            string cmd = string.Format(@"DELETE FROM PlaylistxSong 
                                          WHERE playlistID = {0} AND songID = {1}", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void ConcertRemoveSong(Concert concert, Song song)
         {
-            string cmd = string.Format(@"DELETE FROM Concert/Song 
+            string cmd = string.Format(@"DELETE FROM ConcertxSong 
                                          WHERE concertID = {0} AND songID = {1}", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -143,7 +143,7 @@ namespace QueryManager
             List<Artist> result = new List<Artist>();
             var reader = GetReader(@"SELECT artistID, artistName
                                      FROM Artist ar
-                                     JOIN Album/Artist axa ON
+                                     JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
                                      WHERE albumID = " + id);
             while (reader.Read())
@@ -218,7 +218,7 @@ namespace QueryManager
             List<Album> result = new List<Album>();
             var reader = GetReader(@"SELECT albumID, albumName, releaseDate
                                      FROM Album a 
-                                     JOIN Album/Artist axa ON
+                                     JOIN AlbumxArtist axa ON
                                           a.artistID = axa.artistID
                                      WHERE artistID = " + id);
             while (reader.Read())
@@ -298,7 +298,7 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
-                                     JOIN Concert/Song c ON c.songID = s.songID 
+                                     JOIN ConcertxSong c ON c.songID = s.songID 
                                      WHERE c.concertID = " + id);
             while (reader.Read())
             {
@@ -318,7 +318,7 @@ namespace QueryManager
             List<Song> result = new List<Song>();
             var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
-                                     JOIN Playlist/Song p ON p.songID = s.songID 
+                                     JOIN PlaylistxSong p ON p.songID = s.songID 
                                      WHERE p.playlistID = " + id);
             while (reader.Read())
             {
