@@ -25,5 +25,19 @@ namespace MusicApplication.Data
         {
             return SongName;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            Song p = (Song)obj;
+
+            return (SongId == p.SongId);
+        }
+
+
+
+
     }
 }

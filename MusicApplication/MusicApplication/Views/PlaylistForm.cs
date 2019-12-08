@@ -59,6 +59,8 @@ namespace MusicApplication
             _addButton.Click += AddNewSong;
         }
 
+
+
         private void AddNewSong(object sender, EventArgs e)
         {
             using(var songSearchForm = new SongSearchForm(_queryManager))
@@ -68,16 +70,36 @@ namespace MusicApplication
             }
         }
 
+        private void UpdateSongList(object sender, EventArgs e)
+        {
+
+        }
+
         private void SongSearchFormClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = sender as DataGridView;
             var row = grid.Rows[e.RowIndex];
             var song = row.DataBoundItem as Song;
+
+
+
             if (SelectedPlaylist == null || song == null)
             {
                 return;
             }
-            _model.AddSongToPlaylist(SelectedPlaylist, song);
+
+            _model.PopulateSongList(SelectedPlaylist);
+           
+
+            if (_model.SongList.Contains(song))
+            {
+                PopupForm popup = new PopupForm("Song is already in the Playlist");
+                popup.ShowDialog();
+            }
+            else
+            {
+                _model.AddSongToPlaylist(SelectedPlaylist, song);
+            }
         }
 
         private void DeleteSong(object sender, EventArgs e)

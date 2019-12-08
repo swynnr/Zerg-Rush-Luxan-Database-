@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MusicApplication.Data;
+using QueryManager;
 
-namespace MusicApplication.Views
+namespace MusicApplication
 {
     public partial class PopupForm : Form
     {
         public PopupForm(string diaglog)
         {
-            _popupFormDialog.Text = diaglog;
+           
             InitializeComponent();
+            _popupFormDialog.Text = diaglog;
+
         }
 
         private void popupButtonClose(object sender, EventArgs e)
