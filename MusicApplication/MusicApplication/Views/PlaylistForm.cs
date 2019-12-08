@@ -93,8 +93,7 @@ namespace MusicApplication
 
             if (_model.SongList.Contains(song))
             {
-                PopupForm popup = new PopupForm("Song is already in the Playlist");
-                popup.ShowDialog();
+
             }
             else
             {

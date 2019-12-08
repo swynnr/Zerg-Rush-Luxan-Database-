@@ -36,8 +36,5 @@ namespace MusicApplication.Data
             return (SongId == p.SongId);
         }
 
-
-
-
     }
 }
