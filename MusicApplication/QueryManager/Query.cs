@@ -308,6 +308,7 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
             return result;
         }
 
@@ -328,6 +329,8 @@ namespace QueryManager
                 );
                 result.Add(entry);
             }
+            reader.Close();
+
             return result;
         }
 
