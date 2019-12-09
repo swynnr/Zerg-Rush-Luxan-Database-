@@ -17,21 +17,56 @@ namespace QueryManager
         private const string FORMAT_DATE = "yyy-MM-dd HH:mm:ss.fff";
         public Query(string host, string db, string username, string password)
         {
-            string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}; convert zero datetime=True", host, db, username, password);
-            connection = new MySqlConnection(connStr);
-            connection.Open();
+            try
+            {
+                string connStr = string.Format("Server={0}; database={1}; UID={2}; password={3}; convert zero datetime=True", host, db, username, password);
+                connection = new MySqlConnection(connStr);
+                connection.Open();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+
         }
         private MySqlDataReader GetReader(string query)
         {
-            var cmd = new MySqlCommand(query, connection);
-            return cmd.ExecuteReader();
+            query = InjectionSanitizer(query);
+           // try
+           // {
+                
+                var cmd = new MySqlCommand(query, connection);
+                return cmd.ExecuteReader();
+            //}
+            //catch (MySqlException e)
+            //{
+            //    throw e;
+            //}
         }
 
         private void ExecuteNonQuery(string command)
         {
-            var cmd = new MySqlCommand(command, connection);
-            cmd.ExecuteNonQuery();
+            command = InjectionSanitizer(command);
+            try
+            {
+                
+                var cmd = new MySqlCommand(command, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
         }
+
+        private string InjectionSanitizer(string cmd)
+        {
+
+            cmd = MySql.Data.MySqlClient.MySqlHelper.EscapeString(cmd);
+            return cmd;
+        }
+
+
 
         /// <summary>
         /// This method should take in a playlist object, create the playlist in the DB using the other
@@ -39,12 +74,20 @@ namespace QueryManager
         /// </summary>
         /// <param name="playlist"></param>
         /// <returns>Whether the playlist was created or not</returns>
-        public bool CreatePlaylist(ref Playlist playlist)
+        public int CreatePlaylist(ref Playlist playlist)
         {
+            int id = -1;
             string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date) 
                             VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
-            return true;
+            var reader = GetReader(@"SELECT MAX(playlistID)
+                                     FROM Playlist"); ;
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+            return id;
         }
 
         /// <summary>
@@ -53,15 +96,20 @@ namespace QueryManager
         /// </summary>
         /// <param name="concert"></param>
         /// <returns>Whether the concert was created or not</returns>
-        public bool CreateConcert(ref Concert concert)
+        public int CreateConcert(ref Concert concert)
         {
-
-            string cmd = string.Format("INSERT INTO Concert(concertName, location, date" +
-                         "VALUES('{0}', '{1}', '{2}');",
-                         concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
-
+            int id = -1;
+            string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
+                                         VALUES('{0}', '{1}', '{2}');", concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
-            return true;
+            var reader = GetReader(@"SELECT MAX(concertID)
+                                     FROM Concert;");
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+            return id;
         }
 
 
@@ -75,8 +123,7 @@ namespace QueryManager
 
         public void ConcertAddSong(Concert concert, Song song)
         {
-
-            string cmd = string.Format(@"INSERT INTO ConcertxSong
+            string cmd = string.Format(@"INSERT INTO ConcertxSong(concertID, songID)
                                          VALUES ({0}, {1});", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
@@ -84,36 +131,37 @@ namespace QueryManager
         public void PlaylistRemoveSong(Playlist playlist, Song song)
         {
             string cmd = string.Format(@"DELETE FROM PlaylistxSong 
-                                         WHERE playlistID = {0} AND songID = {1}", playlist.PlaylistId, song.SongId);
+                                         WHERE playlistID = {0} AND songID = {1};", playlist.PlaylistId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void ConcertRemoveSong(Concert concert, Song song)
         {
             string cmd = string.Format(@"DELETE FROM ConcertxSong 
-                                         WHERE concertID = {0} AND songID = {1}", concert.ConcertId, song.SongId);
+                                         WHERE concertID = {0} AND songID = {1};", concert.ConcertId, song.SongId);
             ExecuteNonQuery(cmd);
         }
 
         public void DeletePlaylist(Playlist playlist)
         {
             string cmd = string.Format(@"DELETE FROM Playlist
-                                         WHERE playlistID = {0}", playlist.PlaylistId);
+                                         WHERE playlistID = {0};", playlist.PlaylistId);
             ExecuteNonQuery(cmd);
         }
 
         public void DeleteConcert(Concert concert)
         {
             string cmd = string.Format(@"DELETE FROM Concert
-                                         WHERE concertID = {0}", concert.ConcertId);
+                                         WHERE concertID = {0};", concert.ConcertId);
             ExecuteNonQuery(cmd);
         }
 
         public List<Artist> GetArtistsByName(string name)
         {
             List<Artist> result = new List<Artist>();
-            var reader = GetReader(@"SELECT artistID, artistName 
-                                     FROM Artists WHERE artistName LIKE '%" + name + "%'");
+            string cmd = string.Format(@"SELECT artistID, artistName 
+                                     FROM Artists WHERE artistName LIKE %{0}%;", name);
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Artist entry = new Artist
@@ -130,8 +178,12 @@ namespace QueryManager
         public List<Artist> GetArtistsBySongId(int id)
         {
             List<Artist> result = new List<Artist>();
-            var reader = GetReader(@"SELECT artistID, artistName
-                                     FROM Artists WHERE artistID LIKE '%" + id + "%'");
+            string cmd = string.Format(@"SELECT artistID, artistName
+                                     FROM Artists WHERE artistID LIKE %{0}%;", id);
+
+            var reader = GetReader(cmd);
+            
+            
             while (reader.Read())
             {
                 Artist entry = new Artist
@@ -148,11 +200,12 @@ namespace QueryManager
         public List<Artist> GetArtistsByAlbumId(int id)
         {
             List<Artist> result = new List<Artist>();
-            var reader = GetReader(@"SELECT artistID, artistName
+            string cmd = string.Format(@"SELECT artistID, artistName
                                      FROM Artist ar
                                      JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
-                                     WHERE albumID = " + id);
+                                     WHERE albumID = LIKE %{0}%;", id);
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Artist entry = new Artist
@@ -170,8 +223,11 @@ namespace QueryManager
         {
             List<Playlist> result = new List<Playlist>();
 
-            var reader = GetReader(@"SELECT playlistID, playlistName, date 
-                                     FROM Playlist WHERE playlistName LIKE '%" + name + "%'");
+            string cmd = string.Format(@"SELECT playlistID, playlistName, date 
+                                     FROM Playlist WHERE playlistName LIKE '%{0}%';", name);
+
+            var reader = GetReader(cmd);
+
             while (reader.Read())
             {
                 Playlist entry = new Playlist
@@ -190,9 +246,10 @@ namespace QueryManager
         {
             List<Concert> result = new List<Concert>();
 
+            string cmd = string.Format(@"SELECT ConcertID, concertName, location, date
+                                     FROM Concert WHERE ConcertName LIKE %{0}%;", name);
 
-            var reader = GetReader(@"SELECT ConcertID, concertName, location, date
-                                     FROM Concert WHERE ConcertName LIKE '%" + name + "%'");
+            var reader = GetReader(cmd);
 
             while (reader.Read())
             {
@@ -212,8 +269,11 @@ namespace QueryManager
         public List<Album> GetAlbumsByName(string name)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader(@"SELECT albumID, albumName, releaseDate 
-                                     FROM Album WHERE albumName LIKE '%" + name + "%'");
+            
+            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate 
+                                     FROM Album WHERE albumName LIKE '%{0}%';", name);
+
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Album entry = new Album
@@ -231,11 +291,14 @@ namespace QueryManager
         public List<Album> GetAlbumsByArtistId(int id)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader(@"SELECT albumID, albumName, releaseDate
+            
+            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
                                      FROM Album a 
                                      JOIN AlbumxArtist axa ON
                                           a.artistID = axa.artistID
-                                     WHERE artistID = " + id);
+                                     WHERE artistID = {0};", id);
+
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Album entry = new Album
@@ -253,11 +316,13 @@ namespace QueryManager
         public List<Album> GetAlbumsBySongId(int id)
         {
             List<Album> result = new List<Album>();
-            var reader = GetReader(@"SELECT albumID, albumName, releaseDate
+
+            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
                                      FROM Album a 
                                      JOIN Songs s ON
                                           a.album = s.albumID
-                                     WHERE songID = " + id);
+                                     WHERE songID = {0};");
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Album entry = new Album
@@ -274,11 +339,14 @@ namespace QueryManager
 
         public List<Song> GetSongsByName(string name)
         {
-
-            var reader = GetReader(@"SELECT songID, songName, songLength
-                                     FROM Songs WHERE songName LIKE '%" + name + "%'");
-
             List<Song> result = new List<Song>();
+            string cmd = string.Format(@"SELECT songID, songName, songLength
+                                     FROM Songs WHERE songName LIKE '%{0}%;", name);
+
+
+
+            var reader = GetReader(cmd);
+            
             while (reader.Read())
             {
                 Song entry = new Song
@@ -296,8 +364,12 @@ namespace QueryManager
         public List<Song> GetSongsByAlbumId(int id)
         {
             List<Song> result = new List<Song>();
-            var reader = GetReader(@"SELECT songID, songName, songLength
-                                     FROM Songs WHERE albumId = " + id);
+
+            string cmd = string.Format(@"SELECT songID, songName, songLength
+                                     FROM Songs WHERE albumId = {0};");
+
+
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Song entry = new Song
@@ -311,14 +383,17 @@ namespace QueryManager
             reader.Close();
             return result;
         }
-
         public List<Song> GetSongsByConcertId(int id)
         {
             List<Song> result = new List<Song>();
-            var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
+            
+            string cmd = string.Format(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
                                      JOIN ConcertxSong c ON c.songID = s.songID 
-                                     WHERE c.concertID = " + id);
+                                     WHERE c.concertID = {0};", id);
+
+
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Song entry = new Song
@@ -330,17 +405,19 @@ namespace QueryManager
                 result.Add(entry);
             }
             reader.Close();
-
             return result;
         }
 
         public List<Song> GetSongsByPlaylistId(int id)
         {
             List<Song> result = new List<Song>();
-            var reader = GetReader(@"SELECT s.songID, s.songName, s.songLength
+
+            string cmd = string.Format(@"SELECT s.songID, s.songName, s.songLength
                                      FROM Songs s
                                      JOIN PlaylistxSong p ON p.songID = s.songID 
-                                     WHERE p.playlistID = " + id);
+                                     WHERE p.playlistID = {0};", id);
+
+            var reader = GetReader(cmd);
             while (reader.Read())
             {
                 Song entry = new Song

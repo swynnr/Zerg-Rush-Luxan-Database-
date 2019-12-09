@@ -27,15 +27,10 @@ namespace MusicApplication
             PopulateSongList(playlist);
         }
 
-        public bool CreatePlaylist(Playlist playlist)
+        public void CreatePlaylist(Playlist playlist)
         {
-            var createdSuccessfully = QueryManager.CreatePlaylist(ref playlist);
-            if (createdSuccessfully)
-            {
-                PlaylistList.Add(playlist);
-            }
-
-            return createdSuccessfully;
+            playlist.PlaylistId = QueryManager.CreatePlaylist(ref playlist);
+            PlaylistList.Add(playlist);
         }
 
         public void DeletePlaylist(Playlist playlist)
@@ -52,8 +47,8 @@ namespace MusicApplication
 
         public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
         {
-            QueryManager.PlaylistAddSong(selectedPlaylist, song);
-            SongList.Add(song);
+                QueryManager.PlaylistAddSong(selectedPlaylist, song);
+                SongList.Add(song);    
         }
 
         private void PopulatePlaylistList()
@@ -67,7 +62,7 @@ namespace MusicApplication
             
         }
 
-        private void PopulateSongList(Playlist playlist)
+        public void PopulateSongList(Playlist playlist)
         {
 
             SongList.Clear();

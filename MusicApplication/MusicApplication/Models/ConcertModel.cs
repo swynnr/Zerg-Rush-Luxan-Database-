@@ -27,15 +27,10 @@ namespace MusicApplication
             PopulateSongList(concert);
         }
 
-        public bool CreateConcert(Concert concert)
+        public void CreateConcert(Concert concert)
         {
-            var createdSuccessfully = QueryManager.CreateConcert(ref concert);
-            if(createdSuccessfully)
-            {
-                ConcertList.Add(concert);
-            }
-
-            return createdSuccessfully;
+            concert.ConcertId = QueryManager.CreateConcert(ref concert);
+            ConcertList.Add(concert);
         }
 
         public void DeletePlaylist(Concert concert)
