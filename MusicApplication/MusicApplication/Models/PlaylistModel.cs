@@ -47,8 +47,8 @@ namespace MusicApplication
 
         public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
         {
-            QueryManager.PlaylistAddSong(selectedPlaylist, song);
-            SongList.Add(song);
+                QueryManager.PlaylistAddSong(selectedPlaylist, song);
+                SongList.Add(song);    
         }
 
         private void PopulatePlaylistList()
@@ -62,7 +62,7 @@ namespace MusicApplication
             
         }
 
-        private void PopulateSongList(Playlist playlist)
+        public void PopulateSongList(Playlist playlist)
         {
 
             SongList.Clear();
