@@ -31,7 +31,6 @@ namespace QueryManager
         }
         private MySqlDataReader GetReader(string query)
         {
-            query = InjectionSanitizer(query);
            // try
            // {
                 
@@ -46,7 +45,6 @@ namespace QueryManager
 
         private void ExecuteNonQuery(string command)
         {
-            command = InjectionSanitizer(command);
             try
             {
                 
@@ -61,12 +59,9 @@ namespace QueryManager
 
         private string InjectionSanitizer(string cmd)
         {
-
             cmd = MySql.Data.MySqlClient.MySqlHelper.EscapeString(cmd);
             return cmd;
         }
-
-
 
         /// <summary>
         /// This method should take in a playlist object, create the playlist in the DB using the other
@@ -78,7 +73,7 @@ namespace QueryManager
         {
             int id = -1;
             string cmd = string.Format(@"INSERT INTO Playlist (playlistName, date) 
-                            VALUES ('{0}', '{1}');", playlist.PlaylistName, playlist.Date.ToString(FORMAT_DATE));
+                            VALUES ('{0}', '{1}');", InjectionSanitizer(playlist.PlaylistName), playlist.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             var reader = GetReader(@"SELECT MAX(playlistID)
                                      FROM Playlist"); ;
@@ -100,7 +95,7 @@ namespace QueryManager
         {
             int id = -1;
             string cmd = string.Format(@"INSERT INTO Concert(concertName, location, date)
-                                         VALUES('{0}', '{1}', '{2}');", concert.ConcertName, concert.Location,concert.Date.ToString(FORMAT_DATE));
+                                         VALUES('{0}', '{1}', '{2}');", InjectionSanitizer(concert.ConcertName), InjectionSanitizer(concert.Location), concert.Date.ToString(FORMAT_DATE));
             ExecuteNonQuery(cmd);
             var reader = GetReader(@"SELECT MAX(concertID)
                                      FROM Concert;");
@@ -160,7 +155,7 @@ namespace QueryManager
         {
             List<Artist> result = new List<Artist>();
             string cmd = string.Format(@"SELECT artistID, artistName 
-                                     FROM Artists WHERE artistName LIKE %{0}%;", name);
+                                     FROM Artists WHERE artistName LIKE '%{0}%';", InjectionSanitizer(name));
             var reader = GetReader(cmd);
             while (reader.Read())
             {
@@ -179,7 +174,7 @@ namespace QueryManager
         {
             List<Artist> result = new List<Artist>();
             string cmd = string.Format(@"SELECT artistID, artistName
-                                     FROM Artists WHERE artistID LIKE %{0}%;", id);
+                                     FROM Artists WHERE artistID = {0};", id);
 
             var reader = GetReader(cmd);
             
@@ -204,7 +199,7 @@ namespace QueryManager
                                      FROM Artist ar
                                      JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
-                                     WHERE albumID = LIKE %{0}%;", id);
+                                     WHERE albumID = {0};", id);
             var reader = GetReader(cmd);
             while (reader.Read())
             {
@@ -224,7 +219,7 @@ namespace QueryManager
             List<Playlist> result = new List<Playlist>();
 
             string cmd = string.Format(@"SELECT playlistID, playlistName, date 
-                                     FROM Playlist WHERE playlistName LIKE '%{0}%';", name);
+                                     FROM Playlist WHERE playlistName LIKE '%{0}%';", InjectionSanitizer(name));
 
             var reader = GetReader(cmd);
 
@@ -247,7 +242,7 @@ namespace QueryManager
             List<Concert> result = new List<Concert>();
 
             string cmd = string.Format(@"SELECT ConcertID, concertName, location, date
-                                     FROM Concert WHERE ConcertName LIKE %{0}%;", name);
+                                     FROM Concert WHERE ConcertName LIKE '%{0}%';", InjectionSanitizer(name));
 
             var reader = GetReader(cmd);
 
@@ -271,7 +266,7 @@ namespace QueryManager
             List<Album> result = new List<Album>();
             
             string cmd = string.Format(@"SELECT albumID, albumName, releaseDate 
-                                     FROM Album WHERE albumName LIKE '%{0}%';", name);
+                                     FROM Album WHERE albumName LIKE '%{0}%';", InjectionSanitizer(name));
 
             var reader = GetReader(cmd);
             while (reader.Read())
@@ -321,7 +316,7 @@ namespace QueryManager
                                      FROM Album a 
                                      JOIN Songs s ON
                                           a.album = s.albumID
-                                     WHERE songID = {0};");
+                                     WHERE songID = {0};", id);
             var reader = GetReader(cmd);
             while (reader.Read())
             {
@@ -341,7 +336,7 @@ namespace QueryManager
         {
             List<Song> result = new List<Song>();
             string cmd = string.Format(@"SELECT songID, songName, songLength
-                                     FROM Songs WHERE songName LIKE '%{0}%;", name);
+                                     FROM Songs WHERE songName LIKE '%{0}%';", InjectionSanitizer(name));
 
 
 
@@ -366,7 +361,7 @@ namespace QueryManager
             List<Song> result = new List<Song>();
 
             string cmd = string.Format(@"SELECT songID, songName, songLength
-                                     FROM Songs WHERE albumId = {0};");
+                                     FROM Songs WHERE albumId = {0};", id);
 
 
             var reader = GetReader(cmd);
