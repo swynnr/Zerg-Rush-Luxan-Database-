@@ -48,6 +48,10 @@ namespace MusicApplication
         public void AddSongToPlaylist(Concert concert, Song song)
         {
             QueryManager.ConcertAddSong(concert, song);
+            if(SongList.Contains(song))
+            {
+                return;
+            }
             SongList.Add(song);
         }
 
