@@ -66,7 +66,7 @@ namespace MusicApplication
             
         }
 
-        private void PopulateSongList(Playlist playlist)
+        public void PopulateSongList(Playlist playlist)
         {
 
             SongList.Clear();
