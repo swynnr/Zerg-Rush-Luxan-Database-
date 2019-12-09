@@ -47,6 +47,7 @@ namespace MusicApplication
 
         public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
         {
+
                 QueryManager.PlaylistAddSong(selectedPlaylist, song);
                 SongList.Add(song);    
         }
