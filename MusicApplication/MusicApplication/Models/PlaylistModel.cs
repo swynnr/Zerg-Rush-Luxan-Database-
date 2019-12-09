@@ -25,6 +25,7 @@ namespace MusicApplication
         public void SelectPlaylist(Playlist playlist)
         {
             PopulateSongList(playlist);
+            
         }
 
         public void CreatePlaylist(Playlist playlist)

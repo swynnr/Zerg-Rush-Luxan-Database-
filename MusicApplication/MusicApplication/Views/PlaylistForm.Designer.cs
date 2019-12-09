@@ -50,6 +50,8 @@
             this._deletePlaylistButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this._title = new System.Windows.Forms.Label();
+            this.runtimeLabel = new System.Windows.Forms.Label();
+            this.runtimeVariable = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -252,6 +254,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.runtimeVariable);
+            this.panel2.Controls.Add(this.runtimeLabel);
             this.panel2.Controls.Add(this._title);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(5, 5);
@@ -270,6 +274,23 @@
             this._title.Text = "Playlists";
             this._title.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // runtimeLabel
+            // 
+            this.runtimeLabel.AutoSize = true;
+            this.runtimeLabel.Location = new System.Drawing.Point(607, 50);
+            this.runtimeLabel.Name = "runtimeLabel";
+            this.runtimeLabel.Size = new System.Drawing.Size(49, 13);
+            this.runtimeLabel.TabIndex = 1;
+            this.runtimeLabel.Text = "Runtime:";
+            // 
+            // runtimeVariable
+            // 
+            this.runtimeVariable.AutoSize = true;
+            this.runtimeVariable.Location = new System.Drawing.Point(656, 50);
+            this.runtimeVariable.Name = "runtimeVariable";
+            this.runtimeVariable.Size = new System.Drawing.Size(0, 13);
+            this.runtimeVariable.TabIndex = 2;
+            // 
             // PlaylistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,5 +335,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button _deletePlaylistButton;
+        private System.Windows.Forms.Label runtimeVariable;
+        private System.Windows.Forms.Label runtimeLabel;
     }
 }
