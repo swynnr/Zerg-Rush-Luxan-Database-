@@ -1,0 +1,2 @@
+INSERT INTO wynns_db.Album (albumID, albumName, releaseDate) VALUES (1, 'Led Zeppelin IV', '1971-11-08');
+INSERT INTO wynns_db.Album (albumID, albumName, releaseDate) VALUES (2, 'Led Zeppelin III', '1970-10-05');

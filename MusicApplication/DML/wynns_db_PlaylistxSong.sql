@@ -1,0 +1,16 @@
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 2);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 1);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 3);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 5);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 8);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 4);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 6);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 7);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (1, 9);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (5, 2);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (5, 1);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (6, 15);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (7, 2);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (7, 3);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (7, 8);
+INSERT INTO wynns_db.PlaylistxSong (playlistID, songID) VALUES (7, 12);

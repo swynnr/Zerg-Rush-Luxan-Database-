@@ -78,6 +78,13 @@ namespace MusicApplication
                 return;
             }
             _model.AddSongToPlaylist(SelectedConcert, song);
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
+                runtime = runtime + _model.SongList[i].Length;
+
+
+            runtimeVariable.Text = runtime.ToString();
         }
 
         private void DeleteSong(object sender, EventArgs e)
@@ -121,6 +128,14 @@ namespace MusicApplication
                 return;
             }
             _model.SelectConcert(SelectedConcert);
+            
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
+                runtime = runtime + _model.SongList[i].Length;
+
+
+            runtimeVariable.Text = runtime.ToString();
         }
     }
 }

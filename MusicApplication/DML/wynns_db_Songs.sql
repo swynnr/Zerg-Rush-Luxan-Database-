@@ -1,0 +1,18 @@
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (1, 'Black Dog', 1, '00:04:55');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (2, 'Rock and Roll', 1, '00:03:41');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (3, 'The Battle of Evermore', 1, '00:05:52');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (4, 'Stairway to Heaven', 1, '00:08:03');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (5, 'Misty Mountain Hop', 1, '00:04:39');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (6, 'Four Sticks', 1, '00:04:45');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (7, 'Going to California', 1, '00:03:32');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (8, 'When the Levee Breaks', 1, '00:07:09');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (9, 'Immigrant Song', 2, '00:02:26');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (12, 'Friends', 2, '00:03:54');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (13, 'Celebration Day', 2, '00:03:30');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (14, 'Since I''ve Been Loving You', 2, '00:07:24');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (15, 'Out on the Tiles', 2, '00:04:07');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (16, 'Gallows Pole', 2, '00:04:58');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (17, 'Tangerine', 2, '00:03:12');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (18, 'That''s the Way', 2, '00:05:37');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (19, 'Bron-Y-Aur Stomp', 2, '00:04:17');
+INSERT INTO wynns_db.Songs (songID, songName, albumID, songLength) VALUES (20, 'Hats off To (Roy) Harper', 2, '00:03:42');
