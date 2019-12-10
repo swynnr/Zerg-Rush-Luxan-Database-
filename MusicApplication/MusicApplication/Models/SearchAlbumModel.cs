@@ -21,15 +21,15 @@ namespace MusicApplication
 
         public void GetItems(SearchQuery searchQuery)
         {
-            SearchResultsList.Clear();
-
-            List<Album> result = QueryManager.GetAlbumsByName(searchQuery.Text);
-
             if (searchQuery.EntityType != typeof(Album))
             {
                 return;
             }
 
+            SearchResultsList.Clear();
+
+            var result = QueryManager.GetAlbumsByName(searchQuery.Text);
+            
             for (int i = 0; i < result.Count(); i++)
             {
                 SearchResultsList.Add(result[i]);
