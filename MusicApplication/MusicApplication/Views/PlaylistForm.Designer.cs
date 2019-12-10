@@ -44,12 +44,17 @@
             this._deletePlaylistButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this._title = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.playlistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playlistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
+            this.runtimeLabel = new System.Windows.Forms.Label();
+            this.runtimeVariable = new System.Windows.Forms.Label();
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -210,6 +215,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.runtimeVariable);
+            this.panel2.Controls.Add(this.runtimeLabel);
             this.panel2.Controls.Add(this._title);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(5, 5);
@@ -228,6 +235,7 @@
             this._title.Text = "Playlists";
             this._title.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+<<<<<<< HEAD
             // playlistIdDataGridViewTextBoxColumn
             // 
             this.playlistIdDataGridViewTextBoxColumn.DataPropertyName = "PlaylistId";
@@ -275,6 +283,24 @@
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
             this.lengthDataGridViewTextBoxColumn.Width = 130;
+=======
+            // runtimeLabel
+            // 
+            this.runtimeLabel.AutoSize = true;
+            this.runtimeLabel.Location = new System.Drawing.Point(607, 50);
+            this.runtimeLabel.Name = "runtimeLabel";
+            this.runtimeLabel.Size = new System.Drawing.Size(49, 13);
+            this.runtimeLabel.TabIndex = 1;
+            this.runtimeLabel.Text = "Runtime:";
+            // 
+            // runtimeVariable
+            // 
+            this.runtimeVariable.AutoSize = true;
+            this.runtimeVariable.Location = new System.Drawing.Point(656, 50);
+            this.runtimeVariable.Name = "runtimeVariable";
+            this.runtimeVariable.Size = new System.Drawing.Size(0, 13);
+            this.runtimeVariable.TabIndex = 2;
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
             // 
             // PlaylistForm
             // 
@@ -292,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._playlistGrid)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +346,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.Button _deletePlaylistButton;
+        private System.Windows.Forms.Label runtimeVariable;
+        private System.Windows.Forms.Label runtimeLabel;
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
     }
 }

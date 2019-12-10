@@ -98,6 +98,13 @@ namespace MusicApplication
             else
             {
                 _model.AddSongToPlaylist(SelectedPlaylist, song);
+                TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+                for (int i = 0; i < _model.SongList.Count; i++)
+                    runtime = runtime + _model.SongList[i].Length;
+
+
+                runtimeVariable.Text = runtime.ToString();
             }
         }
 
@@ -142,6 +149,14 @@ namespace MusicApplication
                 return;
             }
             _model.SelectPlaylist(SelectedPlaylist);
+
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
+                runtime = runtime + _model.SongList[i].Length;
+
+
+            runtimeVariable.Text = runtime.ToString();
         }
     }
 }

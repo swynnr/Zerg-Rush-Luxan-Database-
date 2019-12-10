@@ -31,23 +31,21 @@ namespace QueryManager
         }
         private MySqlDataReader GetReader(string query)
         {
-           // try
-           // {
-                
+            try
+            {
                 var cmd = new MySqlCommand(query, connection);
                 return cmd.ExecuteReader();
-            //}
-            //catch (MySqlException e)
-            //{
-            //    throw e;
-            //}
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
         }
 
         private void ExecuteNonQuery(string command)
         {
             try
             {
-                
                 var cmd = new MySqlCommand(command, connection);
                 cmd.ExecuteNonQuery();
             }
