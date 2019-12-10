@@ -42,7 +42,8 @@ create table if not exists Playlist
 
 create table if not exists Songs
 (
-    songID     int auto_increment,
+    songID     int auto_increment
+		primary key,
     songName   varchar(40) not null,
     albumID    int         not null,
     songLength time        not null,
@@ -53,9 +54,6 @@ create table if not exists Songs
     constraint `Songs/Album_albumID_fk`
         foreign key (albumID) references Album (albumID)
 );
-
-alter table Songs
-    add primary key (songID);
 
 create table if not exists ArtistxSongs
 (
