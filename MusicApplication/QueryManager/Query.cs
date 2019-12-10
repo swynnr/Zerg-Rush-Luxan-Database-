@@ -308,7 +308,7 @@ namespace QueryManager
             return result;
         }
 
-        public List<Album> GetAlbumsBySongId(int id)
+        public Album GetAlbumBySongId(int id)
         {
             List<Album> result = new List<Album>();
 
@@ -329,7 +329,7 @@ namespace QueryManager
                 result.Add(entry);
             }
             reader.Close();
-            return result;
+            return result.FirstOrDefault<Album>();
         }
 
         public List<Song> GetSongsByName(string name)
