@@ -34,10 +34,10 @@
             this._searchText = new System.Windows.Forms.TextBox();
             this._groupBox = new System.Windows.Forms.GroupBox();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.searchSongModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchSongModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._searchPanel.SuspendLayout();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -61,7 +61,7 @@
             this._searchButton.Location = new System.Drawing.Point(477, 21);
             this._searchButton.Name = "_searchButton";
             this._searchButton.Size = new System.Drawing.Size(112, 23);
-            this._searchButton.TabIndex = 4;
+            this._searchButton.TabIndex = 1;
             this._searchButton.Text = "Search";
             this._searchButton.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +72,7 @@
             this._searchText.Location = new System.Drawing.Point(12, 22);
             this._searchText.Name = "_searchText";
             this._searchText.Size = new System.Drawing.Size(459, 20);
-            this._searchText.TabIndex = 1;
+            this._searchText.TabIndex = 0;
             // 
             // _groupBox
             // 
@@ -103,12 +103,17 @@
             this.Grid.Size = new System.Drawing.Size(590, 338);
             this.Grid.TabIndex = 0;
             // 
+            // searchSongModelBindingSource
+            // 
+            this.searchSongModelBindingSource.DataSource = typeof(MusicApplication.SearchSongModel);
+            // 
             // songIdDataGridViewTextBoxColumn
             // 
             this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
             this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
             this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
             this.songIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // songNameDataGridViewTextBoxColumn
             // 
@@ -116,6 +121,7 @@
             this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
             this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
             this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songNameDataGridViewTextBoxColumn.Width = 400;
             // 
             // lengthDataGridViewTextBoxColumn
             // 
@@ -123,13 +129,11 @@
             this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // searchSongModelBindingSource
-            // 
-            this.searchSongModelBindingSource.DataSource = typeof(MusicApplication.SearchSongModel);
+            this.lengthDataGridViewTextBoxColumn.Width = 120;
             // 
             // SongSearchForm
             // 
+            this.AcceptButton = this._searchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 412);
@@ -157,9 +161,9 @@
         private System.Windows.Forms.TextBox _searchText;
         private System.Windows.Forms.GroupBox _groupBox;
         public System.Windows.Forms.DataGridView Grid;
+        private System.Windows.Forms.BindingSource searchSongModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource searchSongModelBindingSource;
     }
 }
