@@ -85,12 +85,13 @@ namespace MusicApplication
             var AlbumList = new HashSet<Album>();
             foreach(var song in SongList)
             {
-                var album = QueryManager.GetAlbumBySongId(song.SongId);
+                var album = QueryManager.GetAlbumsBySongId(song.SongId);
                 if(album == null)
                 {
                     continue;
                 }
-                AlbumList.Add(album);
+                foreach(var x in album)
+                    AlbumList.Add(x);
             }
             foreach(var album in AlbumList)
             {
