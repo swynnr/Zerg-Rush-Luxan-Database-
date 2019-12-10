@@ -171,8 +171,10 @@ namespace QueryManager
         public List<Artist> GetArtistsBySongId(int id)
         {
             List<Artist> result = new List<Artist>();
-            string cmd = string.Format(@"SELECT artistID, artistName
-                                     FROM Artists WHERE artistID = {0};", id);
+            string cmd = string.Format(@"SELECT a.artistID, a.artistName
+                                     FROM Artists a
+                                     JOIN ArtistxSongs as ON as.artistID = a.artistID
+                                     WHERE as.songID = {0};", id);
 
             var reader = GetReader(cmd);
             
@@ -285,11 +287,11 @@ namespace QueryManager
         {
             List<Album> result = new List<Album>();
             
-            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
+            string cmd = string.Format(@"SELECT a.albumID, a.albumName, a.releaseDate
                                      FROM Album a 
                                      JOIN AlbumxArtist axa ON
-                                          a.artistID = axa.artistID
-                                     WHERE artistID = {0};", id);
+                                          a.albumID = axa.albumID
+                                     WHERE axa.artistID = {0};", id);
 
             var reader = GetReader(cmd);
             while (reader.Read())
@@ -309,12 +311,13 @@ namespace QueryManager
         public Album GetAlbumBySongId(int id)
         {
             List<Album> result = new List<Album>();
-
+            
             string cmd = string.Format(@"SELECT a.albumID, albumName, releaseDate
                                      FROM Album a 
                                      JOIN Songs s ON
                                           a.albumID = s.albumID
                                      WHERE songID = {0};", id);
+
             var reader = GetReader(cmd);
             while (reader.Read())
             {
@@ -420,6 +423,23 @@ namespace QueryManager
                     reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
+            }
+            reader.Close();
+            return result;
+        }
+
+        public TimeSpan GetPlaylistLength(int id)
+        {
+            TimeSpan result = new TimeSpan();
+            string cmd = string.Format(@"SELECT SUM(s.songLength)
+                                     FROM Songs s
+                                     JOIN PlaylistxSong p ON p.songID = s.songID 
+                                     WHERE p.playlistID = {0};", id);
+
+            var reader = GetReader(cmd);
+            if(reader.Read())
+            {
+                result = reader.GetTimeSpan(0);
             }
             reader.Close();
             return result;

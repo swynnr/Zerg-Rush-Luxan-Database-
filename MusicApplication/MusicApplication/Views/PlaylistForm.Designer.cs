@@ -52,6 +52,7 @@
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.runtimeLabel = new System.Windows.Forms.Label();
             this.runtimeVariable = new System.Windows.Forms.Label();
+            
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -279,6 +280,7 @@
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
             this.lengthDataGridViewTextBoxColumn.Width = 130;
+            //
             // runtimeLabel
             // 
             this.runtimeLabel.AutoSize = true;
