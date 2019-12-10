@@ -171,8 +171,10 @@ namespace QueryManager
         public List<Artist> GetArtistsBySongId(int id)
         {
             List<Artist> result = new List<Artist>();
-            string cmd = string.Format(@"SELECT artistID, artistName
-                                     FROM Artists WHERE artistID = {0};", id);
+            string cmd = string.Format(@"SELECT a.artistID, a.artistName
+                                     FROM Artists a
+                                     JOIN ArtistxSongs as ON as.artistID = a.artistID
+                                     WHERE as.songID = {0};", id);
 
             var reader = GetReader(cmd);
             
