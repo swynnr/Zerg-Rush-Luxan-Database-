@@ -27,6 +27,20 @@ namespace MusicApplication
                 }
                return _playlistGrid.SelectedRows[0].DataBoundItem as Playlist;
             }
+            set
+            {
+                for(int i = 0; i < _playlistGrid.Rows.Count; i++)
+                {
+                    _playlistGrid.Rows[i].Selected = false;
+                    var playlist = _playlistGrid.Rows[i].DataBoundItem as Playlist;
+                    if (playlist == null || !playlist.Equals(value))
+                    {
+                        continue;
+                    }
+                    _playlistGrid.Rows[i].Selected = true;
+                }
+                _model.SelectPlaylist(value);
+            }
         }
 
         private Song SelectedSong
@@ -50,6 +64,12 @@ namespace MusicApplication
             BindEvents();
         }
 
+        public override void Open<T>(T item)
+        {
+            var playlist = item as Playlist;
+            SelectedPlaylist = playlist;
+        }
+
         private void BindEvents()
         {
             _playlistGrid.SelectionChanged += PlaylistGridSelectionChanged;
@@ -58,9 +78,7 @@ namespace MusicApplication
             _deleteSongButton.Click += DeleteSong;
             _addButton.Click += AddNewSong;
         }
-
-
-
+        
         private void AddNewSong(object sender, EventArgs e)
         {
             using(var songSearchForm = new SongSearchForm(_queryManager))
@@ -70,19 +88,12 @@ namespace MusicApplication
             }
         }
 
-        private void UpdateSongList(object sender, EventArgs e)
-        {
-
-        }
-
         private void SongSearchFormClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = sender as DataGridView;
             var row = grid.Rows[e.RowIndex];
             var song = row.DataBoundItem as Song;
-
-
-
+            
             if (SelectedPlaylist == null || song == null)
             {
                 return;
@@ -90,22 +101,20 @@ namespace MusicApplication
 
             _model.PopulateSongList(SelectedPlaylist);
            
-
             if (_model.SongList.Contains(song))
             {
-
+                return;
             }
-            else
+
+            _model.AddSongToPlaylist(SelectedPlaylist, song);
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
             {
-                _model.AddSongToPlaylist(SelectedPlaylist, song);
-                TimeSpan runtime = new TimeSpan(0, 0, 0);
-
-                for (int i = 0; i < _model.SongList.Count; i++)
-                    runtime = runtime + _model.SongList[i].Length;
-
-
-                runtimeVariable.Text = runtime.ToString();
+                runtime = runtime + _model.SongList[i].Length;
             }
+            
+            runtimeVariable.Text = runtime.ToString();
         }
 
         private void DeleteSong(object sender, EventArgs e)
@@ -153,9 +162,10 @@ namespace MusicApplication
             TimeSpan runtime = new TimeSpan(0, 0, 0);
 
             for (int i = 0; i < _model.SongList.Count; i++)
+            {
                 runtime = runtime + _model.SongList[i].Length;
-
-
+            }
+            
             runtimeVariable.Text = runtime.ToString();
         }
     }

@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusicApplication.Data
 {
-    public class Album
+    public class Album : IEquatable<Album>
     {
         public int AlbumId { get; set; }
         public string AlbumName { get; set; }
@@ -24,6 +24,11 @@ namespace MusicApplication.Data
         public override string ToString()
         {
             return AlbumName;
+        }
+
+        bool IEquatable<Album>.Equals(Album other)
+        {
+            return AlbumId.Equals(other.AlbumId);
         }
     }
 }

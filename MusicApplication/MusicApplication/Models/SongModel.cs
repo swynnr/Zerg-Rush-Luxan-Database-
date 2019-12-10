@@ -37,7 +37,11 @@ namespace MusicApplication
         private void UpdateSongList()
         {
             Songs.Clear();
-
+            List<Song> temp = QueryManager.GetSongsByAlbumId(_selectedAlbum.AlbumId);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                Songs.Add(temp[i]);
+            }
         }
         
     }

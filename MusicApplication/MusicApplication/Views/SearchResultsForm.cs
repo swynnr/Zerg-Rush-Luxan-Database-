@@ -17,6 +17,7 @@ namespace MusicApplication
         private SearchArtistModel _artistModel;
         private SearchAlbumModel _albumModel;
         private SearchSongModel _songModel;
+        private SearchPlaylistModel _playlistModel;
 
         public SearchResultsForm(Query queryManager)
         {
@@ -24,9 +25,11 @@ namespace MusicApplication
             _artistModel = new SearchArtistModel(queryManager);
             _albumModel = new SearchAlbumModel(queryManager);
             _songModel = new SearchSongModel(queryManager);
+            _playlistModel = new SearchPlaylistModel(queryManager);
             albumSearchBindingSource.DataSource = _albumModel.SearchResultsList;
             artistSearchBindingSource.DataSource = _artistModel.SearchResultsList;
             songSearchBindingSource.DataSource = _songModel.SearchResultsList;
+            playlistListBindingSource.DataSource = _playlistModel.SearchResultsList;
             BindEvents();
         }
 
@@ -40,6 +43,7 @@ namespace MusicApplication
                 _artistGrid.Visible = true;
                 _albumGrid.Visible = false;
                 _songGrid.Visible = false;
+                _playlistGrid.Visible = false;
                 return;
             }
             if (searchTerm.EntityType == typeof(Album))
@@ -48,6 +52,7 @@ namespace MusicApplication
                 _artistGrid.Visible = false;
                 _albumGrid.Visible = true;
                 _songGrid.Visible = false;
+                _playlistGrid.Visible = false;
                 return;
             }
             if (searchTerm.EntityType == typeof(Song))
@@ -56,7 +61,16 @@ namespace MusicApplication
                 _artistGrid.Visible = false;
                 _albumGrid.Visible = false;
                 _songGrid.Visible = true;
+                _playlistGrid.Visible = false;
                 return;
+            }
+            if(searchTerm.EntityType == typeof(Playlist))
+            {
+                _playlistModel.GetItems(searchTerm);
+                _artistGrid.Visible = false;
+                _albumGrid.Visible = false;
+                _songGrid.Visible = false;
+                _playlistGrid.Visible = true;
             }
         }
 
@@ -64,6 +78,23 @@ namespace MusicApplication
         {
             _artistGrid.CellDoubleClick += OpenArtist;
             _albumGrid.CellDoubleClick += OpenAlbum;
+            _playlistGrid.CellDoubleClick += OpenPlaylist;
+        }
+
+        private void OpenPlaylist(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            if (grid == null || e.RowIndex < 0)
+            {
+                return;
+            }
+            var selectedPlaylist = grid.Rows[e.RowIndex].DataBoundItem as Playlist;
+            if (selectedPlaylist == null)
+            {
+                return;
+            }
+
+            Frame.DisplayObject(selectedPlaylist);
         }
     }
 }

@@ -9,28 +9,30 @@ using QueryManager;
 
 namespace MusicApplication
 {
-    public class SearchAlbumModel : BaseModel
+    public class SearchPlaylistModel : BaseModel
     {
-        public BindingList<Album> SearchResultsList { get; set; }
+        public BindingList<Playlist> SearchResultsList { get; set; }
 
-        public SearchAlbumModel(Query queryManager)
+        public SearchPlaylistModel(Query queryManager)
         {
-            SearchResultsList = new BindingList<Album>();
+            SearchResultsList = new BindingList<Playlist>();
             QueryManager = queryManager;
         }
 
         public void GetItems(SearchQuery searchQuery)
         {
-            if (searchQuery.EntityType != typeof(Album))
+            if (searchQuery.EntityType != typeof(Playlist))
             {
                 return;
             }
 
             SearchResultsList.Clear();
-
-            var result = QueryManager.GetAlbumsByName(searchQuery.Text);
             
-            for (int i = 0; i < result.Count(); i++)
+            var result = QueryManager.GetPlaylists(searchQuery.Text);
+
+            if (result.Count() == 0)
+                return;
+            for(int i = 0; i < result.Count(); i++)
             {
                 SearchResultsList.Add(result[i]);
             }

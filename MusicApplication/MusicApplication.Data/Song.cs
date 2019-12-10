@@ -6,19 +6,35 @@ using System.Threading.Tasks;
 
 namespace MusicApplication.Data
 {
-    public class Song
+    public class Song : IEquatable<Song>
     {
         public int SongId { get; set; }
         public string SongName { get; set; }
         public TimeSpan Length { get; set; }
+        public string ArtistString {
+            get
+            {
+                var artistName = "";
+                for(int i = 0; i < Artists.Count; i++)
+                {
+                    artistName += Artists[i].ArtistName;
+                    if(i + 1 < Artists.Count)
+                    {
+                        artistName += ", ";
+                    }
+                }
 
-        
+                return artistName;
+            }
+        }
+        public List<Artist> Artists { get; set; }
         
         public Song(int songId, string songName, TimeSpan length)
         {
             SongId = songId;
             SongName = songName;
             Length = length;
+            Artists = new List<Artist>();
         }
 
         public override string ToString()
@@ -26,15 +42,9 @@ namespace MusicApplication.Data
             return SongName;
         }
 
-        public override bool Equals(object obj)
+        bool IEquatable<Song>.Equals(Song other)
         {
-            if (obj == null)
-                return false;
-
-            Song p = (Song)obj;
-
-            return (SongId == p.SongId);
+            return SongId.Equals(other.SongId);
         }
-
     }
 }
