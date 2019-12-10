@@ -195,11 +195,11 @@ namespace QueryManager
         public List<Artist> GetArtistsByAlbumId(int id)
         {
             List<Artist> result = new List<Artist>();
-            string cmd = string.Format(@"SELECT ar.artistID, artistName
+            string cmd = string.Format(@"SELECT ar.artistID, ar.artistName
                                      FROM Artists ar
                                      JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
-                                     WHERE albumID = {0};", id);
+                                     WHERE axa.albumID = {0};", id);
             var reader = GetReader(cmd);
             while (reader.Read())
             {
