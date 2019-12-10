@@ -118,6 +118,7 @@
             this._songGrid.MultiSelect = false;
             this._songGrid.Name = "_songGrid";
             this._songGrid.ReadOnly = true;
+            this._songGrid.RowHeadersVisible = false;
             this._songGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._songGrid.Size = new System.Drawing.Size(422, 309);
             this._songGrid.TabIndex = 3;
@@ -214,9 +215,9 @@
             this._playlistGrid.DataSource = this.playlistModelBindingSource;
             this._playlistGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this._playlistGrid.Location = new System.Drawing.Point(0, 0);
-            this._playlistGrid.MultiSelect = false;
             this._playlistGrid.Name = "_playlistGrid";
             this._playlistGrid.ReadOnly = true;
+            this._playlistGrid.RowHeadersVisible = false;
             this._playlistGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._playlistGrid.Size = new System.Drawing.Size(362, 309);
             this._playlistGrid.TabIndex = 4;

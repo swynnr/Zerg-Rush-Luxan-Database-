@@ -34,11 +34,11 @@
             this._searchText = new System.Windows.Forms.TextBox();
             this._groupBox = new System.Windows.Forms.GroupBox();
             this.Grid = new System.Windows.Forms.DataGridView();
-            this.searchSongModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArtistString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchSongModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._searchPanel.SuspendLayout();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -101,13 +101,10 @@
             this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersVisible = false;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(590, 338);
             this.Grid.TabIndex = 0;
-            // 
-            // searchSongModelBindingSource
-            // 
-            this.searchSongModelBindingSource.DataSource = typeof(MusicApplication.SearchSongModel);
             // 
             // songIdDataGridViewTextBoxColumn
             // 
@@ -139,6 +136,10 @@
             this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // searchSongModelBindingSource
+            // 
+            this.searchSongModelBindingSource.DataSource = typeof(MusicApplication.SearchSongModel);
             // 
             // SongSearchForm
             // 

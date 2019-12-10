@@ -64,6 +64,7 @@
             this._albumGrid.MultiSelect = false;
             this._albumGrid.Name = "_albumGrid";
             this._albumGrid.ReadOnly = true;
+            this._albumGrid.RowHeadersVisible = false;
             this._albumGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._albumGrid.Size = new System.Drawing.Size(784, 405);
             this._albumGrid.TabIndex = 3;

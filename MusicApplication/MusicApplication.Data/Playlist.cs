@@ -31,6 +31,16 @@ namespace MusicApplication.Data
             return PlaylistName;
         }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as Playlist;
+            if (other == null)
+            {
+                return false;
+            }
+            return PlaylistId.Equals(other.PlaylistId);
+        }
+
         bool IEquatable<Playlist>.Equals(Playlist other)
         {
             return PlaylistId.Equals(other.PlaylistId);

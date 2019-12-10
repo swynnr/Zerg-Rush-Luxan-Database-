@@ -132,6 +132,7 @@
             this._songGrid.MultiSelect = false;
             this._songGrid.Name = "_songGrid";
             this._songGrid.ReadOnly = true;
+            this._songGrid.RowHeadersVisible = false;
             this._songGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._songGrid.Size = new System.Drawing.Size(422, 165);
             this._songGrid.TabIndex = 3;
@@ -207,6 +208,7 @@
             this._artistGrid.MultiSelect = false;
             this._artistGrid.Name = "_artistGrid";
             this._artistGrid.ReadOnly = true;
+            this._artistGrid.RowHeadersVisible = false;
             this._artistGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._artistGrid.Size = new System.Drawing.Size(422, 86);
             this._artistGrid.TabIndex = 5;
@@ -306,6 +308,7 @@
             this._concertGrid.MultiSelect = false;
             this._concertGrid.Name = "_concertGrid";
             this._concertGrid.ReadOnly = true;
+            this._concertGrid.RowHeadersVisible = false;
             this._concertGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._concertGrid.Size = new System.Drawing.Size(362, 309);
             this._concertGrid.TabIndex = 4;

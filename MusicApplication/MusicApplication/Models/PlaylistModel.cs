@@ -25,7 +25,6 @@ namespace MusicApplication
         public void SelectPlaylist(Playlist playlist)
         {
             PopulateSongList(playlist);
-            
         }
 
         public void CreatePlaylist(Playlist playlist)
@@ -48,8 +47,8 @@ namespace MusicApplication
 
         public void AddSongToPlaylist(Playlist selectedPlaylist, Song song)
         {
-                QueryManager.PlaylistAddSong(selectedPlaylist, song);
-                SongList.Add(song);    
+            QueryManager.PlaylistAddSong(selectedPlaylist, song);
+            SongList.Add(song);    
         }
 
         private void PopulatePlaylistList()
@@ -60,12 +59,10 @@ namespace MusicApplication
             {
                 PlaylistList.Add(temp[i]);
             }
-            
         }
 
         public void PopulateSongList(Playlist playlist)
         {
-
             SongList.Clear();
             List<Song> temp = QueryManager.GetSongsByPlaylistId(playlist.PlaylistId);
             for (int i = 0; i < temp.Count; i++)
