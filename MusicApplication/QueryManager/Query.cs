@@ -173,7 +173,7 @@ namespace QueryManager
             List<Artist> result = new List<Artist>();
             string cmd = string.Format(@"SELECT a.artistID, a.artistName
                                      FROM Artists a
-                                     JOIN ArtistxSongs as ON as.artistID = a.artistID
+                                     JOIN ArtistxSongs axs ON axs.artistID = a.artistID
                                      WHERE as.songID = {0};", id);
 
             var reader = GetReader(cmd);
