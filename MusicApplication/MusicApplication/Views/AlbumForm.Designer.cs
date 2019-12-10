@@ -37,6 +37,7 @@
             this._title = new System.Windows.Forms.Label();
             this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArtistString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.songModelBindingSource)).BeginInit();
@@ -52,6 +53,7 @@
             this._grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.songIdDataGridViewTextBoxColumn,
             this.songNameDataGridViewTextBoxColumn,
+            this.ArtistString,
             this.lengthDataGridViewTextBoxColumn});
             this._grid.DataMember = "Songs";
             this._grid.DataSource = this.songModelBindingSource;
@@ -123,10 +125,18 @@
             // songNameDataGridViewTextBoxColumn
             // 
             this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
-            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
+            this.songNameDataGridViewTextBoxColumn.HeaderText = "Song";
             this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
             this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.songNameDataGridViewTextBoxColumn.Width = 400;
+            this.songNameDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // ArtistString
+            // 
+            this.ArtistString.DataPropertyName = "ArtistString";
+            this.ArtistString.HeaderText = "Artist";
+            this.ArtistString.Name = "ArtistString";
+            this.ArtistString.ReadOnly = true;
+            this.ArtistString.Width = 200;
             // 
             // lengthDataGridViewTextBoxColumn
             // 
@@ -159,6 +169,7 @@
         private System.Windows.Forms.BindingSource songModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArtistString;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
     }
 }

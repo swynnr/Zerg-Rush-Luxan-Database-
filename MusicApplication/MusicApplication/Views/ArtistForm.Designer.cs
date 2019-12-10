@@ -123,7 +123,7 @@
             // albumNameDataGridViewTextBoxColumn
             // 
             this.albumNameDataGridViewTextBoxColumn.DataPropertyName = "AlbumName";
-            this.albumNameDataGridViewTextBoxColumn.HeaderText = "AlbumName";
+            this.albumNameDataGridViewTextBoxColumn.HeaderText = "Album";
             this.albumNameDataGridViewTextBoxColumn.Name = "albumNameDataGridViewTextBoxColumn";
             this.albumNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.albumNameDataGridViewTextBoxColumn.Width = 400;
@@ -131,7 +131,7 @@
             // releaseDateDataGridViewTextBoxColumn
             // 
             this.releaseDateDataGridViewTextBoxColumn.DataPropertyName = "ReleaseDate";
-            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "ReleaseDate";
+            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "Release Date";
             this.releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
             this.releaseDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.releaseDateDataGridViewTextBoxColumn.Width = 160;

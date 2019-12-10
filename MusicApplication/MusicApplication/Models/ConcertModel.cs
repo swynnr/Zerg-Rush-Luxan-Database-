@@ -82,22 +82,11 @@ namespace MusicApplication
         private void PopulateFeaturedArtists(Concert concert)
         {
             FeaturedArtists.Clear();
-            var AlbumList = new HashSet<Album>();
             foreach(var song in SongList)
             {
-                var album = QueryManager.GetAlbumBySongId(song.SongId);
-                if(album == null)
+                foreach (var artist in song.Artists)
                 {
-                    continue;
-                }
-                AlbumList.Add(album);
-            }
-            foreach(var album in AlbumList)
-            {
-                var artists = QueryManager.GetArtistsByAlbumId(album.AlbumId);
-                foreach(var artist in artists)
-                {
-                    if(FeaturedArtists.Contains(artist))
+                    if (FeaturedArtists.Contains(artist))
                     {
                         return;
                     }

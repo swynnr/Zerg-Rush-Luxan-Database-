@@ -43,16 +43,16 @@
             this._newButton = new System.Windows.Forms.Button();
             this._deletePlaylistButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.runtimeVariable = new System.Windows.Forms.Label();
+            this.runtimeLabel = new System.Windows.Forms.Label();
             this._title = new System.Windows.Forms.Label();
             this.playlistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playlistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArtistString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runtimeLabel = new System.Windows.Forms.Label();
-            this.runtimeVariable = new System.Windows.Forms.Label();
-            
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -105,6 +105,7 @@
             this._songGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.songIdDataGridViewTextBoxColumn,
             this.songNameDataGridViewTextBoxColumn,
+            this.ArtistString,
             this.lengthDataGridViewTextBoxColumn});
             this._songGrid.DataMember = "SongList";
             this._songGrid.DataSource = this.playlistModelBindingSource;
@@ -222,6 +223,25 @@
             this.panel2.Size = new System.Drawing.Size(790, 64);
             this.panel2.TabIndex = 4;
             // 
+            // runtimeVariable
+            // 
+            this.runtimeVariable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.runtimeVariable.AutoSize = true;
+            this.runtimeVariable.Location = new System.Drawing.Point(656, 50);
+            this.runtimeVariable.Name = "runtimeVariable";
+            this.runtimeVariable.Size = new System.Drawing.Size(0, 13);
+            this.runtimeVariable.TabIndex = 2;
+            // 
+            // runtimeLabel
+            // 
+            this.runtimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.runtimeLabel.AutoSize = true;
+            this.runtimeLabel.Location = new System.Drawing.Point(607, 50);
+            this.runtimeLabel.Name = "runtimeLabel";
+            this.runtimeLabel.Size = new System.Drawing.Size(49, 13);
+            this.runtimeLabel.TabIndex = 1;
+            this.runtimeLabel.Text = "Runtime:";
+            // 
             // _title
             // 
             this._title.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -244,7 +264,7 @@
             // playlistNameDataGridViewTextBoxColumn
             // 
             this.playlistNameDataGridViewTextBoxColumn.DataPropertyName = "PlaylistName";
-            this.playlistNameDataGridViewTextBoxColumn.HeaderText = "PlaylistName";
+            this.playlistNameDataGridViewTextBoxColumn.HeaderText = "Playlist";
             this.playlistNameDataGridViewTextBoxColumn.Name = "playlistNameDataGridViewTextBoxColumn";
             this.playlistNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.playlistNameDataGridViewTextBoxColumn.Width = 300;
@@ -268,10 +288,17 @@
             // songNameDataGridViewTextBoxColumn
             // 
             this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
-            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
+            this.songNameDataGridViewTextBoxColumn.HeaderText = "Song";
             this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
             this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.songNameDataGridViewTextBoxColumn.Width = 240;
+            // 
+            // ArtistString
+            // 
+            this.ArtistString.DataPropertyName = "ArtistString";
+            this.ArtistString.HeaderText = "Artist";
+            this.ArtistString.Name = "ArtistString";
+            this.ArtistString.ReadOnly = true;
             // 
             // lengthDataGridViewTextBoxColumn
             // 
@@ -280,23 +307,6 @@
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
             this.lengthDataGridViewTextBoxColumn.Width = 130;
-            //
-            // runtimeLabel
-            // 
-            this.runtimeLabel.AutoSize = true;
-            this.runtimeLabel.Location = new System.Drawing.Point(607, 50);
-            this.runtimeLabel.Name = "runtimeLabel";
-            this.runtimeLabel.Size = new System.Drawing.Size(49, 13);
-            this.runtimeLabel.TabIndex = 1;
-            this.runtimeLabel.Text = "Runtime:";
-            // 
-            // runtimeVariable
-            // 
-            this.runtimeVariable.AutoSize = true;
-            this.runtimeVariable.Location = new System.Drawing.Point(656, 50);
-            this.runtimeVariable.Name = "runtimeVariable";
-            this.runtimeVariable.Size = new System.Drawing.Size(0, 13);
-            this.runtimeVariable.TabIndex = 2;
             // 
             // PlaylistForm
             // 
@@ -336,13 +346,14 @@
         private System.Windows.Forms.Button _newButton;
         private System.Windows.Forms.BindingSource playlistModelBindingSource;
         private System.Windows.Forms.Button _deletePlaylistButton;
+        private System.Windows.Forms.Label runtimeVariable;
+        private System.Windows.Forms.Label runtimeLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArtistString;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label runtimeVariable;
-        private System.Windows.Forms.Label runtimeLabel;
     }
 }
