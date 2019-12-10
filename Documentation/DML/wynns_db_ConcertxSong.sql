@@ -1,0 +1,12 @@
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (3, 3);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (7, 5);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (7, 8);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (7, 1);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (7, 15);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (3, 9);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (3, 15);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (8, 12);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (9, 6);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (9, 3);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (9, 15);
+INSERT INTO wynns_db.ConcertxSong (concertID, songID) VALUES (9, 4);
