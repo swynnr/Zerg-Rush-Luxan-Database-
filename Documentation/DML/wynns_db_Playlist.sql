@@ -1,2 +1,0 @@
-INSERT INTO wynns_db.Playlist (playlistID, playlistName, date) VALUES (9, 'Sam''s Coding Collection', '2019-12-09 22:49:56');
-INSERT INTO wynns_db.Playlist (playlistID, playlistName, date) VALUES (10, 'Trent Trepidatious Tunes', '2019-12-09 22:51:46');

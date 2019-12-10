@@ -1,2 +1,0 @@
-INSERT INTO wynns_db.Concert (concertID, concertName, location, date) VALUES (10, 'Paradiso', 'The Gorge', '2019-12-20 11:27:00');
-INSERT INTO wynns_db.Concert (concertID, concertName, location, date) VALUES (11, 'Luxan Lute Lightshow', 'Illinois', '2019-12-09 11:55:59');
