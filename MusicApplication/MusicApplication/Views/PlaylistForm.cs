@@ -124,6 +124,14 @@ namespace MusicApplication
                 return;
             }
             _model.RemoveSongFromPlaylist(SelectedPlaylist, SelectedSong);
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
+            {
+                runtime = runtime + _model.SongList[i].Length;
+            }
+
+            runtimeVariable.Text = runtime.ToString();
         }
 
         private void DeletePlaylist(object sender, EventArgs e)
