@@ -46,6 +46,7 @@ namespace MusicApplication
         {
             QueryManager.ConcertRemoveSong(concert, song);
             SongList.Remove(song);
+            PopulateFeaturedArtists(concert);
         }
 
         public void AddSongToPlaylist(Concert concert, Song song)
