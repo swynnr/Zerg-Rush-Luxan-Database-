@@ -33,25 +33,28 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this._songGrid = new System.Windows.Forms.DataGridView();
-            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playlistModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this._deleteSongButton = new System.Windows.Forms.Button();
             this._addButton = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this._playlistGrid = new System.Windows.Forms.DataGridView();
-            this.playlistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playlistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this._newButton = new System.Windows.Forms.Button();
             this._deletePlaylistButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this._title = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.playlistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playlistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
             this.runtimeLabel = new System.Windows.Forms.Label();
             this.runtimeVariable = new System.Windows.Forms.Label();
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,27 +117,6 @@
             this._songGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._songGrid.Size = new System.Drawing.Size(422, 309);
             this._songGrid.TabIndex = 3;
-            // 
-            // songIdDataGridViewTextBoxColumn
-            // 
-            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
-            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
-            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
-            this.songIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // songNameDataGridViewTextBoxColumn
-            // 
-            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
-            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
-            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
-            this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lengthDataGridViewTextBoxColumn
-            // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
-            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // playlistModelBindingSource
             // 
@@ -200,27 +182,6 @@
             this._playlistGrid.Size = new System.Drawing.Size(362, 309);
             this._playlistGrid.TabIndex = 4;
             // 
-            // playlistIdDataGridViewTextBoxColumn
-            // 
-            this.playlistIdDataGridViewTextBoxColumn.DataPropertyName = "PlaylistId";
-            this.playlistIdDataGridViewTextBoxColumn.HeaderText = "PlaylistId";
-            this.playlistIdDataGridViewTextBoxColumn.Name = "playlistIdDataGridViewTextBoxColumn";
-            this.playlistIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // playlistNameDataGridViewTextBoxColumn
-            // 
-            this.playlistNameDataGridViewTextBoxColumn.DataPropertyName = "PlaylistName";
-            this.playlistNameDataGridViewTextBoxColumn.HeaderText = "PlaylistName";
-            this.playlistNameDataGridViewTextBoxColumn.Name = "playlistNameDataGridViewTextBoxColumn";
-            this.playlistNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -274,6 +235,55 @@
             this._title.Text = "Playlists";
             this._title.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+<<<<<<< HEAD
+            // playlistIdDataGridViewTextBoxColumn
+            // 
+            this.playlistIdDataGridViewTextBoxColumn.DataPropertyName = "PlaylistId";
+            this.playlistIdDataGridViewTextBoxColumn.HeaderText = "PlaylistId";
+            this.playlistIdDataGridViewTextBoxColumn.Name = "playlistIdDataGridViewTextBoxColumn";
+            this.playlistIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playlistIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // playlistNameDataGridViewTextBoxColumn
+            // 
+            this.playlistNameDataGridViewTextBoxColumn.DataPropertyName = "PlaylistName";
+            this.playlistNameDataGridViewTextBoxColumn.HeaderText = "PlaylistName";
+            this.playlistNameDataGridViewTextBoxColumn.Name = "playlistNameDataGridViewTextBoxColumn";
+            this.playlistNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playlistNameDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // songIdDataGridViewTextBoxColumn
+            // 
+            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
+            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
+            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
+            this.songIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // songNameDataGridViewTextBoxColumn
+            // 
+            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
+            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
+            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
+            this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songNameDataGridViewTextBoxColumn.Width = 240;
+            // 
+            // lengthDataGridViewTextBoxColumn
+            // 
+            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
+            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
+            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
+            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lengthDataGridViewTextBoxColumn.Width = 130;
+=======
             // runtimeLabel
             // 
             this.runtimeLabel.AutoSize = true;
@@ -290,6 +300,7 @@
             this.runtimeVariable.Name = "runtimeVariable";
             this.runtimeVariable.Size = new System.Drawing.Size(0, 13);
             this.runtimeVariable.TabIndex = 2;
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
             // 
             // PlaylistForm
             // 
@@ -327,15 +338,19 @@
         private System.Windows.Forms.DataGridView _playlistGrid;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button _newButton;
+        private System.Windows.Forms.BindingSource playlistModelBindingSource;
+        private System.Windows.Forms.Button _deletePlaylistButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn songIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn songNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource playlistModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn playlistNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+<<<<<<< HEAD
+=======
         private System.Windows.Forms.Button _deletePlaylistButton;
         private System.Windows.Forms.Label runtimeVariable;
         private System.Windows.Forms.Label runtimeLabel;
+>>>>>>> f0dc821359025cfc0b6155f5ccf1c15a0d0e0505
     }
 }

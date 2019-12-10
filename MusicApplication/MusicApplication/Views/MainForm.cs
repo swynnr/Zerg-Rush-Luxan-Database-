@@ -50,6 +50,8 @@ namespace MusicApplication
             SetUpControls();
             PopulateComboBox();
             BindEvents();
+            
+            Search(null, null);
         }
 
         private void SetUpControls()
@@ -82,7 +84,7 @@ namespace MusicApplication
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Artist", typeof(Artist)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Album", typeof(Album)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Song", typeof(Song)));
-            _typeSelectorCombo.SelectedIndex = 2;
+            _typeSelectorCombo.SelectedIndex = 0;
         }
 
         private void SetVisibleForm(Component visibleForm)
