@@ -57,6 +57,8 @@
             // 
             // _datePicker
             // 
+            this._datePicker.CustomFormat = "MMM dd/yyyy @ hh:mm tt";
+            this._datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this._datePicker.Location = new System.Drawing.Point(79, 76);
             this._datePicker.Name = "_datePicker";
             this._datePicker.Size = new System.Drawing.Size(210, 20);
@@ -84,6 +86,7 @@
             // 
             // _cancelButton
             // 
+            this._cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._cancelButton.Location = new System.Drawing.Point(272, 152);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(83, 25);
