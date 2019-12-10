@@ -287,11 +287,11 @@ namespace QueryManager
         {
             List<Album> result = new List<Album>();
             
-            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
+            string cmd = string.Format(@"SELECT a.albumID, a.albumName, a.releaseDate
                                      FROM Album a 
                                      JOIN AlbumxArtist axa ON
-                                          a.artistID = axa.artistID
-                                     WHERE artistID = {0};", id);
+                                          a.albumID = axa.albumID
+                                     WHERE axa.artistID = {0};", id);
 
             var reader = GetReader(cmd);
             while (reader.Read())
@@ -312,11 +312,11 @@ namespace QueryManager
         {
             List<Album> result = new List<Album>();
 
-            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
+            string cmd = string.Format(@"SELECT a.albumID, a.albumName, a.releaseDate
                                      FROM Album a 
                                      JOIN Songs s ON
                                           a.album = s.albumID
-                                     WHERE songID = {0};", id);
+                                     WHERE s.songID = {0};", id);
             var reader = GetReader(cmd);
             while (reader.Read())
             {

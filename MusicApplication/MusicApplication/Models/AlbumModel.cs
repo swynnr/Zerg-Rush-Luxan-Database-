@@ -37,10 +37,11 @@ namespace MusicApplication
         private void UpdateAlbumList()
         {
             Albums.Clear();
-            Albums.Add(new Album(0, "The Bees", DateTime.Now));
-            Albums.Add(new Album(100, "Blac", DateTime.Now));
-            Albums.Add(new Album(200, "The happening", DateTime.Now));
-            Albums.Add(new Album(303, "The Foo", DateTime.Now));
+            List<Album> temp = QueryManager.GetAlbumsByArtistId(_selectedArtist.ArtistId);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                Albums.Add(temp[i]);
+            }
         }
     }
 }
