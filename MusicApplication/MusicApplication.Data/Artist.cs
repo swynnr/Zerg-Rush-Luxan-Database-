@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicApplication.Data
 {
-    public class Artist
+    public class Artist : IEquatable<Artist>
     {
         public int ArtistId { get; set; }
         public string ArtistName { get; set; }
@@ -20,6 +20,11 @@ namespace MusicApplication.Data
         public override string ToString()
         {
             return ArtistName;
+        }
+
+        bool IEquatable<Artist>.Equals(Artist other)
+        {
+            return ArtistId.Equals(other.ArtistId);
         }
     }
 }

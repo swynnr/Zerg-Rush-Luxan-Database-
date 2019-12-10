@@ -193,8 +193,8 @@ namespace QueryManager
         public List<Artist> GetArtistsByAlbumId(int id)
         {
             List<Artist> result = new List<Artist>();
-            string cmd = string.Format(@"SELECT artistID, artistName
-                                     FROM Artist ar
+            string cmd = string.Format(@"SELECT ar.artistID, artistName
+                                     FROM Artists ar
                                      JOIN AlbumxArtist axa ON
                                           ar.artistID = axa.artistID
                                      WHERE albumID = {0};", id);
@@ -306,14 +306,14 @@ namespace QueryManager
             return result;
         }
 
-        public List<Album> GetAlbumsBySongId(int id)
+        public Album GetAlbumBySongId(int id)
         {
             List<Album> result = new List<Album>();
 
-            string cmd = string.Format(@"SELECT albumID, albumName, releaseDate
+            string cmd = string.Format(@"SELECT a.albumID, albumName, releaseDate
                                      FROM Album a 
                                      JOIN Songs s ON
-                                          a.album = s.albumID
+                                          a.albumID = s.albumID
                                      WHERE songID = {0};", id);
             var reader = GetReader(cmd);
             while (reader.Read())
@@ -327,7 +327,7 @@ namespace QueryManager
                 result.Add(entry);
             }
             reader.Close();
-            return result;
+            return result.FirstOrDefault<Album>();
         }
 
         public List<Song> GetSongsByName(string name)

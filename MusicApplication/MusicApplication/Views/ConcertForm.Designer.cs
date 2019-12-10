@@ -33,12 +33,19 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this._songGrid = new System.Windows.Forms.DataGridView();
+            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.concertModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this._deleteSongButton = new System.Windows.Forms.Button();
             this._addButton = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this._concertGrid = new System.Windows.Forms.DataGridView();
+            this.concertIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.concertNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this._newButton = new System.Windows.Forms.Button();
             this._deletePlaylistButton = new System.Windows.Forms.Button();
@@ -46,13 +53,13 @@
             this.runtimeVariable = new System.Windows.Forms.Label();
             this.runtimeLabel = new System.Windows.Forms.Label();
             this._title = new System.Windows.Forms.Label();
-            this.concertIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.concertNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.songIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.songNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._artistGrid = new System.Windows.Forms.DataGridView();
+            this.artistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artistNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,6 +70,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._concertGrid)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._artistGrid)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,6 +101,9 @@
             // panel3
             // 
             this.panel3.Controls.Add(this._songGrid);
+            this.panel3.Controls.Add(this.panel8);
+            this.panel3.Controls.Add(this._artistGrid);
+            this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(365, 18);
@@ -109,16 +122,36 @@
             this._songGrid.DataMember = "SongList";
             this._songGrid.DataSource = this.concertModelBindingSource;
             this._songGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._songGrid.Location = new System.Drawing.Point(0, 0);
+            this._songGrid.Location = new System.Drawing.Point(0, 144);
             this._songGrid.Name = "_songGrid";
             this._songGrid.ReadOnly = true;
             this._songGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._songGrid.Size = new System.Drawing.Size(422, 309);
+            this._songGrid.Size = new System.Drawing.Size(422, 165);
             this._songGrid.TabIndex = 3;
             // 
-            // concertModelBindingSource
+            // songIdDataGridViewTextBoxColumn
             // 
-            this.concertModelBindingSource.DataSource = typeof(MusicApplication.ConcertModel);
+            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
+            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
+            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
+            this.songIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // songNameDataGridViewTextBoxColumn
+            // 
+            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
+            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
+            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
+            this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.songNameDataGridViewTextBoxColumn.Width = 230;
+            // 
+            // lengthDataGridViewTextBoxColumn
+            // 
+            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
+            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
+            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
+            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lengthDataGridViewTextBoxColumn.Width = 130;
             // 
             // concertModelBindingSource
             // 
@@ -191,6 +224,7 @@
             this.concertIdDataGridViewTextBoxColumn.HeaderText = "ConcertId";
             this.concertIdDataGridViewTextBoxColumn.Name = "concertIdDataGridViewTextBoxColumn";
             this.concertIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.concertIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // concertNameDataGridViewTextBoxColumn
             // 
@@ -283,58 +317,74 @@
             this._title.Text = "Concerts";
             this._title.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // concertIdDataGridViewTextBoxColumn
+            // _artistGrid
             // 
-            this.concertIdDataGridViewTextBoxColumn.DataPropertyName = "ConcertId";
-            this.concertIdDataGridViewTextBoxColumn.HeaderText = "ConcertId";
-            this.concertIdDataGridViewTextBoxColumn.Name = "concertIdDataGridViewTextBoxColumn";
-            this.concertIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.concertIdDataGridViewTextBoxColumn.Visible = false;
+            this._artistGrid.AutoGenerateColumns = false;
+            this._artistGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._artistGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artistIdDataGridViewTextBoxColumn,
+            this.artistNameDataGridViewTextBoxColumn});
+            this._artistGrid.DataMember = "FeaturedArtists";
+            this._artistGrid.DataSource = this.concertModelBindingSource;
+            this._artistGrid.Dock = System.Windows.Forms.DockStyle.Top;
+            this._artistGrid.Location = new System.Drawing.Point(0, 29);
+            this._artistGrid.Name = "_artistGrid";
+            this._artistGrid.ReadOnly = true;
+            this._artistGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._artistGrid.Size = new System.Drawing.Size(422, 86);
+            this._artistGrid.TabIndex = 5;
             // 
-            // concertNameDataGridViewTextBoxColumn
+            // artistIdDataGridViewTextBoxColumn
             // 
-            this.concertNameDataGridViewTextBoxColumn.DataPropertyName = "ConcertName";
-            this.concertNameDataGridViewTextBoxColumn.HeaderText = "ConcertName";
-            this.concertNameDataGridViewTextBoxColumn.Name = "concertNameDataGridViewTextBoxColumn";
-            this.concertNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.artistIdDataGridViewTextBoxColumn.DataPropertyName = "ArtistId";
+            this.artistIdDataGridViewTextBoxColumn.HeaderText = "ArtistId";
+            this.artistIdDataGridViewTextBoxColumn.Name = "artistIdDataGridViewTextBoxColumn";
+            this.artistIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.artistIdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // locationDataGridViewTextBoxColumn
+            // artistNameDataGridViewTextBoxColumn
             // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.artistNameDataGridViewTextBoxColumn.DataPropertyName = "ArtistName";
+            this.artistNameDataGridViewTextBoxColumn.HeaderText = "ArtistName";
+            this.artistNameDataGridViewTextBoxColumn.Name = "artistNameDataGridViewTextBoxColumn";
+            this.artistNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.artistNameDataGridViewTextBoxColumn.Width = 360;
             // 
-            // dateDataGridViewTextBoxColumn
+            // panel7
             // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(422, 29);
+            this.panel7.TabIndex = 6;
             // 
-            // songIdDataGridViewTextBoxColumn
+            // label1
             // 
-            this.songIdDataGridViewTextBoxColumn.DataPropertyName = "SongId";
-            this.songIdDataGridViewTextBoxColumn.HeaderText = "SongId";
-            this.songIdDataGridViewTextBoxColumn.Name = "songIdDataGridViewTextBoxColumn";
-            this.songIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.songIdDataGridViewTextBoxColumn.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Featured Artists";
             // 
-            // songNameDataGridViewTextBoxColumn
+            // panel8
             // 
-            this.songNameDataGridViewTextBoxColumn.DataPropertyName = "SongName";
-            this.songNameDataGridViewTextBoxColumn.HeaderText = "SongName";
-            this.songNameDataGridViewTextBoxColumn.Name = "songNameDataGridViewTextBoxColumn";
-            this.songNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.songNameDataGridViewTextBoxColumn.Width = 230;
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 115);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(422, 29);
+            this.panel8.TabIndex = 7;
             // 
-            // lengthDataGridViewTextBoxColumn
+            // label2
             // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
-            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lengthDataGridViewTextBoxColumn.Width = 130;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Song List";
             // 
             // ConcertForm
             // 
@@ -353,6 +403,11 @@
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._artistGrid)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -383,5 +438,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label runtimeLabel;
         private System.Windows.Forms.Label runtimeVariable;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView _artistGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artistIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artistNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label1;
     }
 }

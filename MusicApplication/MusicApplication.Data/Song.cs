@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace MusicApplication.Data
 {
-    public class Song
+    public class Song : IEquatable<Song>
     {
         public int SongId { get; set; }
         public string SongName { get; set; }
         public TimeSpan Length { get; set; }
-
-        
         
         public Song(int songId, string songName, TimeSpan length)
         {
@@ -26,15 +24,9 @@ namespace MusicApplication.Data
             return SongName;
         }
 
-        public override bool Equals(object obj)
+        bool IEquatable<Song>.Equals(Song other)
         {
-            if (obj == null)
-                return false;
-
-            Song p = (Song)obj;
-
-            return (SongId == p.SongId);
+            return SongId.Equals(other.SongId);
         }
-
     }
 }

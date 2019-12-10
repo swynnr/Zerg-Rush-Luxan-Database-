@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicApplication.Data
 {
-    public class Playlist
+    public class Playlist : IEquatable<Playlist>
     {
         public int PlaylistId { get; set; }
         public string PlaylistName { get; set; }
@@ -29,6 +29,11 @@ namespace MusicApplication.Data
         public override string ToString()
         {
             return PlaylistName;
+        }
+
+        bool IEquatable<Playlist>.Equals(Playlist other)
+        {
+            return PlaylistId.Equals(other.PlaylistId);
         }
     }
 }

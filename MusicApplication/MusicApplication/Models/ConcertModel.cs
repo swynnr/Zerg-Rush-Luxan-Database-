@@ -13,11 +13,13 @@ namespace MusicApplication
     {
         public BindingList<Concert> ConcertList { get; set; }
         public BindingList<Song> SongList { get; set; }
+        public BindingList<Artist> FeaturedArtists { get; set; }
 
         public ConcertModel(Query queryManager)
         {
             ConcertList = new BindingList<Concert>();
             SongList = new BindingList<Song>();
+            FeaturedArtists = new BindingList<Artist>();
             QueryManager = queryManager;
             PopulateConcertList();
         }
@@ -25,6 +27,7 @@ namespace MusicApplication
         public void SelectConcert(Concert concert)
         {
             PopulateSongList(concert);
+            PopulateFeaturedArtists(concert);
         }
 
         public void CreateConcert(Concert concert)
@@ -53,6 +56,7 @@ namespace MusicApplication
                 return;
             }
             SongList.Add(song);
+            PopulateFeaturedArtists(concert);
         }
 
         private void PopulateConcertList()
@@ -67,14 +71,39 @@ namespace MusicApplication
 
         private void PopulateSongList(Concert concert)
         {
-
             SongList.Clear();
-            List<Song> temp = QueryManager.GetSongsByConcertId(concert.ConcertId);
+            var temp = QueryManager.GetSongsByConcertId(concert.ConcertId);
             for (int i = 0; i < temp.Count; i++)
             {
                 SongList.Add(temp[i]);
             }
+        }
 
+        private void PopulateFeaturedArtists(Concert concert)
+        {
+            FeaturedArtists.Clear();
+            var AlbumList = new HashSet<Album>();
+            foreach(var song in SongList)
+            {
+                var album = QueryManager.GetAlbumBySongId(song.SongId);
+                if(album == null)
+                {
+                    continue;
+                }
+                AlbumList.Add(album);
+            }
+            foreach(var album in AlbumList)
+            {
+                var artists = QueryManager.GetArtistsByAlbumId(album.AlbumId);
+                foreach(var artist in artists)
+                {
+                    if(FeaturedArtists.Contains(artist))
+                    {
+                        return;
+                    }
+                    FeaturedArtists.Add(artist);
+                }
+            }
         }
     }
 }
