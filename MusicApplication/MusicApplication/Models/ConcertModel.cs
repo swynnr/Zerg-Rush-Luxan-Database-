@@ -75,6 +75,37 @@ namespace MusicApplication
                 SongList.Add(temp[i]);
             }
 
+<<<<<<< Updated upstream
+=======
+        private void PopulateFeaturedArtists(Concert concert)
+        {
+            FeaturedArtists.Clear();
+            var AlbumList = new HashSet<Album>();
+            foreach(var song in SongList)
+            {
+                var album = QueryManager.GetAlbumsBySongId(song.SongId);
+                if(album == null)
+                {
+                    continue;
+                }
+                foreach(var x in album)
+                {
+                    AlbumList.Add(x);
+                }
+            }
+            foreach(var album in AlbumList)
+            {
+                var artists = QueryManager.GetArtistsByAlbumId(album.AlbumId);
+                foreach(var artist in artists)
+                {
+                    if(FeaturedArtists.Contains(artist))
+                    {
+                        return;
+                    }
+                    FeaturedArtists.Add(artist);
+                }
+            }
+>>>>>>> Stashed changes
         }
     }
 }
