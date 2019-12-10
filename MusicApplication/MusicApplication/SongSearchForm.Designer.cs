@@ -87,6 +87,10 @@
             // 
             // Grid
             // 
+            this.Grid.AllowUserToAddRows = false;
+            this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToOrderColumns = true;
+            this.Grid.AllowUserToResizeRows = false;
             this.Grid.AutoGenerateColumns = false;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

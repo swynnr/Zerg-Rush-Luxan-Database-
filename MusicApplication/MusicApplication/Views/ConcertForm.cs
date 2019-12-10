@@ -94,6 +94,13 @@ namespace MusicApplication
                 return;
             }
             _model.RemoveSongFromPlaylist(SelectedConcert, SelectedSong);
+
+            TimeSpan runtime = new TimeSpan(0, 0, 0);
+
+            for (int i = 0; i < _model.SongList.Count; i++)
+                runtime = runtime + _model.SongList[i].Length;
+            
+            runtimeVariable.Text = runtime.ToString();
         }
 
         private void DeleteConcert(object sender, EventArgs e)
@@ -103,13 +110,6 @@ namespace MusicApplication
                 return;
             }
             _model.DeletePlaylist(SelectedConcert);
-            TimeSpan runtime = new TimeSpan(0, 0, 0);
-
-            for (int i = 0; i < _model.SongList.Count; i++)
-                runtime = runtime + _model.SongList[i].Length;
-
-
-            runtimeVariable.Text = runtime.ToString();
         }
 
         private void CreateNewConcert(object sender, EventArgs e)
