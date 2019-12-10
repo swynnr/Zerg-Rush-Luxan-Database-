@@ -42,7 +42,13 @@ namespace MusicApplication
             SetVisibleForm(_albumForm);
             _albumForm.Open(album);
         }
-        
+
+        public void DisplayObject(Playlist playlist)
+        {
+            tabControl.SelectedIndex = 1;
+            _playlistForm.Open(playlist);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -84,6 +90,7 @@ namespace MusicApplication
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Artist", typeof(Artist)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Album", typeof(Album)));
             _typeSelectorCombo.Items.Add(new ComboBoxItem("Song", typeof(Song)));
+            _typeSelectorCombo.Items.Add(new ComboBoxItem("Playlist", typeof(Playlist)));
             _typeSelectorCombo.SelectedIndex = 0;
         }
 

@@ -88,6 +88,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ConcertModel.cs" />
     <Compile Include="Models\PlaylistModel.cs" />
+    <Compile Include="Models\SearchPlaylistModel.cs" />
     <Compile Include="Models\SearchSongModel.cs" />
     <Compile Include="Models\SearchAlbumModel.cs" />
     <Compile Include="Models\SearchArtistModel.cs" />
