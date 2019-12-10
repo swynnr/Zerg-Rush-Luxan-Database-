@@ -13,12 +13,12 @@ namespace MusicApplication.Data
         public TimeSpan Length { get; set; }
         public List<Artist> Artists { get; set; }
         
-        public Song(int songId, string songName, TimeSpan length, List<Artist> artists = null)
+        public Song(int songId, string songName, TimeSpan length)
         {
             SongId = songId;
             SongName = songName;
             Length = length;
-            Artists = artists;
+            Artists = new List<Artist>();
         }
 
         public override string ToString()

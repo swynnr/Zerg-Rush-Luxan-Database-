@@ -348,12 +348,15 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(2),
-                    GetArtistsBySongId(reader.GetInt32(0))
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
             reader.Close();
+            foreach (Song s in result)
+            {
+                s.Artists = GetArtistsBySongId(s.SongId);
+            }
             return result;
         }
 
@@ -372,12 +375,15 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(2),
-                    GetArtistsBySongId(reader.GetInt32(0))
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
             reader.Close();
+            foreach(Song s in result)
+            {
+                s.Artists = GetArtistsBySongId(s.SongId);
+            }
             return result;
         }
         public List<Song> GetSongsByConcertId(int id)
@@ -397,12 +403,15 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(2),
-                    GetArtistsBySongId(reader.GetInt32(0))
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
             reader.Close();
+            foreach (Song s in result)
+            {
+                s.Artists = GetArtistsBySongId(s.SongId);
+            }
             return result;
         }
 
@@ -422,12 +431,15 @@ namespace QueryManager
                 (
                     reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetTimeSpan(2),
-                    GetArtistsBySongId(reader.GetInt32(0))
+                    reader.GetTimeSpan(2)
                 );
                 result.Add(entry);
             }
             reader.Close();
+            foreach (Song s in result)
+            {
+                s.Artists = GetArtistsBySongId(s.SongId);
+            }
             return result;
         }
 
