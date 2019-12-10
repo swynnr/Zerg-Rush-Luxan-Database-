@@ -424,5 +424,22 @@ namespace QueryManager
             reader.Close();
             return result;
         }
+
+        public TimeSpan GetPlaylistLength(int id)
+        {
+            TimeSpan result = new TimeSpan();
+            string cmd = string.Format(@"SELECT SUM(s.songLength)
+                                     FROM Songs s
+                                     JOIN PlaylistxSong p ON p.songID = s.songID 
+                                     WHERE p.playlistID = {0};", id);
+
+            var reader = GetReader(cmd);
+            if(reader.Read())
+            {
+                result = reader.GetTimeSpan(0);
+            }
+            reader.Close();
+            return result;
+        }
     }
 }
