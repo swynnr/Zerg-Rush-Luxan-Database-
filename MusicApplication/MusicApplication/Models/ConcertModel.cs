@@ -87,9 +87,8 @@ namespace MusicApplication
                 foreach (var artist in song.Artists)
                 {
                     if (FeaturedArtists.Contains(artist))
-
                     {
-                        return;
+                        continue;
                     }
                     FeaturedArtists.Add(artist);
                 }
